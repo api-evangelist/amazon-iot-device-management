@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - IoT
+  - AWS
   - Device Management
   - Fleet Management
+  - IoT
   - Remote Management
-  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-iot-device-management/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -28,9 +28,9 @@ apis:
     humanURL: https://aws.amazon.com/iot-device-management/
     baseURL: https://iot.amazonaws.com
     tags:
-      - IoT
       - Device Management
       - Fleet Management
+      - IoT
     properties:
       - type: Documentation
         url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
