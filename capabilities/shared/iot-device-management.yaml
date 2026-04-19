@@ -1,0 +1,140 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: Amazon IoT Device Management API
+  description: Onboard, organize, and manage IoT devices at scale.
+  tags:
+    - IoT
+    - AWS
+    - Device Management
+    - Fleet Management
+  created: "2026-04-19"
+  modified: "2026-04-19"
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: iot-device-management
+      baseUri: https://iot.amazonaws.com
+      description: Amazon IoT Device Management REST API
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: resources
+          path: /
+          description: Amazon IoT Device Management resources
+          operations:
+            - name: list-thing-groups
+              method: GET
+              description: List Thing Groups
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: iot-device-management-rest
+      resources:
+        - path: /v1/resources
+          name: resources
+          description: Amazon IoT Device Management resources
+          operations:
+            - method: GET
+              name: list-thing-groups
+              description: List Thing Groups
+              call: "iot-device-management.list-thing-groups"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9100
+      namespace: iot-device-management-mcp
+      transport: http
+      tools:
+        - name: list-thing-groups
+          description: Amazon IoT Device Management List Thing Groups
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iot-device-management.list-thing-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-thing-group
+          description: Amazon IoT Device Management Create Thing Group
+          hints:
+            readOnly: false
+            
+          call: "iot-device-management.create-thing-group"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-jobs
+          description: Amazon IoT Device Management List Jobs
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iot-device-management.list-jobs"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-job
+          description: Amazon IoT Device Management Create Job
+          hints:
+            readOnly: false
+            
+          call: "iot-device-management.create-job"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: describe-job
+          description: Amazon IoT Device Management Describe Job
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iot-device-management.describe-job"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-job-executions
+          description: Amazon IoT Device Management List Job Executions
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iot-device-management.list-job-executions"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: add-thing-to-group
+          description: Amazon IoT Device Management Add Thing To Group
+          hints:
+            readOnly: false
+            
+          call: "iot-device-management.add-thing-to-group"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-things-in-group
+          description: Amazon IoT Device Management List Things In Group
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iot-device-management.list-things-in-group"
+          outputParameters:
+            - type: object
+              mapping: "$."

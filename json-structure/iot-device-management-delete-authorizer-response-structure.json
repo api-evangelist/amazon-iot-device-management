@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-iot-device-management/refs/heads/main/json-structure/iot-device-management-delete-authorizer-response-structure.json",
+  "name": "DeleteAuthorizerResponse",
+  "description": "DeleteAuthorizerResponse schema",
+  "type": "object",
+  "properties": {}
+}

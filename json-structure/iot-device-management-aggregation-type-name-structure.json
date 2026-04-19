@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-iot-device-management/refs/heads/main/json-structure/iot-device-management-aggregation-type-name-structure.json",
+  "name": "AggregationTypeName",
+  "description": "AggregationTypeName schema",
+  "type": "string",
+  "enum": [
+    "Statistics",
+    "Percentiles",
+    "Cardinality"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-iot-device-management/refs/heads/main/json-structure/iot-device-management-detach-security-profile-response-structure.json",
+  "name": "DetachSecurityProfileResponse",
+  "description": "DetachSecurityProfileResponse schema",
+  "type": "object",
+  "properties": {}
+}

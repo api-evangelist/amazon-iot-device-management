@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-iot-device-management/refs/heads/main/json-structure/iot-device-management-get-o-t-a-update-response-structure.json",
+  "name": "GetOTAUpdateResponse",
+  "description": "GetOTAUpdateResponse schema",
+  "type": "object",
+  "properties": {
+    "otaUpdateInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/OTAUpdateInfo"
+        },
+        {
+          "description": "The OTA update info."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-iot-device-management/refs/heads/main/json-structure/iot-device-management-delete-dynamic-thing-group-response-structure.json",
+  "name": "DeleteDynamicThingGroupResponse",
+  "description": "DeleteDynamicThingGroupResponse schema",
+  "type": "object",
+  "properties": {}
+}
