@@ -1,8 +1,9 @@
 aid: amazon-iot-device-management
 name: Amazon IoT Device Management
-description: AWS IoT Device Management makes it easy to securely onboard, organize, monitor, and remotely manage your IoT
-  devices at scale. You can register your connected devices individually or in bulk, and easily manage permissions so your
-  devices remain secure throughout their lifecycle.
+description: AWS IoT Device Management makes it easy to securely onboard, organize,
+  monitor, and remotely manage your IoT devices at scale. You can register your connected
+  devices individually or in bulk, and easily manage permissions so your devices remain
+  secure throughout their lifecycle.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -18,8 +19,8 @@ specificationVersion: '0.19'
 apis:
 - aid: amazon-iot-device-management:aws-iot-management-api
   name: AWS IoT Device Management API
-  description: The AWS IoT Device Management API provides access to thing groups, jobs, bulk registration, fleet indexing,
-    and remote device management capabilities.
+  description: The AWS IoT Device Management API provides access to thing groups,
+    jobs, bulk registration, fleet indexing, and remote device management capabilities.
   humanURL: https://aws.amazon.com/iot-device-management/
   baseURL: https://iot.amazonaws.com
   tags:
@@ -39,6 +40,8 @@ apis:
     url: https://aws.amazon.com/iot-device-management/faqs/
   - type: NaftikoCapability
     url: capabilities/amazon-iot-device-management.yaml
+  - url: graphql/amazon-iot-device-management-graphql.md
+    type: GraphQL
 common:
 - type: Portal
   url: https://aws.amazon.com/iot-device-management/
@@ -75,23 +78,29 @@ common:
 - type: Features
   data:
   - name: Bulk Device Registration
-    description: Register thousands of devices simultaneously using bulk registration templates.
+    description: Register thousands of devices simultaneously using bulk registration
+      templates.
   - name: Fleet Indexing
-    description: Search and query your entire device fleet based on attributes and shadow state.
+    description: Search and query your entire device fleet based on attributes and
+      shadow state.
   - name: Remote Jobs
-    description: Deploy firmware updates, configuration changes, and software remotely at scale.
+    description: Deploy firmware updates, configuration changes, and software remotely
+      at scale.
   - name: Thing Groups
     description: Organize devices into hierarchical groups for policies and bulk operations.
   - name: Tunnel Secure
-    description: Create secure bidirectional tunnels to devices behind firewalls for remote troubleshooting.
+    description: Create secure bidirectional tunnels to devices behind firewalls for
+      remote troubleshooting.
 - type: UseCases
   data:
   - name: OTA Firmware Updates
-    description: Deploy firmware updates to thousands of devices simultaneously with rollback.
+    description: Deploy firmware updates to thousands of devices simultaneously with
+      rollback.
   - name: Device Onboarding
     description: Automate device provisioning and certificate management at manufacturing.
   - name: Fleet Monitoring
-    description: Monitor device connectivity, metadata, and shadow state across the entire fleet.
+    description: Monitor device connectivity, metadata, and shadow state across the
+      entire fleet.
 - type: Integrations
   data:
   - name: AWS IoT Core

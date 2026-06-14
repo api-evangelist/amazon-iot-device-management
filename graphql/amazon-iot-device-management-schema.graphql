@@ -1,0 +1,1201 @@
+"""
+AWS IoT Device Management GraphQL Schema
+Covers fleet management, thing groups, jobs, fleet indexing, certificates, and policies.
+Source: https://docs.aws.amazon.com/iot/latest/apireference/
+"""
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  # Things
+  thing(thingName: String!): ThingDetails
+  listThings(attributeName: String, attributeValue: String, thingTypeName: String, maxResults: Int, nextToken: String): ThingList
+  thingType(thingTypeName: String!): ThingTypeDetails
+  listThingTypes(maxResults: Int, nextToken: String, thingTypeName: String): ThingTypeList
+
+  # Thing Groups
+  thingGroup(thingGroupName: String!): ThingGroupDetails
+  listThingGroups(parentGroup: String, namePrefixFilter: String, recursive: Boolean, maxResults: Int, nextToken: String): ThingGroupList
+  listThingsInThingGroup(thingGroupName: String!, recursive: Boolean, maxResults: Int, nextToken: String): ThingList
+  listGroupsForThing(thingName: String!, maxResults: Int, nextToken: String): ThingGroupList
+
+  # Billing Groups
+  billingGroup(billingGroupName: String!): BillingGroupDetails
+  listBillingGroups(maxResults: Int, nextToken: String, namePrefixFilter: String): BillingGroupList
+  listThingsInBillingGroup(billingGroupName: String!, maxResults: Int, nextToken: String): ThingList
+
+  # Jobs
+  job(jobId: String!): JobDetails
+  listJobs(status: JobStatus, targetSelection: TargetSelection, maxResults: Int, nextToken: String, thingGroupName: String, thingGroupId: String, namespaceId: String): JobList
+  jobExecution(jobId: String!, thingName: String!, executionNumber: Int): ExecutionDetails
+  listJobExecutionsForJob(jobId: String!, status: JobExecutionStatus, maxResults: Int, nextToken: String): JobExecutionList
+  listJobExecutionsForThing(thingName: String!, status: JobExecutionStatus, maxResults: Int, nextToken: String, namespaceId: String): JobExecutionList
+  jobDocument(jobId: String!): JobDocument
+
+  # Fleet Indexing
+  indexingConfiguration: FleetIndexingConfiguration
+  thingIndex(indexName: String!): FleetIndex
+  listIndices(maxResults: Int, nextToken: String): FleetIndexList
+  searchIndex(input: SearchQueryInput!): SearchResults
+
+  # Fleet Metrics
+  fleetMetric(metricName: String!): FleetMetricDetails
+  listFleetMetrics(maxResults: Int, nextToken: String): FleetMetricList
+
+  # Certificates
+  certificate(certificateId: String!): CertificateDetails
+  listCertificates(pageSize: Int, ascendingOrder: Boolean, marker: String): CertificateList
+  listCertificatesByCA(caCertificateId: String!, pageSize: Int, ascendingOrder: Boolean, marker: String): CertificateList
+
+  # Policies
+  policy(policyName: String!): PolicyDetails
+  listPolicies(marker: String, pageSize: Int, ascendingOrder: Boolean): PolicyList
+  listPolicyVersions(policyName: String!): PolicyVersionList
+  listPrincipalPolicies(principal: String!, marker: String, pageSize: Int, ascendingOrder: Boolean): PolicyList
+  listAttachedPolicies(target: String!, recursive: Boolean, marker: String, pageSize: Int): PolicyList
+}
+
+type Mutation {
+  # Things
+  createThing(input: CreateThingInput!): Thing
+  updateThing(input: UpdateThingInput!): Thing
+  deleteThing(thingName: String!, expectedVersion: Int): Boolean
+  createThingType(input: CreateThingTypeInput!): ThingType
+  deprecateThingType(thingTypeName: String!, undoDeprecate: Boolean): Boolean
+  deleteThingType(thingTypeName: String!): Boolean
+  addThingToThingGroup(thingGroupName: String, thingGroupArn: String, thingName: String, thingArn: String, overrideDynamicGroups: Boolean): Boolean
+  removeThingFromThingGroup(thingGroupName: String, thingGroupArn: String, thingName: String, thingArn: String): Boolean
+
+  # Thing Groups
+  createThingGroup(input: CreateThingGroupInput!): ThingGroup
+  updateThingGroup(input: UpdateThingGroupInput!): ThingGroup
+  deleteThingGroup(thingGroupName: String!, expectedVersion: Int): Boolean
+  addThingToGroup(thingGroupName: String!, thingName: String!): Boolean
+  removeThingFromGroup(thingGroupName: String!, thingName: String!): Boolean
+
+  # Dynamic Thing Groups
+  createDynamicThingGroup(input: CreateDynamicThingGroupInput!): DynamicThingGroup
+  updateDynamicThingGroup(input: UpdateDynamicThingGroupInput!): DynamicThingGroup
+  deleteDynamicThingGroup(thingGroupName: String!, expectedVersion: Int): Boolean
+
+  # Billing Groups
+  createBillingGroup(input: CreateBillingGroupInput!): BillingGroup
+  updateBillingGroup(input: UpdateBillingGroupInput!): BillingGroup
+  deleteBillingGroup(billingGroupName: String!, expectedVersion: Int): Boolean
+  addThingToBillingGroup(billingGroupName: String, billingGroupArn: String, thingName: String, thingArn: String): Boolean
+  removeThingFromBillingGroup(billingGroupName: String, billingGroupArn: String, thingName: String, thingArn: String): Boolean
+
+  # Jobs
+  createJob(input: CreateJobInput!): Job
+  updateJob(input: UpdateJobInput!): Job
+  cancelJob(jobId: String!, reasonCode: String, comment: String, force: Boolean): Job
+  deleteJob(jobId: String!, force: Boolean, namespaceId: String): Boolean
+  cancelJobExecution(jobId: String!, thingName: String!, force: Boolean, expectedVersion: Int, statusDetails: StatusDetailsInput): Boolean
+  deleteJobExecution(jobId: String!, thingName: String!, executionNumber: Int!, force: Boolean, namespaceId: String): Boolean
+
+  # Fleet Indexing
+  updateIndexingConfiguration(input: UpdateIndexingConfigurationInput!): Boolean
+
+  # Fleet Metrics
+  createFleetMetric(input: CreateFleetMetricInput!): FleetMetric
+  updateFleetMetric(input: UpdateFleetMetricInput!): FleetMetric
+  deleteFleetMetric(metricName: String!, expectedVersion: Int): Boolean
+
+  # Certificates
+  createKeysAndCertificate(setAsActive: Boolean): KeysAndCertificate
+  deleteCertificate(certificateId: String!, forceDelete: Boolean): Boolean
+  updateCertificate(certificateId: String!, newStatus: CertificateStatus!): Boolean
+
+  # Policies
+  createPolicy(input: CreatePolicyInput!): Policy
+  deletePolicy(policyName: String!): Boolean
+  createPolicyVersion(policyName: String!, policyDocument: String!, setAsDefault: Boolean): PolicyVersion
+  deletePolicyVersion(policyName: String!, policyVersionId: String!): Boolean
+  setDefaultPolicyVersion(policyName: String!, policyVersionId: String!): Boolean
+  attachPolicy(policyName: String!, target: String!): Boolean
+  detachPolicy(policyName: String!, target: String!): Boolean
+}
+
+# ─── Things ───────────────────────────────────────────────────────────────────
+
+type Thing {
+  thingName: String!
+  thingArn: String
+  thingId: String
+  thingTypeName: String
+  version: Int
+}
+
+type ThingDetails {
+  thingName: String!
+  thingArn: String
+  thingId: String!
+  thingTypeName: String
+  attributes: AttributePayload
+  version: Int
+  billingGroupName: String
+  defaultClientId: String
+}
+
+type ThingList {
+  things: [ThingDetails]
+  nextToken: String
+}
+
+type ThingAttribute {
+  thingName: String
+  thingTypeName: String
+  thingArn: String
+  attributes: AttributePayload
+  version: Int
+}
+
+type ThingConnectivity {
+  connected: Boolean
+  timestamp: String
+  disconnectReason: String
+}
+
+type ConnectivitySummary {
+  connectedCount: Int
+  disconnectedCount: Int
+  unknownCount: Int
+  timestamp: String
+}
+
+type AttributePayload {
+  attributes: [AttributeEntry]
+  merge: Boolean
+}
+
+type AttributeEntry {
+  key: String!
+  value: String
+}
+
+input CreateThingInput {
+  thingName: String!
+  thingTypeName: String
+  attributePayload: AttributePayloadInput
+  billingGroupName: String
+}
+
+input UpdateThingInput {
+  thingName: String!
+  thingTypeName: String
+  attributePayload: AttributePayloadInput
+  expectedVersion: Int
+  removeThingType: Boolean
+}
+
+input AttributePayloadInput {
+  attributes: [AttributeEntryInput]
+  merge: Boolean
+}
+
+input AttributeEntryInput {
+  key: String!
+  value: String
+}
+
+# ─── Thing Types ──────────────────────────────────────────────────────────────
+
+type ThingType {
+  thingTypeName: String!
+  thingTypeArn: String
+  thingTypeId: String
+}
+
+type ThingTypeName {
+  thingTypeName: String!
+  thingTypeArn: String
+}
+
+type ThingTypeDetails {
+  thingTypeName: String!
+  thingTypeArn: String
+  thingTypeId: String
+  thingTypeProperties: ThingTypeProperties
+  thingTypeMetadata: ThingTypeMetadata
+}
+
+type ThingTypeProperties {
+  thingTypeDescription: String
+  searchableAttributes: [String]
+}
+
+type ThingTypeMetadata {
+  deprecated: Boolean
+  deprecationDate: String
+  creationDate: String
+}
+
+type ThingTypeList {
+  thingTypes: [ThingTypeDetails]
+  nextToken: String
+}
+
+input CreateThingTypeInput {
+  thingTypeName: String!
+  thingTypeProperties: ThingTypePropertiesInput
+  tags: [TagInput]
+}
+
+input ThingTypePropertiesInput {
+  thingTypeDescription: String
+  searchableAttributes: [String]
+}
+
+# ─── Thing Groups ─────────────────────────────────────────────────────────────
+
+type ThingGroup {
+  thingGroupName: String!
+  thingGroupArn: String
+  thingGroupId: String
+  version: Int
+}
+
+type ThingGroupDetails {
+  thingGroupName: String!
+  thingGroupArn: String
+  thingGroupId: String!
+  version: Int
+  thingGroupProperties: ThingGroupProperties
+  thingGroupMetadata: ThingGroupMetadata
+  indexName: String
+  queryString: String
+  queryVersion: String
+  status: DynamicGroupStatus
+}
+
+type ThingGroupMetadata {
+  parentGroupName: String
+  rootToParentThingGroups: [GroupNameAndArn]
+  creationDate: String
+}
+
+type ThingGroupProperties {
+  thingGroupDescription: String
+  attributePayload: AttributePayload
+}
+
+type GroupNameAndArn {
+  groupName: String
+  groupArn: String
+}
+
+type ThingGroupList {
+  thingGroups: [GroupNameAndArn]
+  nextToken: String
+}
+
+input CreateThingGroupInput {
+  thingGroupName: String!
+  parentGroupName: String
+  thingGroupProperties: ThingGroupPropertiesInput
+  tags: [TagInput]
+}
+
+input UpdateThingGroupInput {
+  thingGroupName: String!
+  thingGroupProperties: ThingGroupPropertiesInput!
+  expectedVersion: Int
+}
+
+input ThingGroupPropertiesInput {
+  thingGroupDescription: String
+  attributePayload: AttributePayloadInput
+}
+
+# ─── Dynamic Thing Groups ─────────────────────────────────────────────────────
+
+type DynamicThingGroup {
+  thingGroupName: String!
+  thingGroupArn: String
+  thingGroupId: String
+  indexName: String
+  queryString: String
+  queryVersion: String
+  status: DynamicGroupStatus
+}
+
+input CreateDynamicThingGroupInput {
+  thingGroupName: String!
+  thingGroupProperties: ThingGroupPropertiesInput
+  indexName: String
+  queryString: String!
+  queryVersion: String
+  tags: [TagInput]
+}
+
+input UpdateDynamicThingGroupInput {
+  thingGroupName: String!
+  thingGroupProperties: ThingGroupPropertiesInput
+  expectedVersion: Int
+  indexName: String
+  queryString: String!
+  queryVersion: String
+}
+
+enum DynamicGroupStatus {
+  ACTIVE
+  BUILDING
+  REBUILDING
+}
+
+# ─── Billing Groups ───────────────────────────────────────────────────────────
+
+type BillingGroup {
+  billingGroupName: String!
+  billingGroupArn: String
+  billingGroupId: String
+  version: Int
+}
+
+type BillingGroupDetails {
+  billingGroupName: String!
+  billingGroupArn: String
+  billingGroupId: String
+  version: Int
+  billingGroupProperties: BillingGroupProperties
+  billingGroupMetadata: BillingGroupMetadata
+}
+
+type BillingGroupProperties {
+  billingGroupDescription: String
+}
+
+type BillingGroupMetadata {
+  creationDate: String
+}
+
+type BillingGroupList {
+  billingGroups: [GroupNameAndArn]
+  nextToken: String
+}
+
+input CreateBillingGroupInput {
+  billingGroupName: String!
+  billingGroupProperties: BillingGroupPropertiesInput
+  tags: [TagInput]
+}
+
+input UpdateBillingGroupInput {
+  billingGroupName: String!
+  billingGroupProperties: BillingGroupPropertiesInput!
+  expectedVersion: Int
+}
+
+input BillingGroupPropertiesInput {
+  billingGroupDescription: String
+}
+
+# ─── Jobs ─────────────────────────────────────────────────────────────────────
+
+type Job {
+  jobId: String!
+  jobArn: String
+  status: JobStatus
+  targetSelection: TargetSelection
+  targets: [String]
+  jobType: JobType
+}
+
+type JobDetails {
+  jobId: String!
+  jobArn: String
+  targets: [String]
+  jobProcessDetails: JobProcessDetails
+  jobExecutionsRolloutConfig: RolloutConfig
+  abortConfig: AbortConfig
+  createdAt: String
+  lastUpdatedAt: String
+  completedAt: String
+  jobDocument: JobDocument
+  status: JobStatus
+  targetSelection: TargetSelection
+  presignedUrlConfig: PresignedUrlConfig
+  timeoutConfig: TimeoutConfig
+  namespaceId: String
+  jobTemplateArn: String
+  jobExecutionsRetryConfig: RetryConfig
+  documentParameters: [DocumentParameterEntry]
+  isConcurrent: Boolean
+  schedulingConfig: SchedulingConfig
+  scheduledJobRollouts: [ScheduledJobRollout]
+  description: String
+}
+
+type JobProcessDetails {
+  processingTargets: [String]
+  numberOfCanceledThings: Int
+  numberOfSucceededThings: Int
+  numberOfFailedThings: Int
+  numberOfRejectedThings: Int
+  numberOfQueuedThings: Int
+  numberOfInProgressThings: Int
+  numberOfRemovedThings: Int
+  numberOfTimedOutThings: Int
+}
+
+type JobDocument {
+  document: String
+}
+
+type JobTarget {
+  targetArn: String!
+  thingGroupId: String
+}
+
+type JobSummary {
+  jobArn: String
+  jobId: String
+  thingGroupId: String
+  targetSelection: TargetSelection
+  status: JobStatus
+  createdAt: String
+  lastUpdatedAt: String
+  completedAt: String
+  isConcurrent: Boolean
+}
+
+type JobList {
+  jobs: [JobSummary]
+  nextToken: String
+}
+
+type DocumentParameterEntry {
+  key: String!
+  value: String
+}
+
+input CreateJobInput {
+  jobId: String!
+  targets: [String!]!
+  documentSource: String
+  document: String
+  description: String
+  presignedUrlConfig: PresignedUrlConfigInput
+  targetSelection: TargetSelection
+  jobExecutionsRolloutConfig: RolloutConfigInput
+  abortConfig: AbortConfigInput
+  timeoutConfig: TimeoutConfigInput
+  tags: [TagInput]
+  namespaceId: String
+  jobTemplateArn: String
+  jobExecutionsRetryConfig: RetryConfigInput
+  documentParameters: [DocumentParameterEntryInput]
+  schedulingConfig: SchedulingConfigInput
+}
+
+input UpdateJobInput {
+  jobId: String!
+  description: String
+  presignedUrlConfig: PresignedUrlConfigInput
+  jobExecutionsRolloutConfig: RolloutConfigInput
+  abortConfig: AbortConfigInput
+  timeoutConfig: TimeoutConfigInput
+  namespaceId: String
+  jobExecutionsRetryConfig: RetryConfigInput
+}
+
+input DocumentParameterEntryInput {
+  key: String!
+  value: String
+}
+
+enum JobStatus {
+  IN_PROGRESS
+  CANCELED
+  COMPLETED
+  DELETION_IN_PROGRESS
+  SCHEDULED
+}
+
+enum JobType {
+  CONTINUOUS
+  SNAPSHOT
+}
+
+enum TargetSelection {
+  CONTINUOUS
+  SNAPSHOT
+}
+
+# ─── Job Executions ───────────────────────────────────────────────────────────
+
+type JobExecution {
+  jobId: String
+  status: JobExecutionStatus
+  forceCanceled: Boolean
+  statusDetails: StatusDetails
+  thingArn: String
+  queuedAt: String
+  startedAt: String
+  lastUpdatedAt: String
+  executionNumber: Int
+  versionNumber: Int
+  approximateSecondsBeforeTimedOut: Int
+}
+
+type ExecutionDetails {
+  execution: JobExecution
+}
+
+type ExecutionStatus {
+  status: JobExecutionStatus!
+  statusDetails: StatusDetails
+}
+
+type StatusDetails {
+  detailsMap: [StatusDetailEntry]
+}
+
+type StatusDetailEntry {
+  key: String!
+  value: String
+}
+
+type JobExecutionList {
+  executionSummaries: [JobExecutionSummary]
+  nextToken: String
+}
+
+type JobExecutionSummary {
+  jobId: String
+  thingArn: String
+  status: JobExecutionStatus
+  queuedAt: String
+  startedAt: String
+  lastUpdatedAt: String
+  executionNumber: Int
+  retryAttempt: Int
+}
+
+input StatusDetailsInput {
+  detailsMap: [StatusDetailEntryInput]
+}
+
+input StatusDetailEntryInput {
+  key: String!
+  value: String
+}
+
+enum JobExecutionStatus {
+  QUEUED
+  IN_PROGRESS
+  SUCCEEDED
+  FAILED
+  TIMED_OUT
+  REJECTED
+  REMOVED
+  CANCELED
+}
+
+# ─── Rollout / Retry / Timeout / Abort Configs ────────────────────────────────
+
+type RolloutConfig {
+  maximumPerMinute: Int
+  exponentialRate: ExponentialRolloutRate
+}
+
+type ExponentialRolloutRate {
+  baseRatePerMinute: Int!
+  incrementFactor: Float!
+  rateIncreaseCriteria: RateIncreaseCriteria!
+}
+
+type RateIncreaseCriteria {
+  numberOfNotifiedThings: Int
+  numberOfSucceededThings: Int
+}
+
+input RolloutConfigInput {
+  maximumPerMinute: Int
+  exponentialRate: ExponentialRolloutRateInput
+}
+
+input ExponentialRolloutRateInput {
+  baseRatePerMinute: Int!
+  incrementFactor: Float!
+  rateIncreaseCriteria: RateIncreaseCriteriaInput!
+}
+
+input RateIncreaseCriteriaInput {
+  numberOfNotifiedThings: Int
+  numberOfSucceededThings: Int
+}
+
+type RetryConfig {
+  criteriaList: [RetryCriteria]
+}
+
+type RetryCriteria {
+  failureType: RetryableFailureType!
+  numberOfRetries: Int!
+}
+
+input RetryConfigInput {
+  criteriaList: [RetryCriteriaInput!]!
+}
+
+input RetryCriteriaInput {
+  failureType: RetryableFailureType!
+  numberOfRetries: Int!
+}
+
+enum RetryableFailureType {
+  FAILED
+  TIMED_OUT
+  ALL
+}
+
+type TimeoutConfig {
+  inProgressTimeoutInMinutes: InProgressTimeoutInMinutes
+}
+
+type InProgressTimeoutInMinutes {
+  inProgressTimeoutInMinutes: Int
+}
+
+input TimeoutConfigInput {
+  inProgressTimeoutInMinutes: Int
+}
+
+type AbortConfig {
+  criteriaList: [AbortCriteria]
+}
+
+type AbortCriteria {
+  failureType: JobExecutionFailureType!
+  action: AbortAction!
+  thresholdPercentage: Float!
+  minNumberOfExecutedThings: Int!
+}
+
+input AbortConfigInput {
+  criteriaList: [AbortCriteriaInput!]!
+}
+
+input AbortCriteriaInput {
+  failureType: JobExecutionFailureType!
+  action: AbortAction!
+  thresholdPercentage: Float!
+  minNumberOfExecutedThings: Int!
+}
+
+enum JobExecutionFailureType {
+  FAILED
+  REJECTED
+  TIMED_OUT
+  ALL
+}
+
+enum AbortAction {
+  CANCEL
+}
+
+type PresignedUrlConfig {
+  roleArn: String
+  expiresInSec: Int
+}
+
+type PresignedUrl {
+  url: String
+  expiresAt: String
+}
+
+input PresignedUrlConfigInput {
+  roleArn: String
+  expiresInSec: Int
+}
+
+type SchedulingConfig {
+  startTime: String
+  endTime: String
+  endBehavior: JobEndBehavior
+  maintenanceWindows: [MaintenanceWindow]
+}
+
+type MaintenanceWindow {
+  startTime: String!
+  durationInMinutes: Int!
+}
+
+type ScheduledJobRollout {
+  startTime: String
+}
+
+input SchedulingConfigInput {
+  startTime: String
+  endTime: String
+  endBehavior: JobEndBehavior
+  maintenanceWindows: [MaintenanceWindowInput]
+}
+
+input MaintenanceWindowInput {
+  startTime: String!
+  durationInMinutes: Int!
+}
+
+enum JobEndBehavior {
+  STOP_ROLLOUT
+  CANCEL
+  FORCE_CANCEL
+}
+
+# ─── Fleet Indexing ───────────────────────────────────────────────────────────
+
+type Fleet {
+  indexName: String!
+  schema: String
+  lastModifiedDate: String
+  status: FleetIndexStatus
+}
+
+type FleetDetails {
+  indexName: String!
+  schema: String
+  lastModifiedDate: String
+  status: FleetIndexStatus
+  thingIndexingConfiguration: ThingIndexingConfiguration
+  thingGroupIndexingConfiguration: ThingGroupIndexingConfiguration
+}
+
+type FleetIndex {
+  indexName: String!
+  schema: String
+  lastModifiedDate: String
+  status: FleetIndexStatus
+}
+
+type FleetIndexList {
+  indexNames: [String]
+  nextToken: String
+}
+
+type FleetIndexingConfiguration {
+  thingIndexingConfiguration: ThingIndexingConfiguration
+  thingGroupIndexingConfiguration: ThingGroupIndexingConfiguration
+}
+
+type ThingIndexingConfiguration {
+  thingIndexingMode: ThingIndexingMode!
+  thingConnectivityIndexingMode: ThingConnectivityIndexingMode
+  deviceDefenderIndexingMode: DeviceDefenderIndexingMode
+  namedShadowIndexingMode: NamedShadowIndexingMode
+  managedFields: [Field]
+  customFields: [Field]
+}
+
+type ThingGroupIndexingConfiguration {
+  thingGroupIndexingMode: ThingGroupIndexingMode!
+  managedFields: [Field]
+  customFields: [Field]
+}
+
+type Field {
+  name: String
+  type: FieldType
+}
+
+type FleetIndexing {
+  indexName: String
+  thingIndexingMode: ThingIndexingMode
+  thingConnectivityIndexingMode: ThingConnectivityIndexingMode
+}
+
+input UpdateIndexingConfigurationInput {
+  thingIndexingConfiguration: ThingIndexingConfigurationInput
+  thingGroupIndexingConfiguration: ThingGroupIndexingConfigurationInput
+}
+
+input ThingIndexingConfigurationInput {
+  thingIndexingMode: ThingIndexingMode!
+  thingConnectivityIndexingMode: ThingConnectivityIndexingMode
+  deviceDefenderIndexingMode: DeviceDefenderIndexingMode
+  namedShadowIndexingMode: NamedShadowIndexingMode
+  managedFields: [FieldInput]
+  customFields: [FieldInput]
+}
+
+input ThingGroupIndexingConfigurationInput {
+  thingGroupIndexingMode: ThingGroupIndexingMode!
+  managedFields: [FieldInput]
+  customFields: [FieldInput]
+}
+
+input FieldInput {
+  name: String
+  type: FieldType
+}
+
+enum ThingIndexingMode {
+  OFF
+  REGISTRY
+  REGISTRY_AND_SHADOW
+}
+
+enum ThingConnectivityIndexingMode {
+  OFF
+  STATUS
+}
+
+enum DeviceDefenderIndexingMode {
+  OFF
+  VIOLATIONS
+}
+
+enum NamedShadowIndexingMode {
+  OFF
+  ON
+}
+
+enum ThingGroupIndexingMode {
+  OFF
+  ON
+}
+
+enum FieldType {
+  Number
+  String
+  Boolean
+}
+
+enum FleetIndexStatus {
+  ACTIVE
+  BUILDING
+  REBUILDING
+}
+
+# ─── Index Search ─────────────────────────────────────────────────────────────
+
+type IndexSearch {
+  indexName: String
+  queryString: String
+  queryVersion: String
+}
+
+type SearchQuery {
+  queryString: String!
+  queryVersion: String
+  indexName: String
+}
+
+type SearchResults {
+  things: [ThingDocument]
+  thingGroups: [ThingGroupDocument]
+  nextToken: String
+}
+
+type ThingDocument {
+  thingName: String
+  thingId: String
+  thingTypeName: String
+  thingGroupNames: [String]
+  attributes: AttributePayload
+  shadow: String
+  deviceDefender: String
+  connectivity: ThingConnectivity
+}
+
+type ThingGroupDocument {
+  thingGroupName: String
+  thingGroupId: String
+  thingGroupDescription: String
+  attributes: AttributePayload
+  parentGroupNames: [String]
+}
+
+input SearchQueryInput {
+  indexName: String
+  queryString: String!
+  nextToken: String
+  maxResults: Int
+  queryVersion: String
+}
+
+# ─── Fleet Metrics ────────────────────────────────────────────────────────────
+
+type FleetMetric {
+  metricName: String!
+  metricArn: String
+  version: Int
+}
+
+type FleetMetricDetails {
+  metricName: String!
+  queryString: String
+  aggregationType: AggregationType
+  period: Int
+  aggregationField: String
+  description: String
+  queryVersion: String
+  indexName: String
+  creationDate: String
+  lastModifiedDate: String
+  unit: FleetMetricUnit
+  version: Int
+  metricArn: String
+}
+
+type FleetMetricList {
+  fleetMetrics: [FleetMetricNameAndArn]
+  nextToken: String
+}
+
+type FleetMetricNameAndArn {
+  metricName: String
+  metricArn: String
+}
+
+input CreateFleetMetricInput {
+  metricName: String!
+  queryString: String!
+  aggregationType: AggregationTypeInput!
+  period: Int!
+  aggregationField: String!
+  description: String
+  queryVersion: String
+  indexName: String
+  unit: FleetMetricUnit
+  tags: [TagInput]
+}
+
+input UpdateFleetMetricInput {
+  metricName: String!
+  queryString: String
+  aggregationType: AggregationTypeInput
+  period: Int
+  aggregationField: String
+  description: String
+  queryVersion: String
+  indexName: String
+  unit: FleetMetricUnit
+  expectedVersion: Int
+}
+
+enum FleetMetricUnit {
+  Seconds
+  Microseconds
+  Milliseconds
+  Bytes
+  Kilobytes
+  Megabytes
+  Gigabytes
+  Terabytes
+  Bits
+  Kilobits
+  Megabits
+  Gigabits
+  Terabits
+  Percent
+  Count
+  Bytes_Second
+  Kilobytes_Second
+  Megabytes_Second
+  Gigabytes_Second
+  Terabytes_Second
+  Bits_Second
+  Kilobits_Second
+  Megabits_Second
+  Gigabits_Second
+  Terabits_Second
+  Count_Second
+  None
+}
+
+# ─── Aggregation ──────────────────────────────────────────────────────────────
+
+type AggregationType {
+  name: AggregationTypeName!
+  values: [String]
+}
+
+type BucketAggregation {
+  termsAggregation: TermsAggregation
+}
+
+type TermsAggregation {
+  maxBuckets: Int
+}
+
+type Bucket {
+  keyValue: String
+  count: Int
+}
+
+type CardinalityAggregation {
+  indexName: String
+  queryString: String
+  aggregationField: String
+  queryVersion: String
+}
+
+type StatisticsAggregation {
+  count: Int
+  average: Float
+  sum: Float
+  minimum: Float
+  maximum: Float
+  sumOfSquares: Float
+  variance: Float
+  stdDeviation: Float
+}
+
+input AggregationTypeInput {
+  name: AggregationTypeName!
+  values: [String]
+}
+
+enum AggregationTypeName {
+  Statistics
+  Percentiles
+  Cardinality
+}
+
+# ─── Certificates ─────────────────────────────────────────────────────────────
+
+type Certificate {
+  certificateArn: String
+  certificateId: String
+  status: CertificateStatus
+  creationDate: String
+}
+
+type CertificateDetails {
+  certificateArn: String
+  certificateId: String
+  caCertificateId: String
+  status: CertificateStatus
+  certificatePem: String
+  ownedBy: String
+  previousOwnedBy: String
+  creationDate: String
+  lastModifiedDate: String
+  customerVersion: Int
+  transferData: TransferData
+  generationId: String
+  validity: CertificateValidity
+  certificateMode: CertificateMode
+}
+
+type TransferData {
+  transferMessage: String
+  rejectReason: String
+  transferDate: String
+  acceptDate: String
+  rejectDate: String
+}
+
+type CertificateValidity {
+  notBefore: String
+  notAfter: String
+}
+
+type CertificateList {
+  certificates: [Certificate]
+  nextMarker: String
+}
+
+type KeysAndCertificate {
+  certificateArn: String
+  certificateId: String
+  certificatePem: String
+  keyPair: KeyPair
+}
+
+type KeyPair {
+  publicKey: String
+  privateKey: String
+}
+
+enum CertificateStatus {
+  ACTIVE
+  INACTIVE
+  REVOKED
+  PENDING_TRANSFER
+  REGISTER_INACTIVE
+  PENDING_ACTIVATION
+}
+
+enum CertificateMode {
+  DEFAULT
+  SNI_ONLY
+}
+
+# ─── Policies ─────────────────────────────────────────────────────────────────
+
+type Policy {
+  policyName: String!
+  policyArn: String
+}
+
+type PolicyDetails {
+  policyName: String!
+  policyArn: String
+  policyDocument: String
+  defaultVersionId: String
+  creationDate: String
+  lastModifiedDate: String
+  generationId: String
+}
+
+type PolicyVersion {
+  versionId: String
+  isDefaultVersion: Boolean
+  createDate: String
+  document: String
+}
+
+type PolicyVersionList {
+  policyVersions: [PolicyVersion]
+}
+
+type PolicyList {
+  policies: [Policy]
+  nextMarker: String
+}
+
+input CreatePolicyInput {
+  policyName: String!
+  policyDocument: String!
+  tags: [TagInput]
+}
+
+# ─── API Key / Token ──────────────────────────────────────────────────────────
+
+type APIKey {
+  keyId: String
+  keyArn: String
+  keyValue: String
+  creationDate: String
+  status: APIKeyStatus
+  description: String
+}
+
+type Token {
+  tokenValue: String
+  expiresAt: String
+  tokenType: String
+}
+
+enum APIKeyStatus {
+  ACTIVE
+  INACTIVE
+}
+
+# ─── Tags ─────────────────────────────────────────────────────────────────────
+
+type Tag {
+  key: String!
+  value: String
+}
+
+input TagInput {
+  key: String!
+  value: String
+}
