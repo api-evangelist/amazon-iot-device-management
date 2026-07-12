@@ -43,6 +43,14 @@ apis:
   - url: graphql/amazon-iot-device-management-graphql.md
     type: GraphQL
 common:
+- type: TrustCenter
+  url: security/amazon-iot-device-management-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-iot-device-management-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-iot-device-management-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-iot-device-management-authentication.yml
 - type: Portal
   url: https://aws.amazon.com/iot-device-management/
 - type: Website
