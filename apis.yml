@@ -43,6 +43,8 @@ apis:
   - url: graphql/amazon-iot-device-management-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/amazon-iot-device-management-agentic-access.yml
 - type: TrustCenter
   url: security/amazon-iot-device-management-trust-center.yml
 - type: VulnerabilityDisclosure
