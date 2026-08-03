@@ -1,0 +1,2629 @@
+{
+  "info": {
+    "_postman_id": "d8cf16ab-75e6-4091-b8b5-74290aff3aee",
+    "name": "AWS IoT Accept Certificate Transfer Detect API",
+    "description": "<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:32:42.000Z",
+    "updatedAt": "2026-07-28T10:32:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d8cf16ab-75e6-4091-b8b5-74290aff3aee"
+  },
+  "item": [
+    {
+      "name": "detect",
+      "item": [
+        {
+          "name": "mitigationactions",
+          "item": [
+            {
+              "name": "tasks",
+              "item": [
+                {
+                  "name": "{taskId}",
+                  "item": [
+                    {
+                      "name": "cancel",
+                      "item": [
+                        {
+                          "name": "Amazon IoT Device Management Cancel Detect Mitigation Actions Task",
+                          "id": "61d63c06-e5a1-4cc1-9fa3-7bb89dffadec",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "89661e03-d341-4b20-a456-f802be11cf1e",
+                                  "key": "taskId",
+                                  "value": "ILwl",
+                                  "description": "(Required)  The unique identifier of the task. "
+                                }
+                              ]
+                            },
+                            "description": "<p> Cancels a Device Defender ML Detect mitigation action. </p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">CancelDetectMitigationActionsTask</a> action.</p>"
+                          },
+                          "response": [
+                            {
+                              "id": "7b66cd54-c15f-4088-bf5b-d3ce1912c9ff",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "detect",
+                                    "mitigationactions",
+                                    "tasks",
+                                    ":taskId",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "taskId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:32:43.000Z",
+                              "updatedAt": "2026-07-28T10:32:43.000Z",
+                              "uid": "35240-7b66cd54-c15f-4088-bf5b-d3ce1912c9ff"
+                            },
+                            {
+                              "id": "a4cc14d3-ffda-4f2b-b08e-5a8ebbdc44aa",
+                              "name": "ResourceNotFoundException",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "detect",
+                                    "mitigationactions",
+                                    "tasks",
+                                    ":taskId",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "taskId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:32:43.000Z",
+                              "updatedAt": "2026-07-28T10:32:43.000Z",
+                              "uid": "35240-a4cc14d3-ffda-4f2b-b08e-5a8ebbdc44aa"
+                            },
+                            {
+                              "id": "d2f54a3a-dbab-412b-8283-9ebe8c5e04ce",
+                              "name": "InvalidRequestException",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "detect",
+                                    "mitigationactions",
+                                    "tasks",
+                                    ":taskId",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "taskId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:32:43.000Z",
+                              "updatedAt": "2026-07-28T10:32:43.000Z",
+                              "uid": "35240-d2f54a3a-dbab-412b-8283-9ebe8c5e04ce"
+                            },
+                            {
+                              "id": "423a310b-933c-4e5f-9fb3-de9d3ab1f561",
+                              "name": "ThrottlingException",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "detect",
+                                    "mitigationactions",
+                                    "tasks",
+                                    ":taskId",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "taskId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:32:43.000Z",
+                              "updatedAt": "2026-07-28T10:32:43.000Z",
+                              "uid": "35240-423a310b-933c-4e5f-9fb3-de9d3ab1f561"
+                            },
+                            {
+                              "id": "8857ad66-99f4-4b29-9663-57a75d9b89f4",
+                              "name": "InternalFailureException",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "detect",
+                                    "mitigationactions",
+                                    "tasks",
+                                    ":taskId",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "taskId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:32:43.000Z",
+                              "updatedAt": "2026-07-28T10:32:43.000Z",
+                              "uid": "35240-8857ad66-99f4-4b29-9663-57a75d9b89f4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-61d63c06-e5a1-4cc1-9fa3-7bb89dffadec"
+                        }
+                      ],
+                      "id": "0d23003b-49ef-4096-9d17-7e5f1f176d3d",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-0d23003b-49ef-4096-9d17-7e5f1f176d3d"
+                    },
+                    {
+                      "name": "Amazon IoT Device Management Describe Detect Mitigation Actions Task",
+                      "id": "815b9e5e-92ff-4033-b5e9-b93775a6eb08",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "073fed06-718f-4c21-ad3f-43b99efa2a12",
+                              "key": "taskId",
+                              "value": "ILwl",
+                              "description": "(Required)  The unique identifier of the task. "
+                            }
+                          ]
+                        },
+                        "description": "<p> Gets information about a Device Defender ML Detect mitigation action. </p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">DescribeDetectMitigationActionsTask</a> action.</p>"
+                      },
+                      "response": [
+                        {
+                          "id": "763c3753-9e1a-40bb-84f7-1c9d72873b11",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"taskSummary\": {\n    \"taskId\": \"azsgL\",\n    \"taskStatus\": \"IN_PROGRESS\",\n    \"taskStartTime\": \"<dateTime>\",\n    \"taskEndTime\": \"<dateTime>\",\n    \"target\": {\n      \"violationIds\": [\n        \"5-bhmGULT\"\n      ],\n      \"securityProfileName\": \"Kgd\",\n      \"behaviorName\": \"8\"\n    },\n    \"violationEventOccurrenceRange\": {\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\"\n    },\n    \"onlyActiveViolationsIncluded\": \"<boolean>\",\n    \"suppressedAlertsIncluded\": \"<boolean>\",\n    \"actionsDefinition\": [\n      {\n        \"name\": \"Lcr6Yd\",\n        \"id\": \"<string>\",\n        \"roleArn\": \"<string>\",\n        \"actionParams\": {\n          \"updateDeviceCertificateParams\": {\n            \"action\": \"DEACTIVATE\"\n          },\n          \"updateCACertificateParams\": {\n            \"action\": \"DEACTIVATE\"\n          },\n          \"addThingsToThingGroupParams\": {\n            \"thingGroupNames\": [\n              \"Xy\"\n            ],\n            \"overrideDynamicGroups\": \"<boolean>\"\n          },\n          \"replaceDefaultPolicyVersionParams\": {\n            \"templateName\": \"BLANK_POLICY\"\n          },\n          \"enableIoTLoggingParams\": {\n            \"roleArnForLogging\": \"<string>\",\n            \"logLevel\": \"DEBUG\"\n          },\n          \"publishFindingToSnsParams\": {\n            \"topicArn\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"name\": \"BCpQa\",\n        \"id\": \"<string>\",\n        \"roleArn\": \"<string>\",\n        \"actionParams\": {\n          \"updateDeviceCertificateParams\": {\n            \"action\": \"DEACTIVATE\"\n          },\n          \"updateCACertificateParams\": {\n            \"action\": \"DEACTIVATE\"\n          },\n          \"addThingsToThingGroupParams\": {\n            \"thingGroupNames\": [\n              \"67GmwkV\"\n            ],\n            \"overrideDynamicGroups\": \"<boolean>\"\n          },\n          \"replaceDefaultPolicyVersionParams\": {\n            \"templateName\": \"BLANK_POLICY\"\n          },\n          \"enableIoTLoggingParams\": {\n            \"roleArnForLogging\": \"<string>\",\n            \"logLevel\": \"INFO\"\n          },\n          \"publishFindingToSnsParams\": {\n            \"topicArn\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"taskStatistics\": {\n      \"actionsExecuted\": \"<integer>\",\n      \"actionsSkipped\": \"<integer>\",\n      \"actionsFailed\": \"<integer>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-763c3753-9e1a-40bb-84f7-1c9d72873b11"
+                        },
+                        {
+                          "id": "d1a5a278-7ac4-4715-8deb-2014fe2bae36",
+                          "name": "ResourceNotFoundException",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-d1a5a278-7ac4-4715-8deb-2014fe2bae36"
+                        },
+                        {
+                          "id": "5ce121ef-7582-4e21-8593-4d92cc9ec8cc",
+                          "name": "InvalidRequestException",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-5ce121ef-7582-4e21-8593-4d92cc9ec8cc"
+                        },
+                        {
+                          "id": "431f7efb-2b51-4be9-8079-202e80ea21c1",
+                          "name": "ThrottlingException",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-431f7efb-2b51-4be9-8079-202e80ea21c1"
+                        },
+                        {
+                          "id": "0c95084f-a2ee-4e08-9ebc-b22609aef729",
+                          "name": "InternalFailureException",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-0c95084f-a2ee-4e08-9ebc-b22609aef729"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-815b9e5e-92ff-4033-b5e9-b93775a6eb08"
+                    },
+                    {
+                      "name": "Amazon IoT Device Management Start Detect Mitigation Actions Task",
+                      "id": "b5401427-8dfa-47f9-be32-72018fdcf535",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4da14f0a-7631-4e01-a5dd-7c7fcb4499a8",
+                              "key": "taskId",
+                              "value": "ILwl",
+                              "description": "(Required)  The unique identifier of the task. "
+                            }
+                          ]
+                        },
+                        "description": "<p> Starts a Device Defender ML Detect mitigation actions task. </p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">StartDetectMitigationActionsTask</a> action.</p>"
+                      },
+                      "response": [
+                        {
+                          "id": "ef3bb01e-a4a2-49c5-9379-7556aa12c497",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"taskId\": \"l_udwn\"\n}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-ef3bb01e-a4a2-49c5-9379-7556aa12c497"
+                        },
+                        {
+                          "id": "3b89aea9-bde7-4e17-804a-a4ccc87e8936",
+                          "name": "InvalidRequestException",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-3b89aea9-bde7-4e17-804a-a4ccc87e8936"
+                        },
+                        {
+                          "id": "818f0f07-5f17-4424-854d-027a38a2de92",
+                          "name": "TaskAlreadyExistsException",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-818f0f07-5f17-4424-854d-027a38a2de92"
+                        },
+                        {
+                          "id": "538c12aa-aaa1-4b50-b3c6-238bdaba54cb",
+                          "name": "LimitExceededException",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-538c12aa-aaa1-4b50-b3c6-238bdaba54cb"
+                        },
+                        {
+                          "id": "d7b543e8-cdf3-4c61-bc11-81cd35fc3200",
+                          "name": "ThrottlingException",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-d7b543e8-cdf3-4c61-bc11-81cd35fc3200"
+                        },
+                        {
+                          "id": "5e88e67c-4ba8-4569-b771-fc4ccd620848",
+                          "name": "InternalFailureException",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"target\": {\n    \"violationIds\": [\n      \"uxUC\"\n    ],\n    \"securityProfileName\": \"NJ:3nxwTYeY\",\n    \"behaviorName\": \"RBgsN4EG\"\n  },\n  \"actions\": [\n    \"Pucxdw\"\n  ],\n  \"clientRequestToken\": \"dT9Se3pxW_q\",\n  \"violationEventOccurrenceRange\": {\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\"\n  },\n  \"includeOnlyActiveViolations\": \"<boolean>\",\n  \"includeSuppressedAlerts\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/detect/mitigationactions/tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "detect",
+                                "mitigationactions",
+                                "tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T10:32:43.000Z",
+                          "updatedAt": "2026-07-28T10:32:43.000Z",
+                          "uid": "35240-5e88e67c-4ba8-4569-b771-fc4ccd620848"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-b5401427-8dfa-47f9-be32-72018fdcf535"
+                    }
+                  ],
+                  "id": "451057d8-5fd3-401e-ac97-1998df833086",
+                  "createdAt": "2026-07-28T10:32:43.000Z",
+                  "updatedAt": "2026-07-28T10:32:43.000Z",
+                  "uid": "35240-451057d8-5fd3-401e-ac97-1998df833086"
+                }
+              ],
+              "id": "edc31f96-6a8d-4dfc-bef9-0a09847539fb",
+              "createdAt": "2026-07-28T10:32:43.000Z",
+              "updatedAt": "2026-07-28T10:32:43.000Z",
+              "uid": "35240-edc31f96-6a8d-4dfc-bef9-0a09847539fb"
+            },
+            {
+              "name": "executions",
+              "item": [
+                {
+                  "name": "Amazon IoT Device Management List Detect Mitigation Actions Executions",
+                  "id": "5c11cc19-8df8-41b4-aab9-5c845cb30d15",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/detect/mitigationactions/executions?taskId=ILwl&violationId=q6oKc5kp&thingName=<string>&startTime=<dateTime>&endTime=<dateTime>&maxResults=<integer>&nextToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "detect",
+                        "mitigationactions",
+                        "executions"
+                      ],
+                      "query": [
+                        {
+                          "description": " The unique identifier of the task. ",
+                          "key": "taskId",
+                          "value": "ILwl"
+                        },
+                        {
+                          "description": " The unique identifier of the violation. ",
+                          "key": "violationId",
+                          "value": "q6oKc5kp"
+                        },
+                        {
+                          "description": " The name of the thing whose mitigation actions are listed. ",
+                          "key": "thingName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": " A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                          "key": "startTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": " The end of the time period for which ML Detect mitigation actions executions are returned. ",
+                          "key": "endTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": " The maximum number of results to return at one time. The default is 25. ",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": " The token for the next set of results. ",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "<p> Lists mitigation actions executions for a Device Defender ML Detect Security Profile. </p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">ListDetectMitigationActionsExecutions</a> action.</p>"
+                  },
+                  "response": [
+                    {
+                      "id": "610fbe00-df62-4c3c-a35c-b63d8acd0ad1",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/executions?taskId=ILwl&violationId=q6oKc5kp&thingName=<string>&startTime=<dateTime>&endTime=<dateTime>&maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "executions"
+                          ],
+                          "query": [
+                            {
+                              "description": " The unique identifier of the task. ",
+                              "key": "taskId",
+                              "value": "ILwl"
+                            },
+                            {
+                              "description": " The unique identifier of the violation. ",
+                              "key": "violationId",
+                              "value": "q6oKc5kp"
+                            },
+                            {
+                              "description": " The name of the thing whose mitigation actions are listed. ",
+                              "key": "thingName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": " A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The end of the time period for which ML Detect mitigation actions executions are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The maximum number of results to return at one time. The default is 25. ",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"actionsExecutions\": [\n    {\n      \"taskId\": \"v3nT5cxr_TD\",\n      \"violationId\": \"3dqBxSrgU\",\n      \"actionName\": \"aHaLSM\",\n      \"thingName\": \"<string>\",\n      \"executionStartDate\": \"<dateTime>\",\n      \"executionEndDate\": \"<dateTime>\",\n      \"status\": \"FAILED\",\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"taskId\": \"oY\",\n      \"violationId\": \"xvB\",\n      \"actionName\": \"kY4kyPzG0_Y\",\n      \"thingName\": \"<string>\",\n      \"executionStartDate\": \"<dateTime>\",\n      \"executionEndDate\": \"<dateTime>\",\n      \"status\": \"IN_PROGRESS\",\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-610fbe00-df62-4c3c-a35c-b63d8acd0ad1"
+                    },
+                    {
+                      "id": "08cf8ba5-d2dc-40f4-93d4-9b1abdb9cffb",
+                      "name": "InvalidRequestException",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/executions?taskId=ILwl&violationId=q6oKc5kp&thingName=<string>&startTime=<dateTime>&endTime=<dateTime>&maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "executions"
+                          ],
+                          "query": [
+                            {
+                              "description": " The unique identifier of the task. ",
+                              "key": "taskId",
+                              "value": "ILwl"
+                            },
+                            {
+                              "description": " The unique identifier of the violation. ",
+                              "key": "violationId",
+                              "value": "q6oKc5kp"
+                            },
+                            {
+                              "description": " The name of the thing whose mitigation actions are listed. ",
+                              "key": "thingName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": " A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The end of the time period for which ML Detect mitigation actions executions are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The maximum number of results to return at one time. The default is 25. ",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-08cf8ba5-d2dc-40f4-93d4-9b1abdb9cffb"
+                    },
+                    {
+                      "id": "03431f35-285b-4ab0-aaa2-cdeb84f9cfcb",
+                      "name": "ThrottlingException",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/executions?taskId=ILwl&violationId=q6oKc5kp&thingName=<string>&startTime=<dateTime>&endTime=<dateTime>&maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "executions"
+                          ],
+                          "query": [
+                            {
+                              "description": " The unique identifier of the task. ",
+                              "key": "taskId",
+                              "value": "ILwl"
+                            },
+                            {
+                              "description": " The unique identifier of the violation. ",
+                              "key": "violationId",
+                              "value": "q6oKc5kp"
+                            },
+                            {
+                              "description": " The name of the thing whose mitigation actions are listed. ",
+                              "key": "thingName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": " A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The end of the time period for which ML Detect mitigation actions executions are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The maximum number of results to return at one time. The default is 25. ",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-03431f35-285b-4ab0-aaa2-cdeb84f9cfcb"
+                    },
+                    {
+                      "id": "750b79fc-beda-4479-a2d1-18874a9b4483",
+                      "name": "InternalFailureException",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/executions?taskId=ILwl&violationId=q6oKc5kp&thingName=<string>&startTime=<dateTime>&endTime=<dateTime>&maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "executions"
+                          ],
+                          "query": [
+                            {
+                              "description": " The unique identifier of the task. ",
+                              "key": "taskId",
+                              "value": "ILwl"
+                            },
+                            {
+                              "description": " The unique identifier of the violation. ",
+                              "key": "violationId",
+                              "value": "q6oKc5kp"
+                            },
+                            {
+                              "description": " The name of the thing whose mitigation actions are listed. ",
+                              "key": "thingName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": " A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The end of the time period for which ML Detect mitigation actions executions are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": " The maximum number of results to return at one time. The default is 25. ",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-750b79fc-beda-4479-a2d1-18874a9b4483"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:32:43.000Z",
+                  "updatedAt": "2026-07-28T10:32:43.000Z",
+                  "uid": "35240-5c11cc19-8df8-41b4-aab9-5c845cb30d15"
+                }
+              ],
+              "id": "b7893f15-9f8e-41ad-9439-f21d0dcc97d7",
+              "createdAt": "2026-07-28T10:32:43.000Z",
+              "updatedAt": "2026-07-28T10:32:43.000Z",
+              "uid": "35240-b7893f15-9f8e-41ad-9439-f21d0dcc97d7"
+            },
+            {
+              "name": "tasks#startTime&endTime",
+              "item": [
+                {
+                  "name": "Amazon IoT Device Management List Detect Mitigation Actions Tasks",
+                  "id": "57c19437-36d7-4f46-9321-b42fb3542809",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/detect/mitigationactions/tasks?maxResults=<integer>&nextToken=<string>&startTime=<dateTime>&endTime=<dateTime>#startTime&endTime",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "detect",
+                        "mitigationactions",
+                        "tasks"
+                      ],
+                      "query": [
+                        {
+                          "description": "The maximum number of results to return at one time. The default is 25.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": " The token for the next set of results. ",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required)  A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                          "key": "startTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required)  The end of the time period for which ML Detect mitigation actions tasks are returned. ",
+                          "key": "endTime",
+                          "value": "<dateTime>"
+                        }
+                      ],
+                      "hash": "startTime&endTime"
+                    },
+                    "description": "<p> List of Device Defender ML Detect mitigation actions tasks. </p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">ListDetectMitigationActionsTasks</a> action.</p>"
+                  },
+                  "response": [
+                    {
+                      "id": "423fab8e-e983-4e92-9de2-a3d82185b771",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/tasks?maxResults=<integer>&nextToken=<string>&startTime=<dateTime>&endTime=<dateTime>#startTime&endTime",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "tasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return at one time. The default is 25.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required)  A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required)  The end of the time period for which ML Detect mitigation actions tasks are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "hash": "startTime&endTime"
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tasks\": [\n    {\n      \"taskId\": \"fQ8aTebl_ET\",\n      \"taskStatus\": \"IN_PROGRESS\",\n      \"taskStartTime\": \"<dateTime>\",\n      \"taskEndTime\": \"<dateTime>\",\n      \"target\": {\n        \"violationIds\": [\n          \"xP6oYzUPW\"\n        ],\n        \"securityProfileName\": \"d8sDV:lbS\",\n        \"behaviorName\": \"snBGnpM\"\n      },\n      \"violationEventOccurrenceRange\": {\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\"\n      },\n      \"onlyActiveViolationsIncluded\": \"<boolean>\",\n      \"suppressedAlertsIncluded\": \"<boolean>\",\n      \"actionsDefinition\": [\n        {\n          \"name\": \"V-gpHbqoaWi\",\n          \"id\": \"<string>\",\n          \"roleArn\": \"<string>\",\n          \"actionParams\": {\n            \"updateDeviceCertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"updateCACertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"addThingsToThingGroupParams\": {\n              \"thingGroupNames\": [\n                \"QD\"\n              ],\n              \"overrideDynamicGroups\": \"<boolean>\"\n            },\n            \"replaceDefaultPolicyVersionParams\": {\n              \"templateName\": \"BLANK_POLICY\"\n            },\n            \"enableIoTLoggingParams\": {\n              \"roleArnForLogging\": \"<string>\",\n              \"logLevel\": \"DISABLED\"\n            },\n            \"publishFindingToSnsParams\": {\n              \"topicArn\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"fDuk\",\n          \"id\": \"<string>\",\n          \"roleArn\": \"<string>\",\n          \"actionParams\": {\n            \"updateDeviceCertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"updateCACertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"addThingsToThingGroupParams\": {\n              \"thingGroupNames\": [\n                \"b3l\"\n              ],\n              \"overrideDynamicGroups\": \"<boolean>\"\n            },\n            \"replaceDefaultPolicyVersionParams\": {\n              \"templateName\": \"BLANK_POLICY\"\n            },\n            \"enableIoTLoggingParams\": {\n              \"roleArnForLogging\": \"<string>\",\n              \"logLevel\": \"ERROR\"\n            },\n            \"publishFindingToSnsParams\": {\n              \"topicArn\": \"<string>\"\n            }\n          }\n        }\n      ],\n      \"taskStatistics\": {\n        \"actionsExecuted\": \"<integer>\",\n        \"actionsSkipped\": \"<integer>\",\n        \"actionsFailed\": \"<integer>\"\n      }\n    },\n    {\n      \"taskId\": \"pfHEGB\",\n      \"taskStatus\": \"CANCELED\",\n      \"taskStartTime\": \"<dateTime>\",\n      \"taskEndTime\": \"<dateTime>\",\n      \"target\": {\n        \"violationIds\": [\n          \"MxgVO\"\n        ],\n        \"securityProfileName\": \"OFq8q\",\n        \"behaviorName\": \"wl\"\n      },\n      \"violationEventOccurrenceRange\": {\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\"\n      },\n      \"onlyActiveViolationsIncluded\": \"<boolean>\",\n      \"suppressedAlertsIncluded\": \"<boolean>\",\n      \"actionsDefinition\": [\n        {\n          \"name\": \"tp3hbcVe7hu\",\n          \"id\": \"<string>\",\n          \"roleArn\": \"<string>\",\n          \"actionParams\": {\n            \"updateDeviceCertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"updateCACertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"addThingsToThingGroupParams\": {\n              \"thingGroupNames\": [\n                \"Q:CdiDvUl\"\n              ],\n              \"overrideDynamicGroups\": \"<boolean>\"\n            },\n            \"replaceDefaultPolicyVersionParams\": {\n              \"templateName\": \"BLANK_POLICY\"\n            },\n            \"enableIoTLoggingParams\": {\n              \"roleArnForLogging\": \"<string>\",\n              \"logLevel\": \"ERROR\"\n            },\n            \"publishFindingToSnsParams\": {\n              \"topicArn\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"H9qS4lz\",\n          \"id\": \"<string>\",\n          \"roleArn\": \"<string>\",\n          \"actionParams\": {\n            \"updateDeviceCertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"updateCACertificateParams\": {\n              \"action\": \"DEACTIVATE\"\n            },\n            \"addThingsToThingGroupParams\": {\n              \"thingGroupNames\": [\n                \"rIAImi5C\"\n              ],\n              \"overrideDynamicGroups\": \"<boolean>\"\n            },\n            \"replaceDefaultPolicyVersionParams\": {\n              \"templateName\": \"BLANK_POLICY\"\n            },\n            \"enableIoTLoggingParams\": {\n              \"roleArnForLogging\": \"<string>\",\n              \"logLevel\": \"DISABLED\"\n            },\n            \"publishFindingToSnsParams\": {\n              \"topicArn\": \"<string>\"\n            }\n          }\n        }\n      ],\n      \"taskStatistics\": {\n        \"actionsExecuted\": \"<integer>\",\n        \"actionsSkipped\": \"<integer>\",\n        \"actionsFailed\": \"<integer>\"\n      }\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-423fab8e-e983-4e92-9de2-a3d82185b771"
+                    },
+                    {
+                      "id": "198a63ed-dfcb-4599-a6fc-ed84cf0349ea",
+                      "name": "InvalidRequestException",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/tasks?maxResults=<integer>&nextToken=<string>&startTime=<dateTime>&endTime=<dateTime>#startTime&endTime",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "tasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return at one time. The default is 25.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required)  A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required)  The end of the time period for which ML Detect mitigation actions tasks are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "hash": "startTime&endTime"
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-198a63ed-dfcb-4599-a6fc-ed84cf0349ea"
+                    },
+                    {
+                      "id": "7051486b-cedd-4c93-90c2-54bc2a5cfb7d",
+                      "name": "ThrottlingException",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/tasks?maxResults=<integer>&nextToken=<string>&startTime=<dateTime>&endTime=<dateTime>#startTime&endTime",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "tasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return at one time. The default is 25.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required)  A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required)  The end of the time period for which ML Detect mitigation actions tasks are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "hash": "startTime&endTime"
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-7051486b-cedd-4c93-90c2-54bc2a5cfb7d"
+                    },
+                    {
+                      "id": "fc6bafdc-33bf-48cf-ba70-feb72601de5d",
+                      "name": "InternalFailureException",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/detect/mitigationactions/tasks?maxResults=<integer>&nextToken=<string>&startTime=<dateTime>&endTime=<dateTime>#startTime&endTime",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "detect",
+                            "mitigationactions",
+                            "tasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of results to return at one time. The default is 25.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": " The token for the next set of results. ",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required)  A filter to limit results to those found after the specified time. You must specify either the startTime and endTime or the taskId, but not both. ",
+                              "key": "startTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required)  The end of the time period for which ML Detect mitigation actions tasks are returned. ",
+                              "key": "endTime",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "hash": "startTime&endTime"
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:32:43.000Z",
+                      "updatedAt": "2026-07-28T10:32:43.000Z",
+                      "uid": "35240-fc6bafdc-33bf-48cf-ba70-feb72601de5d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:32:43.000Z",
+                  "updatedAt": "2026-07-28T10:32:43.000Z",
+                  "uid": "35240-57c19437-36d7-4f46-9321-b42fb3542809"
+                }
+              ],
+              "id": "b6a92ee7-53fe-416a-bef6-7a65c5f75b78",
+              "createdAt": "2026-07-28T10:32:43.000Z",
+              "updatedAt": "2026-07-28T10:32:43.000Z",
+              "uid": "35240-b6a92ee7-53fe-416a-bef6-7a65c5f75b78"
+            }
+          ],
+          "id": "3b9c0244-fa0d-4179-bd45-df389dc4a8bf",
+          "createdAt": "2026-07-28T10:32:43.000Z",
+          "updatedAt": "2026-07-28T10:32:43.000Z",
+          "uid": "35240-3b9c0244-fa0d-4179-bd45-df389dc4a8bf"
+        }
+      ],
+      "id": "2214fe0d-c2eb-43f8-816e-ce996b9992dd",
+      "createdAt": "2026-07-28T10:32:43.000Z",
+      "updatedAt": "2026-07-28T10:32:43.000Z",
+      "uid": "35240-2214fe0d-c2eb-43f8-816e-ce996b9992dd"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://iot.{{region}}.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,576 @@
+{
+  "info": {
+    "_postman_id": "23cac152-defc-4927-ac0e-af7941b41eb6",
+    "name": "AWS IoT Accept Certificate Transfer Confirmdestination API",
+    "description": "<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:32:36.000Z",
+    "updatedAt": "2026-07-28T10:32:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-23cac152-defc-4927-ac0e-af7941b41eb6"
+  },
+  "item": [
+    {
+      "name": "confirmdestination",
+      "item": [
+        {
+          "name": "{confirmationToken}",
+          "item": [
+            {
+              "name": "Amazon IoT Device Management Confirm Topic Rule Destination",
+              "id": "36f8e0c0-bcda-48a8-a1a6-83784f3be8aa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "confirmdestination",
+                    ":confirmationToken"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a59e00af-5101-4e8c-a513-9ab402bcfe5b",
+                      "key": "confirmationToken",
+                      "value": "<string>",
+                      "description": "(Required) The token used to confirm ownership or access to the topic rule confirmation URL."
+                    }
+                  ]
+                },
+                "description": "<p>Confirms a topic rule destination. When you create a rule requiring a destination, IoT sends a confirmation message to the endpoint or base address you specify. The message includes a token which you pass back when calling <code>ConfirmTopicRuleDestination</code> to confirm that you own or have access to the endpoint.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">ConfirmTopicRuleDestination</a> action.</p>"
+              },
+              "response": [
+                {
+                  "id": "6641f53e-4ede-4d89-89cd-3029608aac8b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "confirmdestination",
+                        ":confirmationToken"
+                      ],
+                      "variable": [
+                        {
+                          "key": "confirmationToken"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:37.000Z",
+                  "updatedAt": "2026-07-28T10:32:37.000Z",
+                  "uid": "35240-6641f53e-4ede-4d89-89cd-3029608aac8b"
+                },
+                {
+                  "id": "0b2d6116-e999-4b70-bec3-a3d863a3b184",
+                  "name": "InternalException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "confirmdestination",
+                        ":confirmationToken"
+                      ],
+                      "variable": [
+                        {
+                          "key": "confirmationToken"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:37.000Z",
+                  "updatedAt": "2026-07-28T10:32:37.000Z",
+                  "uid": "35240-0b2d6116-e999-4b70-bec3-a3d863a3b184"
+                },
+                {
+                  "id": "827f8fbc-e4d3-475f-a0c4-d61e3be10c2f",
+                  "name": "InvalidRequestException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "confirmdestination",
+                        ":confirmationToken"
+                      ],
+                      "variable": [
+                        {
+                          "key": "confirmationToken"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:37.000Z",
+                  "updatedAt": "2026-07-28T10:32:37.000Z",
+                  "uid": "35240-827f8fbc-e4d3-475f-a0c4-d61e3be10c2f"
+                },
+                {
+                  "id": "92deaa41-6cbd-491f-9872-c3f05f381428",
+                  "name": "ServiceUnavailableException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "confirmdestination",
+                        ":confirmationToken"
+                      ],
+                      "variable": [
+                        {
+                          "key": "confirmationToken"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:37.000Z",
+                  "updatedAt": "2026-07-28T10:32:37.000Z",
+                  "uid": "35240-92deaa41-6cbd-491f-9872-c3f05f381428"
+                },
+                {
+                  "id": "b439b8d9-bea2-4213-9df1-b55f5e519a86",
+                  "name": "UnauthorizedException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "confirmdestination",
+                        ":confirmationToken"
+                      ],
+                      "variable": [
+                        {
+                          "key": "confirmationToken"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:37.000Z",
+                  "updatedAt": "2026-07-28T10:32:37.000Z",
+                  "uid": "35240-b439b8d9-bea2-4213-9df1-b55f5e519a86"
+                },
+                {
+                  "id": "fb3e2f08-d238-401a-aa3a-ac82cd17af8e",
+                  "name": "ConflictingResourceUpdateException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/confirmdestination/:confirmationToken",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "confirmdestination",
+                        ":confirmationToken"
+                      ],
+                      "variable": [
+                        {
+                          "key": "confirmationToken"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:37.000Z",
+                  "updatedAt": "2026-07-28T10:32:37.000Z",
+                  "uid": "35240-fb3e2f08-d238-401a-aa3a-ac82cd17af8e"
+                }
+              ],
+              "createdAt": "2026-07-28T10:32:37.000Z",
+              "updatedAt": "2026-07-28T10:32:37.000Z",
+              "uid": "35240-36f8e0c0-bcda-48a8-a1a6-83784f3be8aa"
+            }
+          ],
+          "id": "bd2a9ec7-4213-4e24-b4ae-f171cec43c3d",
+          "createdAt": "2026-07-28T10:32:37.000Z",
+          "updatedAt": "2026-07-28T10:32:37.000Z",
+          "uid": "35240-bd2a9ec7-4213-4e24-b4ae-f171cec43c3d"
+        }
+      ],
+      "id": "2ed9ed45-674e-47d7-b3f9-31fb18efe59a",
+      "createdAt": "2026-07-28T10:32:37.000Z",
+      "updatedAt": "2026-07-28T10:32:37.000Z",
+      "uid": "35240-2ed9ed45-674e-47d7-b3f9-31fb18efe59a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://iot.{{region}}.amazonaws.com"
+    }
+  ]
+}

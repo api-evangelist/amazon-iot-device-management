@@ -1,0 +1,3220 @@
+{
+  "info": {
+    "_postman_id": "529c3e7f-bbca-45db-b3d9-1481076d1f7e",
+    "name": "AWS IoT Accept Certificate Transfer Cacertificate API",
+    "description": "<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:31:36.000Z",
+    "updatedAt": "2026-07-28T10:31:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-529c3e7f-bbca-45db-b3d9-1481076d1f7e"
+  },
+  "item": [
+    {
+      "name": "cacertificate",
+      "item": [
+        {
+          "name": "{caCertificateId}",
+          "item": [
+            {
+              "name": "Amazon IoT Device Management Delete C a Certificate",
+              "id": "fa70096c-815d-49a5-b049-04b38f3fd655",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate",
+                    ":caCertificateId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b9899eb8-eeec-4195-bb30-b858a5b84b88",
+                      "key": "caCertificateId",
+                      "value": "E36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36e",
+                      "description": "(Required) The ID of the certificate to delete. (The last part of the certificate ARN contains the certificate ID.)"
+                    }
+                  ]
+                },
+                "description": "<p>Deletes a registered CA certificate.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">DeleteCACertificate</a> action.</p>"
+              },
+              "response": [
+                {
+                  "id": "b5fdb476-861e-4939-bf17-2bc19423b17d",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-b5fdb476-861e-4939-bf17-2bc19423b17d"
+                },
+                {
+                  "id": "de91421a-3b5f-46a1-a38a-b991cd51c22c",
+                  "name": "InvalidRequestException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-de91421a-3b5f-46a1-a38a-b991cd51c22c"
+                },
+                {
+                  "id": "80453bfe-a89f-4950-9ff6-599c0d01337f",
+                  "name": "CertificateStateException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-80453bfe-a89f-4950-9ff6-599c0d01337f"
+                },
+                {
+                  "id": "aaaadc9f-da89-4b47-8227-a775733d4500",
+                  "name": "ThrottlingException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-aaaadc9f-da89-4b47-8227-a775733d4500"
+                },
+                {
+                  "id": "dceb2f33-1309-489e-b3c7-82e70061a3bb",
+                  "name": "UnauthorizedException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-dceb2f33-1309-489e-b3c7-82e70061a3bb"
+                },
+                {
+                  "id": "207b190e-f2a4-45d1-a347-81270bcdd5d3",
+                  "name": "ServiceUnavailableException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-207b190e-f2a4-45d1-a347-81270bcdd5d3"
+                },
+                {
+                  "id": "dbc4f10c-0b11-4c44-bf86-a4fa2d6f7abd",
+                  "name": "InternalFailureException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-dbc4f10c-0b11-4c44-bf86-a4fa2d6f7abd"
+                },
+                {
+                  "id": "a6343fd3-c6c9-4a9a-9de5-6be303a8fd28",
+                  "name": "ResourceNotFoundException",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-a6343fd3-c6c9-4a9a-9de5-6be303a8fd28"
+                }
+              ],
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-fa70096c-815d-49a5-b049-04b38f3fd655"
+            },
+            {
+              "name": "Amazon IoT Device Management Describe C a Certificate",
+              "id": "ec3082f2-79bf-4c56-8f81-6b57141fdb7a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate",
+                    ":caCertificateId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d38e276c-ae5e-413c-aa65-3c658be84105",
+                      "key": "caCertificateId",
+                      "value": "E36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36e",
+                      "description": "(Required) The CA certificate identifier."
+                    }
+                  ]
+                },
+                "description": "<p>Describes a registered CA certificate.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">DescribeCACertificate</a> action.</p>"
+              },
+              "response": [
+                {
+                  "id": "495e9da8-ea29-4fd2-9cd9-f15976879350",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"certificateDescription\": {\n    \"certificateArn\": \"<string>\",\n    \"certificateId\": \"0xBA25E9e0xBA25E9e0xBA25E9e0xBA25E9e0xBA25E9e0xBA25E9e0xBA25E9e0\",\n    \"status\": \"INACTIVE\",\n    \"certificatePem\": \"@re3\",\n    \"ownedBy\": \"458857374724\",\n    \"creationDate\": \"<dateTime>\",\n    \"autoRegistrationStatus\": \"ENABLE\",\n    \"lastModifiedDate\": \"<dateTime>\",\n    \"customerVersion\": \"<integer>\",\n    \"generationId\": \"<string>\",\n    \"validity\": {\n      \"notBefore\": \"<dateTime>\",\n      \"notAfter\": \"<dateTime>\"\n    },\n    \"certificateMode\": \"SNI_ONLY\"\n  },\n  \"registrationConfig\": {\n    \"templateBody\": \"ju{\\\"\u3000n\u2005\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"8x_jU5m8Qvz\"\n  }\n}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-495e9da8-ea29-4fd2-9cd9-f15976879350"
+                },
+                {
+                  "id": "8bca15bf-44b8-4b48-b62d-3e15b8ce6b04",
+                  "name": "InvalidRequestException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-8bca15bf-44b8-4b48-b62d-3e15b8ce6b04"
+                },
+                {
+                  "id": "0180b322-572c-443d-9147-2f18b1b9591a",
+                  "name": "ThrottlingException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-0180b322-572c-443d-9147-2f18b1b9591a"
+                },
+                {
+                  "id": "ed06dced-2495-403a-9d30-3ee2ff530f63",
+                  "name": "UnauthorizedException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-ed06dced-2495-403a-9d30-3ee2ff530f63"
+                },
+                {
+                  "id": "ab7ed805-26e3-4bdb-b896-1fbfca80d217",
+                  "name": "ServiceUnavailableException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-ab7ed805-26e3-4bdb-b896-1fbfca80d217"
+                },
+                {
+                  "id": "8d6fe2c7-0910-4ac0-9dc9-3316c5d362ac",
+                  "name": "InternalFailureException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-8d6fe2c7-0910-4ac0-9dc9-3316c5d362ac"
+                },
+                {
+                  "id": "9567614f-80af-4c82-a99c-678f4f851f29",
+                  "name": "ResourceNotFoundException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-9567614f-80af-4c82-a99c-678f4f851f29"
+                }
+              ],
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-ec3082f2-79bf-4c56-8f81-6b57141fdb7a"
+            },
+            {
+              "name": "Amazon IoT Device Management Update C a Certificate",
+              "id": "a6791d1e-a3b0-445b-842b-b2bb1ff7b41e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate",
+                    ":caCertificateId"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                      "key": "newStatus",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                      "key": "newAutoRegistrationStatus",
+                      "value": "DISABLE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "0599fc2f-84df-42f4-884f-863443f383aa",
+                      "key": "caCertificateId",
+                      "value": "E36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36eE36e",
+                      "description": "(Required) The CA certificate identifier."
+                    }
+                  ]
+                },
+                "description": "<p>Updates a registered CA certificate.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">UpdateCACertificate</a> action.</p>"
+              },
+              "response": [
+                {
+                  "id": "7a277cbd-5cb6-435c-a22d-8882420b030d",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-7a277cbd-5cb6-435c-a22d-8882420b030d"
+                },
+                {
+                  "id": "7252f555-117f-4769-a92f-6b70216bf455",
+                  "name": "ResourceNotFoundException",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-7252f555-117f-4769-a92f-6b70216bf455"
+                },
+                {
+                  "id": "dd55f6f9-2ed6-4352-a374-92b4d2b8b025",
+                  "name": "InvalidRequestException",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-dd55f6f9-2ed6-4352-a374-92b4d2b8b025"
+                },
+                {
+                  "id": "3cc230dd-c200-40ee-bff7-c44e56f7ec35",
+                  "name": "ThrottlingException",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-3cc230dd-c200-40ee-bff7-c44e56f7ec35"
+                },
+                {
+                  "id": "4fbefcdf-b33d-4b78-b160-8f3aa62b9d89",
+                  "name": "UnauthorizedException",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-4fbefcdf-b33d-4b78-b160-8f3aa62b9d89"
+                },
+                {
+                  "id": "f27916c1-e0f2-4a61-8f31-bcdcdb853f2d",
+                  "name": "ServiceUnavailableException",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-f27916c1-e0f2-4a61-8f31-bcdcdb853f2d"
+                },
+                {
+                  "id": "027370ac-089c-48da-82e9-f7628649ca44",
+                  "name": "InternalFailureException",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"registrationConfig\": {\n    \"templateBody\": \"\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"u70US\"\n  },\n  \"removeAutoRegistration\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cacertificate/:caCertificateId?newStatus=INACTIVE&newAutoRegistrationStatus=DISABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cacertificate",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "<p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>",
+                          "key": "newStatus",
+                          "value": "INACTIVE"
+                        },
+                        {
+                          "description": "The new value for the auto registration status. Valid values are: \"ENABLE\" or \"DISABLE\".",
+                          "key": "newAutoRegistrationStatus",
+                          "value": "DISABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:31:37.000Z",
+                  "updatedAt": "2026-07-28T10:31:37.000Z",
+                  "uid": "35240-027370ac-089c-48da-82e9-f7628649ca44"
+                }
+              ],
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-a6791d1e-a3b0-445b-842b-b2bb1ff7b41e"
+            }
+          ],
+          "id": "5379812f-d724-4a55-967f-3fe5ac1bfc57",
+          "createdAt": "2026-07-28T10:31:37.000Z",
+          "updatedAt": "2026-07-28T10:31:37.000Z",
+          "uid": "35240-5379812f-d724-4a55-967f-3fe5ac1bfc57"
+        },
+        {
+          "name": "Amazon IoT Device Management Register C a Certificate",
+          "id": "2c6e6e5b-b921-4b51-9f99-81b1c74687fe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cacertificate"
+              ],
+              "query": [
+                {
+                  "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                  "key": "setAsActive",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                  "key": "allowAutoRegistration",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "<p>Registers a CA certificate with Amazon Web Services IoT Core. There is no limit to the number of CA certificates you can register in your Amazon Web Services account. You can register up to 10 CA certificates with the same <code>CA subject field</code> per Amazon Web Services account.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">RegisterCACertificate</a> action.</p>"
+          },
+          "response": [
+            {
+              "id": "dfaee141-f6c0-48f7-9e03-1ad593ea2faa",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"certificateArn\": \"<string>\",\n  \"certificateId\": \"A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa0A9aa\"\n}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-dfaee141-f6c0-48f7-9e03-1ad593ea2faa"
+            },
+            {
+              "id": "677b3d1b-f2b5-4f4e-baf1-f3a316b68439",
+              "name": "ResourceNotFoundException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-677b3d1b-f2b5-4f4e-baf1-f3a316b68439"
+            },
+            {
+              "id": "0d8a36d0-4c93-48a3-8a09-c245baec0190",
+              "name": "ResourceAlreadyExistsException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-0d8a36d0-4c93-48a3-8a09-c245baec0190"
+            },
+            {
+              "id": "be0843f0-f778-4762-8b3d-a51e7d4af679",
+              "name": "RegistrationCodeValidationException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-be0843f0-f778-4762-8b3d-a51e7d4af679"
+            },
+            {
+              "id": "23bc16e1-3dd3-468a-a42c-290d320fabe5",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-23bc16e1-3dd3-468a-a42c-290d320fabe5"
+            },
+            {
+              "id": "25394e69-695b-41af-a563-2ce03d563133",
+              "name": "CertificateValidationException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-25394e69-695b-41af-a563-2ce03d563133"
+            },
+            {
+              "id": "dc94a80c-dbf7-4620-95fb-dd9eb2119846",
+              "name": "ThrottlingException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-dc94a80c-dbf7-4620-95fb-dd9eb2119846"
+            },
+            {
+              "id": "6e8bf4a0-11ff-470c-841b-94987d357ea7",
+              "name": "LimitExceededException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-6e8bf4a0-11ff-470c-841b-94987d357ea7"
+            },
+            {
+              "id": "6e292ad1-fbdc-418c-bb8e-34a200bac9a2",
+              "name": "UnauthorizedException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-6e292ad1-fbdc-418c-bb8e-34a200bac9a2"
+            },
+            {
+              "id": "168931c2-c911-4814-8b82-58ccf4cdedd1",
+              "name": "ServiceUnavailableException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-168931c2-c911-4814-8b82-58ccf4cdedd1"
+            },
+            {
+              "id": "5653443e-517e-425f-a83c-409eac31c5fa",
+              "name": "InternalFailureException",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"caCertificate\": \"P B!\u205f*ZTV\",\n  \"verificationCertificate\": \"[r$.\u3000nX<uJ\",\n  \"registrationConfig\": {\n    \"templateBody\": \"w\u180e\",\n    \"roleArn\": \"<string>\",\n    \"templateName\": \"clxbV6OzW\"\n  },\n  \"tags\": [\n    {\n      \"Key\": \".-//.Z\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"{_}LZ{p/:\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"certificateMode\": \"DEFAULT\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cacertificate?setAsActive=<boolean>&allowAutoRegistration=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cacertificate"
+                  ],
+                  "query": [
+                    {
+                      "description": "<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>",
+                      "key": "setAsActive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Allows this CA certificate to be used for auto registration of device certificates.",
+                      "key": "allowAutoRegistration",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:37.000Z",
+              "updatedAt": "2026-07-28T10:31:37.000Z",
+              "uid": "35240-5653443e-517e-425f-a83c-409eac31c5fa"
+            }
+          ],
+          "createdAt": "2026-07-28T10:31:37.000Z",
+          "updatedAt": "2026-07-28T10:31:37.000Z",
+          "uid": "35240-2c6e6e5b-b921-4b51-9f99-81b1c74687fe"
+        }
+      ],
+      "id": "05ff51e5-2d4b-4b89-bd8d-f823fd1f811d",
+      "createdAt": "2026-07-28T10:31:37.000Z",
+      "updatedAt": "2026-07-28T10:31:37.000Z",
+      "uid": "35240-05ff51e5-2d4b-4b89-bd8d-f823fd1f811d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://iot.{{region}}.amazonaws.com"
+    }
+  ]
+}

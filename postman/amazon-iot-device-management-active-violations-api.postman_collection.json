@@ -1,0 +1,676 @@
+{
+  "info": {
+    "_postman_id": "f4a9ffd2-c719-41c2-b87a-41de3e5c58d8",
+    "name": "AWS IoT Accept Certificate Transfer Active Violations API",
+    "description": "<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:31:26.000Z",
+    "updatedAt": "2026-07-28T10:31:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f4a9ffd2-c719-41c2-b87a-41de3e5c58d8"
+  },
+  "item": [
+    {
+      "name": "active-violations",
+      "item": [
+        {
+          "name": "Amazon IoT Device Management List Active Violations",
+          "id": "31b4cdc8-d21b-4eda-be7d-ae204c2cf6f3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Amz-Content-Sha256",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Date",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Algorithm",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Credential",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Security-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-Signature",
+                "value": "<string>"
+              },
+              {
+                "key": "X-Amz-SignedHeaders",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/active-violations?thingName=<string>&securityProfileName=H3&behaviorCriteriaType=STATISTICAL&listSuppressedAlerts=<boolean>&verificationState=TRUE_POSITIVE&nextToken=<string>&maxResults=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "active-violations"
+              ],
+              "query": [
+                {
+                  "description": "The name of the thing whose active violations are listed.",
+                  "key": "thingName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The name of the Device Defender security profile for which violations are listed.",
+                  "key": "securityProfileName",
+                  "value": "H3"
+                },
+                {
+                  "description": " The criteria for a behavior. ",
+                  "key": "behaviorCriteriaType",
+                  "value": "STATISTICAL"
+                },
+                {
+                  "description": " A list of all suppressed alerts. ",
+                  "key": "listSuppressedAlerts",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "The verification state of the violation (detect alarm).",
+                  "key": "verificationState",
+                  "value": "TRUE_POSITIVE"
+                },
+                {
+                  "description": "The token for the next set of results.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return at one time.",
+                  "key": "maxResults",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "<p>Lists the active violations for a given Device Defender security profile.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">ListActiveViolations</a> action.</p>"
+          },
+          "response": [
+            {
+              "id": "eb6e606c-2df5-4e70-8607-0e68a7722d6c",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/active-violations?thingName=<string>&securityProfileName=H3&behaviorCriteriaType=STATISTICAL&listSuppressedAlerts=<boolean>&verificationState=TRUE_POSITIVE&nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "active-violations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The name of the thing whose active violations are listed.",
+                      "key": "thingName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the Device Defender security profile for which violations are listed.",
+                      "key": "securityProfileName",
+                      "value": "H3"
+                    },
+                    {
+                      "description": " The criteria for a behavior. ",
+                      "key": "behaviorCriteriaType",
+                      "value": "STATISTICAL"
+                    },
+                    {
+                      "description": " A list of all suppressed alerts. ",
+                      "key": "listSuppressedAlerts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The verification state of the violation (detect alarm).",
+                      "key": "verificationState",
+                      "value": "TRUE_POSITIVE"
+                    },
+                    {
+                      "description": "The token for the next set of results.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return at one time.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"activeViolations\": [\n    {\n      \"violationId\": \"xDBwAy\",\n      \"thingName\": \"<string>\",\n      \"securityProfileName\": \"xsc\",\n      \"behavior\": {\n        \"name\": \"cuk\",\n        \"metric\": \"<string>\",\n        \"metricDimension\": {\n          \"dimensionName\": \"FSz58g6HO\",\n          \"operator\": \"IN\"\n        },\n        \"criteria\": {\n          \"comparisonOperator\": \"greater-than\",\n          \"value\": {\n            \"count\": \"<integer>\",\n            \"cidrs\": [\n              \"CC\",\n              \"fb:b4EF91\"\n            ],\n            \"ports\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"number\": \"<double>\",\n            \"numbers\": [\n              \"<double>\",\n              \"<double>\"\n            ],\n            \"strings\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"durationSeconds\": \"<integer>\",\n          \"consecutiveDatapointsToAlarm\": \"<integer>\",\n          \"consecutiveDatapointsToClear\": \"<integer>\",\n          \"statisticalThreshold\": {\n            \"statistic\": \"p99.99\"\n          },\n          \"mlDetectionConfig\": {\n            \"confidenceLevel\": \"MEDIUM\"\n          }\n        },\n        \"suppressAlerts\": \"<boolean>\"\n      },\n      \"lastViolationValue\": {\n        \"count\": \"<integer>\",\n        \"cidrs\": [\n          \"/:1//edFD0:\",\n          \"6eeCe:\"\n        ],\n        \"ports\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"number\": \"<double>\",\n        \"numbers\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"strings\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"violationEventAdditionalInfo\": {\n        \"confidenceLevel\": \"MEDIUM\"\n      },\n      \"verificationState\": \"BENIGN_POSITIVE\",\n      \"verificationStateDescription\": \"JRN0`\",\n      \"lastViolationTime\": \"<dateTime>\",\n      \"violationStartTime\": \"<dateTime>\"\n    },\n    {\n      \"violationId\": \"GWPawCqJ\",\n      \"thingName\": \"<string>\",\n      \"securityProfileName\": \"yQseM3I0-Fb\",\n      \"behavior\": {\n        \"name\": \"tw\",\n        \"metric\": \"<string>\",\n        \"metricDimension\": {\n          \"dimensionName\": \":gU2\",\n          \"operator\": \"IN\"\n        },\n        \"criteria\": {\n          \"comparisonOperator\": \"in-port-set\",\n          \"value\": {\n            \"count\": \"<integer>\",\n            \"cidrs\": [\n              \"f9\",\n              \"3C6/.03\"\n            ],\n            \"ports\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"number\": \"<double>\",\n            \"numbers\": [\n              \"<double>\",\n              \"<double>\"\n            ],\n            \"strings\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"durationSeconds\": \"<integer>\",\n          \"consecutiveDatapointsToAlarm\": \"<integer>\",\n          \"consecutiveDatapointsToClear\": \"<integer>\",\n          \"statisticalThreshold\": {\n            \"statistic\": \"p0.01\"\n          },\n          \"mlDetectionConfig\": {\n            \"confidenceLevel\": \"LOW\"\n          }\n        },\n        \"suppressAlerts\": \"<boolean>\"\n      },\n      \"lastViolationValue\": {\n        \"count\": \"<integer>\",\n        \"cidrs\": [\n          \"b9a12D68\",\n          \"a7f8b:a2\"\n        ],\n        \"ports\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"number\": \"<double>\",\n        \"numbers\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"strings\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"violationEventAdditionalInfo\": {\n        \"confidenceLevel\": \"MEDIUM\"\n      },\n      \"verificationState\": \"TRUE_POSITIVE\",\n      \"verificationStateDescription\": \"%4q5cmo5\",\n      \"lastViolationTime\": \"<dateTime>\",\n      \"violationStartTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T10:31:26.000Z",
+              "updatedAt": "2026-07-28T10:31:26.000Z",
+              "uid": "35240-eb6e606c-2df5-4e70-8607-0e68a7722d6c"
+            },
+            {
+              "id": "4e84ea74-d7a6-4220-b708-5c7e1734f770",
+              "name": "InvalidRequestException",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/active-violations?thingName=<string>&securityProfileName=H3&behaviorCriteriaType=STATISTICAL&listSuppressedAlerts=<boolean>&verificationState=TRUE_POSITIVE&nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "active-violations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The name of the thing whose active violations are listed.",
+                      "key": "thingName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the Device Defender security profile for which violations are listed.",
+                      "key": "securityProfileName",
+                      "value": "H3"
+                    },
+                    {
+                      "description": " The criteria for a behavior. ",
+                      "key": "behaviorCriteriaType",
+                      "value": "STATISTICAL"
+                    },
+                    {
+                      "description": " A list of all suppressed alerts. ",
+                      "key": "listSuppressedAlerts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The verification state of the violation (detect alarm).",
+                      "key": "verificationState",
+                      "value": "TRUE_POSITIVE"
+                    },
+                    {
+                      "description": "The token for the next set of results.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return at one time.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:26.000Z",
+              "updatedAt": "2026-07-28T10:31:26.000Z",
+              "uid": "35240-4e84ea74-d7a6-4220-b708-5c7e1734f770"
+            },
+            {
+              "id": "64042e19-a105-4f10-948e-a77bf3aae4a5",
+              "name": "ResourceNotFoundException",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/active-violations?thingName=<string>&securityProfileName=H3&behaviorCriteriaType=STATISTICAL&listSuppressedAlerts=<boolean>&verificationState=TRUE_POSITIVE&nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "active-violations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The name of the thing whose active violations are listed.",
+                      "key": "thingName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the Device Defender security profile for which violations are listed.",
+                      "key": "securityProfileName",
+                      "value": "H3"
+                    },
+                    {
+                      "description": " The criteria for a behavior. ",
+                      "key": "behaviorCriteriaType",
+                      "value": "STATISTICAL"
+                    },
+                    {
+                      "description": " A list of all suppressed alerts. ",
+                      "key": "listSuppressedAlerts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The verification state of the violation (detect alarm).",
+                      "key": "verificationState",
+                      "value": "TRUE_POSITIVE"
+                    },
+                    {
+                      "description": "The token for the next set of results.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return at one time.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:26.000Z",
+              "updatedAt": "2026-07-28T10:31:26.000Z",
+              "uid": "35240-64042e19-a105-4f10-948e-a77bf3aae4a5"
+            },
+            {
+              "id": "736ac899-713e-485f-a1a1-a09f7e28f23d",
+              "name": "ThrottlingException",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/active-violations?thingName=<string>&securityProfileName=H3&behaviorCriteriaType=STATISTICAL&listSuppressedAlerts=<boolean>&verificationState=TRUE_POSITIVE&nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "active-violations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The name of the thing whose active violations are listed.",
+                      "key": "thingName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the Device Defender security profile for which violations are listed.",
+                      "key": "securityProfileName",
+                      "value": "H3"
+                    },
+                    {
+                      "description": " The criteria for a behavior. ",
+                      "key": "behaviorCriteriaType",
+                      "value": "STATISTICAL"
+                    },
+                    {
+                      "description": " A list of all suppressed alerts. ",
+                      "key": "listSuppressedAlerts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The verification state of the violation (detect alarm).",
+                      "key": "verificationState",
+                      "value": "TRUE_POSITIVE"
+                    },
+                    {
+                      "description": "The token for the next set of results.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return at one time.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:26.000Z",
+              "updatedAt": "2026-07-28T10:31:26.000Z",
+              "uid": "35240-736ac899-713e-485f-a1a1-a09f7e28f23d"
+            },
+            {
+              "id": "567512ca-9325-4bf0-82b6-e0727c85e2b5",
+              "name": "InternalFailureException",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/active-violations?thingName=<string>&securityProfileName=H3&behaviorCriteriaType=STATISTICAL&listSuppressedAlerts=<boolean>&verificationState=TRUE_POSITIVE&nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "active-violations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The name of the thing whose active violations are listed.",
+                      "key": "thingName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the Device Defender security profile for which violations are listed.",
+                      "key": "securityProfileName",
+                      "value": "H3"
+                    },
+                    {
+                      "description": " The criteria for a behavior. ",
+                      "key": "behaviorCriteriaType",
+                      "value": "STATISTICAL"
+                    },
+                    {
+                      "description": " A list of all suppressed alerts. ",
+                      "key": "listSuppressedAlerts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The verification state of the violation (detect alarm).",
+                      "key": "verificationState",
+                      "value": "TRUE_POSITIVE"
+                    },
+                    {
+                      "description": "The token for the next set of results.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return at one time.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T10:31:26.000Z",
+              "updatedAt": "2026-07-28T10:31:26.000Z",
+              "uid": "35240-567512ca-9325-4bf0-82b6-e0727c85e2b5"
+            }
+          ],
+          "createdAt": "2026-07-28T10:31:26.000Z",
+          "updatedAt": "2026-07-28T10:31:26.000Z",
+          "uid": "35240-31b4cdc8-d21b-4eda-be7d-ae204c2cf6f3"
+        }
+      ],
+      "id": "ee9a82b7-9e2a-4091-ada6-6c2a1987f32f",
+      "createdAt": "2026-07-28T10:31:26.000Z",
+      "updatedAt": "2026-07-28T10:31:26.000Z",
+      "uid": "35240-ee9a82b7-9e2a-4091-ada6-6c2a1987f32f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://iot.{{region}}.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,695 @@
+{
+  "info": {
+    "_postman_id": "4ac05ce8-2a44-43b0-81bb-6a4b1e820dcd",
+    "name": "AWS IoT Accept Certificate Transfer Certificates By Ca API",
+    "description": "<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href=\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:32:33.000Z",
+    "updatedAt": "2026-07-28T10:32:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4ac05ce8-2a44-43b0-81bb-6a4b1e820dcd"
+  },
+  "item": [
+    {
+      "name": "certificates-by-ca",
+      "item": [
+        {
+          "name": "{caCertificateId}",
+          "item": [
+            {
+              "name": "Amazon IoT Device Management List Certificates by C a",
+              "id": "53431bfb-d2d2-410f-90d6-2ec4dc6e4fad",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Amz-Content-Sha256",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Date",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Algorithm",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Credential",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Security-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "X-Amz-SignedHeaders",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "certificates-by-ca",
+                    ":caCertificateId"
+                  ],
+                  "query": [
+                    {
+                      "description": "The result page size.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The marker for the next set of results.",
+                      "key": "marker",
+                      "value": "92bJloKrfLi=="
+                    },
+                    {
+                      "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                      "key": "isAscendingOrder",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "23c01bf5-a51b-4233-86d6-6cdb3006d82b",
+                      "key": "caCertificateId",
+                      "value": "E0D06E0D06E0D06E0D06E0D06E0D06E0D06E0D06E0D06E0D06E0D06E0D06E0D0",
+                      "description": "(Required) The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate."
+                    }
+                  ]
+                },
+                "description": "<p>List the device certificates signed by the specified CA certificate.</p> <p>Requires permission to access the <a href=\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\">ListCertificatesByCA</a> action.</p>"
+              },
+              "response": [
+                {
+                  "id": "609752ff-daa0-4883-b662-0f9d3c2928a2",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certificates-by-ca",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The result page size.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The marker for the next set of results.",
+                          "key": "marker",
+                          "value": "92bJloKrfLi=="
+                        },
+                        {
+                          "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                          "key": "isAscendingOrder",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"certificates\": [\n    {\n      \"certificateArn\": \"<string>\",\n      \"certificateId\": \"dDfAFA0fdDfAFA0fdDfAFA0fdDfAFA0fdDfAFA0fdDfAFA0fdDfAFA0fdDfAFA0f\",\n      \"status\": \"PENDING_ACTIVATION\",\n      \"certificateMode\": \"DEFAULT\",\n      \"creationDate\": \"<dateTime>\"\n    },\n    {\n      \"certificateArn\": \"<string>\",\n      \"certificateId\": \"eF58C98ceF58C98ceF58C98ceF58C98ceF58C98ceF58C98ceF58C98ceF58C98c\",\n      \"status\": \"REGISTER_INACTIVE\",\n      \"certificateMode\": \"DEFAULT\",\n      \"creationDate\": \"<dateTime>\"\n    }\n  ],\n  \"nextMarker\": \"feaD/7\"\n}",
+                  "createdAt": "2026-07-28T10:32:34.000Z",
+                  "updatedAt": "2026-07-28T10:32:34.000Z",
+                  "uid": "35240-609752ff-daa0-4883-b662-0f9d3c2928a2"
+                },
+                {
+                  "id": "60e50c0b-2f46-45f4-9fea-a40c0d8a4bb3",
+                  "name": "InvalidRequestException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certificates-by-ca",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The result page size.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The marker for the next set of results.",
+                          "key": "marker",
+                          "value": "92bJloKrfLi=="
+                        },
+                        {
+                          "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                          "key": "isAscendingOrder",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:34.000Z",
+                  "updatedAt": "2026-07-28T10:32:34.000Z",
+                  "uid": "35240-60e50c0b-2f46-45f4-9fea-a40c0d8a4bb3"
+                },
+                {
+                  "id": "687834f0-fdc7-48ac-aa9f-2c97ae44845a",
+                  "name": "ThrottlingException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certificates-by-ca",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The result page size.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The marker for the next set of results.",
+                          "key": "marker",
+                          "value": "92bJloKrfLi=="
+                        },
+                        {
+                          "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                          "key": "isAscendingOrder",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:34.000Z",
+                  "updatedAt": "2026-07-28T10:32:34.000Z",
+                  "uid": "35240-687834f0-fdc7-48ac-aa9f-2c97ae44845a"
+                },
+                {
+                  "id": "563986d6-a98e-437d-9175-170d49bdc730",
+                  "name": "UnauthorizedException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certificates-by-ca",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The result page size.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The marker for the next set of results.",
+                          "key": "marker",
+                          "value": "92bJloKrfLi=="
+                        },
+                        {
+                          "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                          "key": "isAscendingOrder",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:34.000Z",
+                  "updatedAt": "2026-07-28T10:32:34.000Z",
+                  "uid": "35240-563986d6-a98e-437d-9175-170d49bdc730"
+                },
+                {
+                  "id": "7bc72ddb-29a2-413c-8c19-983c83f751f6",
+                  "name": "ServiceUnavailableException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certificates-by-ca",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The result page size.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The marker for the next set of results.",
+                          "key": "marker",
+                          "value": "92bJloKrfLi=="
+                        },
+                        {
+                          "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                          "key": "isAscendingOrder",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:34.000Z",
+                  "updatedAt": "2026-07-28T10:32:34.000Z",
+                  "uid": "35240-7bc72ddb-29a2-413c-8c19-983c83f751f6"
+                },
+                {
+                  "id": "9346a65a-7a60-4e97-8afd-cdcd983e1702",
+                  "name": "InternalFailureException",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certificates-by-ca/:caCertificateId?pageSize=<integer>&marker=92bJloKrfLi==&isAscendingOrder=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certificates-by-ca",
+                        ":caCertificateId"
+                      ],
+                      "query": [
+                        {
+                          "description": "The result page size.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The marker for the next set of results.",
+                          "key": "marker",
+                          "value": "92bJloKrfLi=="
+                        },
+                        {
+                          "description": "Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.",
+                          "key": "isAscendingOrder",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "caCertificateId"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T10:32:34.000Z",
+                  "updatedAt": "2026-07-28T10:32:34.000Z",
+                  "uid": "35240-9346a65a-7a60-4e97-8afd-cdcd983e1702"
+                }
+              ],
+              "createdAt": "2026-07-28T10:32:34.000Z",
+              "updatedAt": "2026-07-28T10:32:34.000Z",
+              "uid": "35240-53431bfb-d2d2-410f-90d6-2ec4dc6e4fad"
+            }
+          ],
+          "id": "04de377c-de68-4e64-80a0-ea2ac930d78c",
+          "createdAt": "2026-07-28T10:32:34.000Z",
+          "updatedAt": "2026-07-28T10:32:34.000Z",
+          "uid": "35240-04de377c-de68-4e64-80a0-ea2ac930d78c"
+        }
+      ],
+      "id": "01b9bcd7-78a0-4c1b-963a-66c3b634c535",
+      "createdAt": "2026-07-28T10:32:34.000Z",
+      "updatedAt": "2026-07-28T10:32:34.000Z",
+      "uid": "35240-01b9bcd7-78a0-4c1b-963a-66c3b634c535"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://iot.{{region}}.amazonaws.com"
+    }
+  ]
+}
