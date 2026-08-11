@@ -51,8 +51,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-active-violations-api
@@ -74,8 +72,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-attached-policies-api
@@ -97,8 +93,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-audit-api
@@ -119,8 +113,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-authorizer-api
@@ -141,8 +133,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-authorizers-api
@@ -163,8 +153,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-behavior-model-training-api
@@ -187,8 +175,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-billing-groups-api
@@ -210,8 +196,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-cacertificate-api
@@ -233,8 +217,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-cacertificates-api
@@ -256,8 +238,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -281,8 +261,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-certificate-api
@@ -303,8 +281,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-certificates-api
@@ -326,8 +302,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-certificates-by-ca-api
@@ -350,8 +324,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-certificates-out-going-api
@@ -374,8 +346,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-confirmdestination-api
@@ -397,8 +367,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-custom-metric-api
@@ -420,8 +388,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-custom-metrics-api
@@ -443,8 +409,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-default-authorizer-api
@@ -466,8 +430,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-destinations-api
@@ -489,8 +451,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-detect-api
@@ -511,8 +471,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-dimensions-api
@@ -533,8 +491,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-domainconfigurations-api
@@ -556,8 +512,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-dynamic-thing-groups-api
@@ -580,8 +534,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-effective-policies-api
@@ -603,8 +555,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-endpoint-api
@@ -625,8 +575,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-event-configurations-api
@@ -648,8 +596,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-fleet-metric-api
@@ -671,8 +617,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-fleet-metrics-api
@@ -694,8 +638,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-indexing-api
@@ -716,8 +658,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-indices-api
@@ -738,8 +678,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-job-templates-api
@@ -761,8 +699,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-jobs-api
@@ -783,8 +719,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-keys-and-certificate-api
@@ -806,8 +740,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-loggingoptions-api
@@ -829,8 +761,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-managed-job-templates-api
@@ -852,8 +782,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -878,8 +806,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-mitigationactions-api
@@ -901,8 +827,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-otaupdates-api
@@ -923,8 +847,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-policies-api
@@ -945,8 +867,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -970,8 +890,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-policy-targets-api
@@ -993,8 +911,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-principal-policies-api
@@ -1016,8 +932,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -1042,8 +956,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-principals-api
@@ -1064,8 +976,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-provisioning-templates-api
@@ -1088,8 +998,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-registrationcode-api
@@ -1111,8 +1019,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -1136,8 +1042,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-role-aliases-api
@@ -1159,8 +1063,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-rules-api
@@ -1181,8 +1083,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-security-profile-behaviors-api
@@ -1205,8 +1105,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-security-profiles-api
@@ -1228,8 +1126,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -1254,8 +1150,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-streams-api
@@ -1276,8 +1170,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-tags-api
@@ -1298,8 +1190,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-tags-resourcearn-api
@@ -1321,8 +1211,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-target-policies-api
@@ -1344,8 +1232,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-test-authorization-api
@@ -1367,8 +1253,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-thing-groups-api
@@ -1390,8 +1274,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-thing-registration-tasks-api
@@ -1414,8 +1296,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-thing-types-api
@@ -1436,8 +1316,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-things-api
@@ -1458,8 +1336,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-transfer-certificate-api
@@ -1481,8 +1357,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-untag-api
@@ -1503,8 +1377,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-v2logginglevel-api
@@ -1526,8 +1398,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -1552,8 +1422,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-v2loggingoptions-api
@@ -1575,8 +1443,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: >-
@@ -1600,8 +1466,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-violations-api
@@ -1622,8 +1486,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/pricing/
   - type: FAQ
     url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-iot-device-management.yaml
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 common:
