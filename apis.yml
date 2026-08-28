@@ -5,6 +5,18 @@ description: AWS IoT Device Management makes it easy to securely onboard, organi
   devices individually or in bulk, and easily manage permissions so your devices remain
   secure throughout their lifecycle.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
