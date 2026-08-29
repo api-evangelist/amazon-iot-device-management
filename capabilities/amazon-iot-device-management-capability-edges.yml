@@ -1,0 +1,145 @@
+slug: amazon-iot-device-management
+provider: Amazon IoT Device Management
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 14
+edges:
+- tag: Policies
+  spec_file: amazon-iot-device-management-policies-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: CreatePolicy / SetDefaultPolicyVersion, schemas PolicyDocument, PolicyArn — 'create and manage
+    policies and credentials to authenticate devices'
+  reason: IAM-style authorization policy documents governing device access; identity and access management,
+    not corporate policy management.
+- tag: Principal Policies
+  spec_file: amazon-iot-device-management-principal-policies-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: AttachPrincipalPolicy / DetachPrincipalPolicy
+  reason: Attaching and detaching authorization policies to principals is core access management.
+- tag: Policy Principals#x Amzn Iot Policy
+  spec_file: amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: ListPolicyPrincipals; schemas Principals, PrincipalArn
+  reason: Lists the principals (identities) attached to an access policy — access management surface.
+- tag: Policy Targets
+  spec_file: amazon-iot-device-management-policy-targets-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: ListTargetsForPolicy; schema PolicyTarget
+  reason: Enumerates identities/targets an authorization policy applies to; IAM surface.
+- tag: Principal Policies#x Amzn Iot Principal
+  spec_file: amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: ListPrincipalPolicies; schemas PolicyArn, PolicyName
+  reason: Lists policies attached to a principal — access rights enumeration.
+- tag: Role Aliases
+  spec_file: amazon-iot-device-management-role-aliases-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: CreateRoleAlias; schemas RoleArn, CredentialDurationSeconds
+  reason: Role aliases let devices assume IAM roles for temporary credentials — clearly identity and access
+    management.
+- tag: Active Violations
+  spec_file: amazon-iot-device-management-active-violations-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.75
+  evidence: GET /active-violations ListActiveViolations; schemas ActiveViolation, MachineLearningDetectionConfig,
+    BehaviorMetric
+  reason: Lists active security behaviour violations detected on devices via ML detection config — security
+    threat detection and monitoring, not regulatory compliance.
+- tag: Keys And Certificate
+  spec_file: amazon-iot-device-management-keys-and-certificate-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST /keys-and-certificate CreateKeysAndCertificate ... KeyPair, CertificatePem, PrivateKey,
+    PublicKey
+  reason: Issues X.509 certificates and key pairs used to authenticate devices to the platform — credential
+    issuance for machine identities, which is Identity & Access Management.
+- tag: Accept Certificate Transfer
+  spec_file: amazon-iot-device-management-accept-certificate-transfer-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: PATCH /accept-certificate-transfer/{certificateId} AcceptCertificateTransfer; TransferAlreadyCompletedException
+  reason: Accepting transfer of device X.509 certificates used to authenticate devices — credential lifecycle,
+    mapped to Identity & Access Management.
+- tag: Certificates
+  spec_file: amazon-iot-device-management-certificates-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /certificates  CreateCertificateFromCsr; PUT /certificates/{certificateId}#newStatus  UpdateCertificate;
+    schemas: CertificateStatus, CertificateValidity, CertificateDescription'
+  reason: Full lifecycle of device certificates — create from CSR, list, describe, activate/revoke via
+    status update. Clearly credential/PKI administration for device authentication, mapped to identity
+    & access management.
+- tag: Default Authorizer
+  spec_file: amazon-iot-device-management-default-authorizer-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /default-authorizer  SetDefaultAuthorizer ... schemas: AuthorizerDescription, AuthorizerFunctionArn,
+    TokenKeyName, AuthorizerStatus'
+  reason: Setting, describing and clearing the default custom authorizer configures how devices are authenticated/authorised
+    against the platform — identity and access management for the technology estate.
+- tag: Effective Policies
+  spec_file: amazon-iot-device-management-effective-policies-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /effective-policies  GetEffectivePolicies ... schemas: EffectivePolicy, PolicyDocument,
+    PolicyArn'
+  reason: Resolving the effective authorisation policies attached to a device/principal is access-permission
+    evaluation — identity and access management.
+- tag: Reject Certificate Transfer
+  spec_file: amazon-iot-device-management-reject-certificate-transfer-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: PATCH /reject-certificate-transfer/{certificateId}  RejectCertificateTransfer
+  reason: Certificate lifecycle operation on device credentials — identity/credential administration,
+    not a business transfer.
+- tag: Test Authorization
+  spec_file: amazon-iot-device-management-test-authorization-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /test-authorization TestAuthorization; schemas AuthDecision, Allowed, Denied, ImplicitDeny,
+    AuthResult
+  reason: Evaluates whether device/identity policies permit an action — authorization policy evaluation,
+    squarely identity and access management rather than any industry business capability.

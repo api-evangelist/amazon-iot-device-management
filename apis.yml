@@ -1506,6 +1506,9 @@ apis:
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 common:
+- type: CapabilityMap
+  url: capabilities/amazon-iot-device-management-capability-edges.yml
+  name: Amazon IoT Device Management Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/amazon-iot-device-management/overview
 - type: AgenticAccess
