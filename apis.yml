@@ -850,7 +850,7 @@ apis:
   humanURL: https://aws.amazon.com/iot-device-management/
   baseURL: https://iot.amazonaws.com
   tags:
-  - OtaUpdates
+  - OTA Updates
   tags_raw:
   - OtaUpdates
   properties:
