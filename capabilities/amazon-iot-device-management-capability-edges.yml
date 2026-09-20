@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 12
+edge_count: 18
 edges:
 - tag: Principal Policies
   spec_file: amazon-iot-device-management-principal-policies-api-openapi.yml
@@ -41,6 +41,16 @@ edges:
   evidence: POST /policies/{policyName}  CreatePolicy ... SetDefaultPolicyVersion; schema PolicyDocument
   reason: IoT authorisation policy documents and versions governing device permissions — access management,
     not corporate Policy Management.
+- tag: Role Aliases
+  spec_file: amazon-iot-device-management-role-aliases-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: CreateRoleAlias; schemas RoleArn, CredentialDurationSeconds
+  reason: Role aliases let devices assume IAM roles for temporary credentials — clearly identity and access
+    management.
+  recovered_from: sweep-20260828T235257Z-edges.json
 - tag: Principal Policies#x Amzn Iot Principal
   spec_file: amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api-openapi.yml
   capability_id: BC-620.20
@@ -127,3 +137,58 @@ edges:
   reason: Device Defender security-profile violations — detection of anomalous/non-conforming device behaviour
     and its violation events, which is threat detection and response tooling, not financial-crime or compliance
     alerting.
+- tag: Certificates
+  spec_file: amazon-iot-device-management-certificates-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /certificates  CreateCertificateFromCsr; PUT /certificates/{certificateId}#newStatus  UpdateCertificate;
+    schemas: CertificateStatus, CertificateValidity, CertificateDescription'
+  reason: Full lifecycle of device certificates — create from CSR, list, describe, activate/revoke via
+    status update. Clearly credential/PKI administration for device authentication, mapped to identity
+    & access management.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Default Authorizer
+  spec_file: amazon-iot-device-management-default-authorizer-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /default-authorizer  SetDefaultAuthorizer ... schemas: AuthorizerDescription, AuthorizerFunctionArn,
+    TokenKeyName, AuthorizerStatus'
+  reason: Setting, describing and clearing the default custom authorizer configures how devices are authenticated/authorised
+    against the platform — identity and access management for the technology estate.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Effective Policies
+  spec_file: amazon-iot-device-management-effective-policies-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /effective-policies  GetEffectivePolicies ... schemas: EffectivePolicy, PolicyDocument,
+    PolicyArn'
+  reason: Resolving the effective authorisation policies attached to a device/principal is access-permission
+    evaluation — identity and access management.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Reject Certificate Transfer
+  spec_file: amazon-iot-device-management-reject-certificate-transfer-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: PATCH /reject-certificate-transfer/{certificateId}  RejectCertificateTransfer
+  reason: Certificate lifecycle operation on device credentials — identity/credential administration,
+    not a business transfer.
+  recovered_from: sweep-20260828T235257Z-edges.json
+- tag: Test Authorization
+  spec_file: amazon-iot-device-management-test-authorization-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /test-authorization TestAuthorization; schemas AuthDecision, Allowed, Denied, ImplicitDeny,
+    AuthResult
+  reason: Evaluates whether device/identity policies permit an action — authorization policy evaluation,
+    squarely identity and access management rather than any industry business capability.
+  recovered_from: sweep-20260828T235257Z-edges.json
