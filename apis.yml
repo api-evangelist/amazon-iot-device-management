@@ -1507,6 +1507,8 @@ apis:
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 common:
+- type: Plans
+  url: plans/amazon-iot-device-management-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/amazon-iot-device-management-capability-edges.yml
   name: Amazon IoT Device Management Business Capability Map
