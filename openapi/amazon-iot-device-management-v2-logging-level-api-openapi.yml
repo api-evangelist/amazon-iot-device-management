@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2015-05-28
   x-release: v4
-  title: AWS IoT Accept Certificate Transfer V2 Logging Options API
-  description: '<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>'
+  title: AWS IoT V2 Logging Level API
+  description: 'IoT
+
+    IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
     backgroundColor: '#FFFFFF'
@@ -24,6 +26,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot-2015-05-28.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -112,9 +115,9 @@ servers:
 security:
 - hmac: []
 tags:
-- name: V2LoggingOptions
+- name: V2 Logging Level
 paths:
-  /v2LoggingOptions:
+  /v2LoggingLevel:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
     - $ref: '#/components/parameters/X-Amz-Date'
@@ -124,15 +127,18 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
-      operationId: GetV2LoggingOptions
-      description: <p>Gets the fine grained logging options.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">GetV2LoggingOptions</a> action.</p>
+      operationId: ListV2LoggingLevels
+      description: 'Lists logging levels.
+
+
+        Requires permission to access the ListV2LoggingLevels action.'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetV2LoggingOptionsResponse'
+                $ref: '#/components/schemas/ListV2LoggingLevelsResponse'
         '480':
           description: InternalException
           content:
@@ -146,21 +152,56 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotConfiguredException'
         '482':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '483':
           description: ServiceUnavailableException
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServiceUnavailableException'
-      parameters: []
-      summary: Amazon IoT Device Management Get V2 Logging Options
+      parameters:
+      - name: targetType
+        in: query
+        required: false
+        description: The type of resource for which you are configuring logging. Must be <code>THING_Group</code>.
+        schema:
+          type: string
+          enum:
+          - DEFAULT
+          - THING_GROUP
+          - CLIENT_ID
+          - SOURCE_IP
+          - PRINCIPAL_ID
+      - name: nextToken
+        in: query
+        required: false
+        description: To retrieve the next set of results, the <code>nextToken</code> value from a previous response; otherwise <b>null</b> to receive the first set of results.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        description: The maximum number of results to return at one time.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 250
+      summary: Amazon IoT Device Management List V2 Logging Levels
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
       tags:
-      - V2LoggingOptions
+      - V2 Logging Level
     post:
-      operationId: SetV2LoggingOptions
-      description: <p>Sets the logging options for the V2 logging service.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">SetV2LoggingOptions</a> action.</p>
+      operationId: SetV2LoggingLevel
+      description: 'Sets the logging level.
+
+
+        Requires permission to access the SetV2LoggingLevel action.'
       responses:
         '200':
           description: Success
@@ -171,17 +212,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalException'
         '481':
+          description: NotConfiguredException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotConfiguredException'
+        '482':
           description: InvalidRequestException
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidRequestException'
-        '482':
+        '483':
           description: ServiceUnavailableException
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServiceUnavailableException'
+        '484':
+          description: LimitExceededException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitExceededException'
       parameters: []
       requestBody:
         required: true
@@ -189,12 +242,24 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+              - logTarget
+              - logLevel
               properties:
-                roleArn:
-                  description: The ARN of the role that allows IoT to write to Cloudwatch logs.
-                  type: string
-                defaultLogLevel:
-                  description: The default logging level.
+                logTarget:
+                  description: A log target.
+                  type: object
+                  properties:
+                    targetType:
+                      allOf:
+                      - $ref: '#/components/schemas/LogTargetType'
+                      - description: The target type.
+                    targetName:
+                      allOf:
+                      - $ref: '#/components/schemas/LogTargetName'
+                      - description: The target name.
+                logLevel:
+                  description: The log level.
                   type: string
                   enum:
                   - DEBUG
@@ -202,19 +267,89 @@ paths:
                   - ERROR
                   - WARN
                   - DISABLED
-                disableAllLogs:
-                  description: If true all logs are disabled. The default is false.
-                  type: boolean
-      summary: Amazon IoT Device Management Set V2 Logging Options
+      summary: Amazon IoT Device Management Set V2 Logging Level
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
       tags:
-      - V2LoggingOptions
+      - V2 Logging Level
 components:
+  schemas:
+    LimitExceededException: {}
+    InvalidRequestException: {}
+    ListV2LoggingLevelsResponse:
+      type: object
+      properties:
+        logTargetConfigurations:
+          allOf:
+          - $ref: '#/components/schemas/LogTargetConfigurations'
+          - description: The logging configuration for a target.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    ServiceUnavailableException: {}
+    NextToken:
+      type: string
+    LogTargetName:
+      type: string
+    LogTargetType:
+      type: string
+      enum:
+      - DEFAULT
+      - THING_GROUP
+      - CLIENT_ID
+      - SOURCE_IP
+      - PRINCIPAL_ID
+    InternalException: {}
+    LogTargetConfiguration:
+      type: object
+      properties:
+        logTarget:
+          allOf:
+          - $ref: '#/components/schemas/LogTarget'
+          - description: A log target
+        logLevel:
+          allOf:
+          - $ref: '#/components/schemas/LogLevel'
+          - description: The logging level.
+      description: The target configuration.
+    NotConfiguredException: {}
+    LogTargetConfigurations:
+      type: array
+      items:
+        $ref: '#/components/schemas/LogTargetConfiguration'
+    LogLevel:
+      type: string
+      enum:
+      - DEBUG
+      - INFO
+      - ERROR
+      - WARN
+      - DISABLED
+    LogTarget:
+      type: object
+      required:
+      - targetType
+      properties:
+        targetType:
+          allOf:
+          - $ref: '#/components/schemas/LogTargetType'
+          - description: The target type.
+        targetName:
+          allOf:
+          - $ref: '#/components/schemas/LogTargetName'
+          - description: The target name.
+      description: A log target.
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -231,20 +366,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -255,38 +378,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    InvalidRequestException: {}
-    DisableAllLogs:
-      type: boolean
-    ServiceUnavailableException: {}
-    NotConfiguredException: {}
-    GetV2LoggingOptionsResponse:
-      type: object
-      properties:
-        roleArn:
-          allOf:
-          - $ref: '#/components/schemas/AwsArn'
-          - description: The IAM role ARN IoT uses to write to your CloudWatch logs.
-        defaultLogLevel:
-          allOf:
-          - $ref: '#/components/schemas/LogLevel'
-          - description: The default log level.
-        disableAllLogs:
-          allOf:
-          - $ref: '#/components/schemas/DisableAllLogs'
-          - description: Disables all logs.
-    AwsArn:
-      type: string
-    InternalException: {}
-    LogLevel:
-      type: string
-      enum:
-      - DEBUG
-      - INFO
-      - ERROR
-      - WARN
-      - DISABLED
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

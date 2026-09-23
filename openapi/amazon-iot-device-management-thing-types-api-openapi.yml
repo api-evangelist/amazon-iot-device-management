@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2015-05-28
   x-release: v4
-  title: AWS IoT Accept Certificate Transfer Thing Types API
-  description: '<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>'
+  title: AWS IoT Thing Types API
+  description: 'IoT
+
+    IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
     backgroundColor: '#FFFFFF'
@@ -24,6 +26,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot-2015-05-28.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +128,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateThingType
-      description: <p>Creates a new thing type.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">CreateThingType</a> action.</p>
+      description: 'Creates a new thing type.
+
+
+        Requires permission to access the CreateThingType action.'
       responses:
         '200':
           description: Success
@@ -211,7 +217,10 @@ paths:
       - Thing Types
     delete:
       operationId: DeleteThingType
-      description: <p>Deletes the specified thing type. You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling <a>DeprecateThingType</a>, then remove any associated things by calling <a>UpdateThing</a> to change the thing type on any associated thing, and finally use <a>DeleteThingType</a> to delete the thing type.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeleteThingType</a> action.</p>
+      description: 'Deletes the specified thing type. You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling DeprecateThingType, then remove any associated things by calling UpdateThing to change the thing type on any associated thing, and finally use DeleteThingType to delete the thing type.
+
+
+        Requires permission to access the DeleteThingType action.'
       responses:
         '200':
           description: Success
@@ -273,7 +282,10 @@ paths:
       - Thing Types
     get:
       operationId: DescribeThingType
-      description: <p>Gets information about the specified thing type.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DescribeThingType</a> action.</p>
+      description: 'Gets information about the specified thing type.
+
+
+        Requires permission to access the DescribeThingType action.'
       responses:
         '200':
           description: Success
@@ -344,7 +356,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: DeprecateThingType
-      description: <p>Deprecates a thing type. You can not associate new things with deprecated thing type.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeprecateThingType</a> action.</p>
+      description: 'Deprecates a thing type. You can not associate new things with deprecated thing type.
+
+
+        Requires permission to access the DeprecateThingType action.'
       responses:
         '200':
           description: Success
@@ -425,7 +440,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListThingTypes
-      description: <p>Lists the existing thing types.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListThingTypes</a> action.</p>
+      description: 'Lists the existing thing types.
+
+
+        Requires permission to access the ListThingTypes action.'
       responses:
         '200':
           description: Success
@@ -495,11 +513,7 @@ paths:
       - Thing Types
 components:
   schemas:
-    InternalFailureException: {}
-    ThingTypeDescription:
-      type: string
-      pattern: '[\p{Graph}\x20]*'
-      maxLength: 2028
+    InvalidRequestException: {}
     ThingTypeMetadata:
       type: object
       properties:
@@ -516,131 +530,19 @@ components:
           - $ref: '#/components/schemas/CreationDate'
           - description: The date and time when the thing type was created.
       description: 'The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when time was deprecated.'
-    ThrottlingException: {}
-    Boolean:
-      type: boolean
+    ResourceNotFoundException: {}
     ThingTypeList:
       type: array
       items:
         $ref: '#/components/schemas/ThingTypeDefinition'
-    ResourceAlreadyExistsException: {}
-    InvalidRequestException: {}
-    DeleteThingTypeResponse:
-      type: object
-      properties: {}
-      description: The output for the DeleteThingType operation.
-    UnauthorizedException: {}
-    AttributeName:
-      type: string
-      pattern: '[a-zA-Z0-9_.,@/:#-]+'
-      maxLength: 128
-    ThingTypeName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    ThingTypeArn:
-      type: string
-    ThingTypeProperties:
-      type: object
-      properties:
-        thingTypeDescription:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeDescription'
-          - description: The description of the thing type.
-        searchableAttributes:
-          allOf:
-          - $ref: '#/components/schemas/SearchableAttributes'
-          - description: A list of searchable thing attribute names.
-      description: 'The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.'
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    CreationDate:
-      type: string
-      format: date-time
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
+    ThrottlingException: {}
     ServiceUnavailableException: {}
-    ThingTypeId:
-      type: string
-    CreateThingTypeResponse:
-      type: object
-      properties:
-        thingTypeName:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeName'
-          - description: The name of the thing type.
-        thingTypeArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeArn'
-          - description: The Amazon Resource Name (ARN) of the thing type.
-        thingTypeId:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeId'
-          - description: The thing type ID.
-      description: The output of the CreateThingType operation.
-    ListThingTypesResponse:
-      type: object
-      properties:
-        thingTypes:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeList'
-          - description: The thing types.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token for the next set of results. Will not be returned if operation has returned all results.
-      description: The output for the ListThingTypes operation.
     NextToken:
       type: string
-    SearchableAttributes:
-      type: array
-      items:
-        $ref: '#/components/schemas/AttributeName'
-    TagKey:
+    ThingTypeDescription:
       type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    ThingTypeDefinition:
-      type: object
-      properties:
-        thingTypeName:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeName'
-          - description: The name of the thing type.
-        thingTypeArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeArn'
-          - description: The thing type ARN.
-        thingTypeProperties:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeProperties'
-          - description: The ThingTypeProperties for the thing type.
-        thingTypeMetadata:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeMetadata'
-          - description: 'The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.'
-      description: The definition of the thing type, including thing type name and description.
-    ResourceNotFoundException: {}
-    DeprecateThingTypeResponse:
-      type: object
-      properties: {}
-      description: The output for the DeprecateThingType operation.
+      pattern: '[\p{Graph}\x20]*'
+      maxLength: 2028
     DescribeThingTypeResponse:
       type: object
       properties:
@@ -665,30 +567,134 @@ components:
           - $ref: '#/components/schemas/ThingTypeMetadata'
           - description: 'The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.'
       description: The output for the DescribeThingType operation.
+    ThingTypeArn:
+      type: string
+    ThingTypeName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    Boolean:
+      type: boolean
     DeprecationDate:
       type: string
       format: date-time
+    SearchableAttributes:
+      type: array
+      items:
+        $ref: '#/components/schemas/AttributeName'
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    ListThingTypesResponse:
+      type: object
+      properties:
+        thingTypes:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeList'
+          - description: The thing types.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token for the next set of results. Will not be returned if operation has returned all results.
+      description: The output for the ListThingTypes operation.
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    DeprecateThingTypeResponse:
+      type: object
+      properties: {}
+      description: The output for the DeprecateThingType operation.
+    ThingTypeDefinition:
+      type: object
+      properties:
+        thingTypeName:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeName'
+          - description: The name of the thing type.
+        thingTypeArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeArn'
+          - description: The thing type ARN.
+        thingTypeProperties:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeProperties'
+          - description: The ThingTypeProperties for the thing type.
+        thingTypeMetadata:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeMetadata'
+          - description: 'The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.'
+      description: The definition of the thing type, including thing type name and description.
+    ThingTypeId:
+      type: string
+    CreateThingTypeResponse:
+      type: object
+      properties:
+        thingTypeName:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeName'
+          - description: The name of the thing type.
+        thingTypeArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeArn'
+          - description: The Amazon Resource Name (ARN) of the thing type.
+        thingTypeId:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeId'
+          - description: The thing type ID.
+      description: The output of the CreateThingType operation.
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    ResourceAlreadyExistsException: {}
+    DeleteThingTypeResponse:
+      type: object
+      properties: {}
+      description: The output for the DeleteThingType operation.
+    InternalFailureException: {}
+    AttributeName:
+      type: string
+      pattern: '[a-zA-Z0-9_.,@/:#-]+'
+      maxLength: 128
+    UnauthorizedException: {}
+    ThingTypeProperties:
+      type: object
+      properties:
+        thingTypeDescription:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeDescription'
+          - description: The description of the thing type.
+        searchableAttributes:
+          allOf:
+          - $ref: '#/components/schemas/SearchableAttributes'
+          - description: A list of searchable thing attribute names.
+      description: 'The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.'
+    CreationDate:
+      type: string
+      format: date-time
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -705,8 +711,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string

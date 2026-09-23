@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2015-05-28
   x-release: v4
-  title: AWS IoT Accept Certificate Transfer Custom Metric API
-  description: '<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>'
+  title: AWS IoT Custom Metric API
+  description: 'IoT
+
+    IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
     backgroundColor: '#FFFFFF'
@@ -24,6 +26,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot-2015-05-28.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +128,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateCustomMetric
-      description: <p> Use this API to define a Custom Metric published by your devices to Device Defender. </p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">CreateCustomMetric</a> action.</p>
+      description: 'Use this API to define a Custom Metric published by your devices to Device Defender.
+
+
+        Requires permission to access the CreateCustomMetric action.'
       responses:
         '200':
           description: Success
@@ -215,7 +221,13 @@ paths:
       - Custom Metric
     delete:
       operationId: DeleteCustomMetric
-      description: <p> Deletes a Device Defender detect custom metric. </p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeleteCustomMetric</a> action.</p> <note> <p>Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html">ListSecurityProfiles</a> API with <code>metricName</code> set to your custom metric name.</p> </note>
+      description: 'Deletes a Device Defender detect custom metric.
+
+
+        Requires permission to access the DeleteCustomMetric action.
+
+
+        Before you can delete a custom metric, you must first remove the custom metric from all security profiles it''s a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.'
       responses:
         '200':
           description: Success
@@ -259,7 +271,10 @@ paths:
       - Custom Metric
     get:
       operationId: DescribeCustomMetric
-      description: <p> Gets information about a Device Defender detect custom metric. </p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DescribeCustomMetric</a> action.</p>
+      description: 'Gets information about a Device Defender detect custom metric.
+
+
+        Requires permission to access the DescribeCustomMetric action.'
       responses:
         '200':
           description: Success
@@ -309,7 +324,10 @@ paths:
       - Custom Metric
     patch:
       operationId: UpdateCustomMetric
-      description: <p>Updates a Device Defender detect custom metric. </p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">UpdateCustomMetric</a> action.</p>
+      description: 'Updates a Device Defender detect custom metric.
+
+
+        Requires permission to access the UpdateCustomMetric action.'
       responses:
         '200':
           description: Success
@@ -373,9 +391,29 @@ paths:
       - Custom Metric
 components:
   schemas:
-    InternalFailureException: {}
+    DeleteCustomMetricResponse:
+      type: object
+      properties: {}
+    LimitExceededException: {}
+    CreateCustomMetricResponse:
+      type: object
+      properties:
+        metricName:
+          allOf:
+          - $ref: '#/components/schemas/MetricName'
+          - description: ' The name of the custom metric to be used in the metric report. '
+        metricArn:
+          allOf:
+          - $ref: '#/components/schemas/CustomMetricArn'
+          - description: ' The Amazon Resource Number (ARN) of the custom metric. For example, <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i> </code> '
+    InvalidRequestException: {}
+    CustomMetricArn:
+      type: string
+    ResourceNotFoundException: {}
+    Timestamp:
+      type: string
+      format: date-time
     ThrottlingException: {}
-    ResourceAlreadyExistsException: {}
     UpdateCustomMetricResponse:
       type: object
       properties:
@@ -403,7 +441,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/Timestamp'
           - description: ' The time the custom metric was last modified in milliseconds since epoch. '
-    InvalidRequestException: {}
+    CustomMetricType:
+      type: string
+      enum:
+      - string-list
+      - ip-address-list
+      - number-list
+      - number
     CustomMetricDisplayName:
       type: string
       pattern: '[\p{Graph}\x20]*'
@@ -413,21 +457,6 @@ components:
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    CreateCustomMetricResponse:
-      type: object
-      properties:
-        metricName:
-          allOf:
-          - $ref: '#/components/schemas/MetricName'
-          - description: ' The name of the custom metric to be used in the metric report. '
-        metricArn:
-          allOf:
-          - $ref: '#/components/schemas/CustomMetricArn'
-          - description: ' The Amazon Resource Number (ARN) of the custom metric. For example, <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i> </code> '
     Tag:
       type: object
       required:
@@ -442,25 +471,10 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    Timestamp:
+    TagValue:
       type: string
-      format: date-time
-    DeleteCustomMetricResponse:
-      type: object
-      properties: {}
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    LimitExceededException: {}
-    CustomMetricType:
-      type: string
-      enum:
-      - string-list
-      - ip-address-list
-      - number-list
-      - number
+      minLength: 0
+      maxLength: 256
     DescribeCustomMetricResponse:
       type: object
       properties:
@@ -488,30 +502,22 @@ components:
           allOf:
           - $ref: '#/components/schemas/Timestamp'
           - description: ' The time the custom metric was last modified in milliseconds since epoch. '
-    ResourceNotFoundException: {}
-    CustomMetricArn:
+    TagKey:
       type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    ResourceAlreadyExistsException: {}
+    InternalFailureException: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -528,8 +534,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string

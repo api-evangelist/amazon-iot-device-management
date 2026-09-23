@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: 2015-05-28
   x-release: v4
-  title: AWS IoT Custom Metrics API
+  title: AWS IoT Logging Options API
   description: 'IoT
 
     IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
@@ -115,9 +115,9 @@ servers:
 security:
 - hmac: []
 tags:
-- name: Custom Metrics
+- name: Logging Options
 paths:
-  /custom-metrics:
+  /loggingOptions:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
     - $ref: '#/components/parameters/X-Amz-Date'
@@ -127,58 +127,131 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
-      operationId: ListCustomMetrics
-      description: 'Lists your Device Defender detect custom metrics.
+      operationId: GetLoggingOptions
+      description: 'Gets the logging options.
 
 
-        Requires permission to access the ListCustomMetrics action.'
+        NOTE: use of this command is not recommended. Use GetV2LoggingOptions instead.
+
+
+        Requires permission to access the GetLoggingOptions action.'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCustomMetricsResponse'
+                $ref: '#/components/schemas/GetLoggingOptionsResponse'
         '480':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '481':
           description: InvalidRequestException
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidRequestException'
-        '481':
-          description: ThrottlingException
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ThrottlingException'
         '482':
-          description: InternalFailureException
+          description: ServiceUnavailableException
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InternalFailureException'
-      parameters:
-      - name: nextToken
-        in: query
-        required: false
-        description: ' The token for the next set of results. '
-        schema:
-          type: string
-      - name: maxResults
-        in: query
-        required: false
-        description: ' The maximum number of results to return at one time. The default is 25. '
-        schema:
-          type: integer
-          minimum: 1
-          maximum: 250
-      summary: Amazon IoT Device Management List Custom Metrics
+                $ref: '#/components/schemas/ServiceUnavailableException'
+      parameters: []
+      summary: Amazon IoT Device Management Get Logging Options
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
       tags:
-      - Custom Metrics
+      - Logging Options
+    post:
+      operationId: SetLoggingOptions
+      description: 'Sets the logging options.
+
+
+        NOTE: use of this command is not recommended. Use SetV2LoggingOptions instead.
+
+
+        Requires permission to access the SetLoggingOptions action.'
+      responses:
+        '200':
+          description: Success
+        '480':
+          description: InternalException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalException'
+        '481':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '482':
+          description: ServiceUnavailableException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailableException'
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - loggingOptionsPayload
+              properties:
+                loggingOptionsPayload:
+                  description: Describes the logging options payload.
+                  type: object
+                  properties:
+                    roleArn:
+                      allOf:
+                      - $ref: '#/components/schemas/AwsArn'
+                      - description: The ARN of the IAM role that grants access.
+                    logLevel:
+                      allOf:
+                      - $ref: '#/components/schemas/LogLevel'
+                      - description: The log level.
+      summary: Amazon IoT Device Management Set Logging Options
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Logging Options
 components:
+  schemas:
+    LogLevel:
+      type: string
+      enum:
+      - DEBUG
+      - INFO
+      - ERROR
+      - WARN
+      - DISABLED
+    ServiceUnavailableException: {}
+    InvalidRequestException: {}
+    AwsArn:
+      type: string
+    GetLoggingOptionsResponse:
+      type: object
+      properties:
+        roleArn:
+          allOf:
+          - $ref: '#/components/schemas/AwsArn'
+          - description: The ARN of the IAM role that grants access.
+        logLevel:
+          allOf:
+          - $ref: '#/components/schemas/LogLevel'
+          - description: The logging level.
+      description: The output from the GetLoggingOptions operation.
+    InternalException: {}
   parameters:
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
@@ -222,32 +295,6 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    NextToken:
-      type: string
-    MetricNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/MetricName'
-    InvalidRequestException: {}
-    ListCustomMetricsResponse:
-      type: object
-      properties:
-        metricNames:
-          allOf:
-          - $ref: '#/components/schemas/MetricNames'
-          - description: ' The name of the custom metric. '
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: ' A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results. '
-    InternalFailureException: {}
-    MetricName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    ThrottlingException: {}
   securitySchemes:
     hmac:
       type: apiKey

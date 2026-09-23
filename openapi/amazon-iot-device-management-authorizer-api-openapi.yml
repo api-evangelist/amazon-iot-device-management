@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2015-05-28
   x-release: v4
-  title: AWS IoT Accept Certificate Transfer Authorizer API
-  description: '<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>'
+  title: AWS IoT Authorizer API
+  description: 'IoT
+
+    IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
     backgroundColor: '#FFFFFF'
@@ -24,6 +26,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot-2015-05-28.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +128,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateAuthorizer
-      description: <p>Creates an authorizer.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">CreateAuthorizer</a> action.</p>
+      description: 'Creates an authorizer.
+
+
+        Requires permission to access the CreateAuthorizer action.'
       responses:
         '200':
           description: Success
@@ -235,7 +241,10 @@ paths:
       - Authorizer
     delete:
       operationId: DeleteAuthorizer
-      description: <p>Deletes an authorizer.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeleteAuthorizer</a> action.</p>
+      description: 'Deletes an authorizer.
+
+
+        Requires permission to access the DeleteAuthorizer action.'
       responses:
         '200':
           description: Success
@@ -303,7 +312,10 @@ paths:
       - Authorizer
     get:
       operationId: DescribeAuthorizer
-      description: <p>Describes an authorizer.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DescribeAuthorizer</a> action.</p>
+      description: 'Describes an authorizer.
+
+
+        Requires permission to access the DescribeAuthorizer action.'
       responses:
         '200':
           description: Success
@@ -365,7 +377,10 @@ paths:
       - Authorizer
     put:
       operationId: UpdateAuthorizer
-      description: <p>Updates an authorizer.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">UpdateAuthorizer</a> action.</p>
+      description: 'Updates an authorizer.
+
+
+        Requires permission to access the UpdateAuthorizer action.'
       responses:
         '200':
           description: Success
@@ -474,7 +489,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: TestInvokeAuthorizer
-      description: <p>Tests a custom authorization behavior by invoking a specified custom authorizer. Use this to test and debug the custom authorization behavior of devices that connect to the IoT device gateway.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">TestInvokeAuthorizer</a> action.</p>
+      description: 'Tests a custom authorization behavior by invoking a specified custom authorizer. Use this to test and debug the custom authorization behavior of devices that connect to the IoT device gateway.
+
+
+        Requires permission to access the TestInvokeAuthorizer action.'
       responses:
         '200':
           description: Success
@@ -597,15 +615,171 @@ paths:
       - Authorizer
 components:
   schemas:
-    InternalFailureException: {}
-    Seconds:
-      type: integer
+    MqttUsername:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 1
+      maxLength: 65535
+    DateType:
+      type: string
+      format: date-time
+    LimitExceededException: {}
+    ServerName:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 1
+      maxLength: 253
+    EnableCachingForHttp:
+      type: boolean
+    PolicyDocument:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 0
+      maxLength: 404600
+    InvalidRequestException: {}
+    HttpHeaders:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/HttpHeaderValue'
+    AuthorizerName:
+      type: string
+      pattern: '[\w=,@-]+'
+      minLength: 1
+      maxLength: 128
+    ResourceNotFoundException: {}
+    PublicKeyMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/KeyValue'
+    PrincipalId:
+      type: string
+      pattern: '[a-zA-Z0-9]+'
+      minLength: 1
+      maxLength: 128
     ThrottlingException: {}
     HttpHeaderValue:
       type: string
       pattern: '[\s\S]*'
       minLength: 1
       maxLength: 8192
+    HttpQueryString:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 1
+      maxLength: 4096
+    ServiceUnavailableException: {}
+    PolicyDocuments:
+      type: array
+      items:
+        $ref: '#/components/schemas/PolicyDocument'
+    TestInvokeAuthorizerResponse:
+      type: object
+      properties:
+        isAuthenticated:
+          allOf:
+          - $ref: '#/components/schemas/IsAuthenticated'
+          - description: True if the token is authenticated, otherwise false.
+        principalId:
+          allOf:
+          - $ref: '#/components/schemas/PrincipalId'
+          - description: The principal ID.
+        policyDocuments:
+          allOf:
+          - $ref: '#/components/schemas/PolicyDocuments'
+          - description: IAM policy documents.
+        refreshAfterInSeconds:
+          allOf:
+          - $ref: '#/components/schemas/Seconds'
+          - description: The number of seconds after which the temporary credentials are refreshed.
+        disconnectAfterInSeconds:
+          allOf:
+          - $ref: '#/components/schemas/Seconds'
+          - description: The number of seconds after which the connection is terminated.
+    InvalidResponseException: {}
+    AuthorizerStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+    Seconds:
+      type: integer
+    AuthorizerFunctionArn:
+      type: string
+      pattern: '[\s\S]*'
+      maxLength: 2048
+    DeleteAuthorizerResponse:
+      type: object
+      properties: {}
+    DescribeAuthorizerResponse:
+      type: object
+      properties:
+        authorizerDescription:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerDescription'
+          - description: The authorizer description.
+    KeyValue:
+      type: string
+      pattern: '[\s\S]*'
+      maxLength: 5120
+    BooleanKey:
+      type: boolean
+    AuthorizerArn:
+      type: string
+      maxLength: 2048
+    MqttPassword:
+      type: string
+      minLength: 1
+      maxLength: 65535
+    DeleteConflictException: {}
+    UpdateAuthorizerResponse:
+      type: object
+      properties:
+        authorizerName:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerName'
+          - description: The authorizer name.
+        authorizerArn:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerArn'
+          - description: The authorizer ARN.
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    CreateAuthorizerResponse:
+      type: object
+      properties:
+        authorizerName:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerName'
+          - description: The authorizer's name.
+        authorizerArn:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerArn'
+          - description: The authorizer ARN.
+    IsAuthenticated:
+      type: boolean
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    ResourceAlreadyExistsException: {}
+    InternalFailureException: {}
     AuthorizerDescription:
       type: object
       properties:
@@ -650,194 +824,26 @@ components:
           - $ref: '#/components/schemas/EnableCachingForHttp'
           - description: When <code>true</code>, the result from the authorizer’s Lambda function is cached for the time specified in <code>refreshAfterInSeconds</code>. The cached result is used while the device reuses the same HTTP connection.
       description: The authorizer description.
-    MqttUsername:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 1
-      maxLength: 65535
-    EnableCachingForHttp:
-      type: boolean
-    PrincipalId:
-      type: string
-      pattern: '[a-zA-Z0-9]+'
-      minLength: 1
-      maxLength: 128
-    AuthorizerName:
-      type: string
-      pattern: '[\w=,@-]+'
-      minLength: 1
-      maxLength: 128
-    DateType:
-      type: string
-      format: date-time
-    PublicKeyMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/KeyValue'
-    ResourceAlreadyExistsException: {}
-    PolicyDocument:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 0
-      maxLength: 404600
-    BooleanKey:
-      type: boolean
-    TestInvokeAuthorizerResponse:
-      type: object
-      properties:
-        isAuthenticated:
-          allOf:
-          - $ref: '#/components/schemas/IsAuthenticated'
-          - description: True if the token is authenticated, otherwise false.
-        principalId:
-          allOf:
-          - $ref: '#/components/schemas/PrincipalId'
-          - description: The principal ID.
-        policyDocuments:
-          allOf:
-          - $ref: '#/components/schemas/PolicyDocuments'
-          - description: IAM policy documents.
-        refreshAfterInSeconds:
-          allOf:
-          - $ref: '#/components/schemas/Seconds'
-          - description: The number of seconds after which the temporary credentials are refreshed.
-        disconnectAfterInSeconds:
-          allOf:
-          - $ref: '#/components/schemas/Seconds'
-          - description: The number of seconds after which the connection is terminated.
-    UpdateAuthorizerResponse:
-      type: object
-      properties:
-        authorizerName:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerName'
-          - description: The authorizer name.
-        authorizerArn:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerArn'
-          - description: The authorizer ARN.
-    AuthorizerArn:
-      type: string
-      maxLength: 2048
-    AuthorizerStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-    InvalidRequestException: {}
-    MqttPassword:
-      type: string
-      minLength: 1
-      maxLength: 65535
-    DescribeAuthorizerResponse:
-      type: object
-      properties:
-        authorizerDescription:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerDescription'
-          - description: The authorizer description.
     UnauthorizedException: {}
     TokenKeyName:
       type: string
       pattern: '[a-zA-Z0-9_-]+'
       minLength: 1
       maxLength: 128
-    PolicyDocuments:
-      type: array
-      items:
-        $ref: '#/components/schemas/PolicyDocument'
     MqttClientId:
       type: string
       pattern: '[\s\S]*'
       minLength: 1
       maxLength: 65535
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    ServiceUnavailableException: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
-    IsAuthenticated:
-      type: boolean
-    AuthorizerFunctionArn:
-      type: string
-      pattern: '[\s\S]*'
-      maxLength: 2048
-    CreateAuthorizerResponse:
-      type: object
-      properties:
-        authorizerName:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerName'
-          - description: The authorizer's name.
-        authorizerArn:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerArn'
-          - description: The authorizer ARN.
-    HttpHeaders:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/HttpHeaderValue'
-    ServerName:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 1
-      maxLength: 253
-    DeleteConflictException: {}
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    LimitExceededException: {}
-    InvalidResponseException: {}
-    KeyValue:
-      type: string
-      pattern: '[\s\S]*'
-      maxLength: 5120
-    ResourceNotFoundException: {}
-    HttpQueryString:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 1
-      maxLength: 4096
-    DeleteAuthorizerResponse:
-      type: object
-      properties: {}
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -854,8 +860,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string

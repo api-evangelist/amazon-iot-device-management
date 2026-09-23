@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2015-05-28
   x-release: v4
-  title: AWS IoT Accept Certificate Transfer Security Profiles API
-  description: '<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>'
+  title: AWS IoT Security Profiles API
+  description: 'IoT
+
+    IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
     backgroundColor: '#FFFFFF'
@@ -24,6 +26,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot-2015-05-28.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +128,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     put:
       operationId: AttachSecurityProfile
-      description: <p>Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">AttachSecurityProfile</a> action.</p>
+      description: 'Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it.
+
+
+        Requires permission to access the AttachSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -193,7 +199,10 @@ paths:
       - Security Profiles
     delete:
       operationId: DetachSecurityProfile
-      description: <p>Disassociates a Device Defender security profile from a thing group or from this account.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DetachSecurityProfile</a> action.</p>
+      description: 'Disassociates a Device Defender security profile from a thing group or from this account.
+
+
+        Requires permission to access the DetachSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -258,7 +267,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateSecurityProfile
-      description: <p>Creates a Device Defender security profile.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">CreateSecurityProfile</a> action.</p>
+      description: 'Creates a Device Defender security profile.
+
+
+        Requires permission to access the CreateSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -346,7 +358,10 @@ paths:
       - Security Profiles
     delete:
       operationId: DeleteSecurityProfile
-      description: <p>Deletes a Device Defender security profile.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeleteSecurityProfile</a> action.</p>
+      description: 'Deletes a Device Defender security profile.
+
+
+        Requires permission to access the DeleteSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -402,7 +417,10 @@ paths:
       - Security Profiles
     get:
       operationId: DescribeSecurityProfile
-      description: <p>Gets information about a Device Defender security profile.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DescribeSecurityProfile</a> action.</p>
+      description: 'Gets information about a Device Defender security profile.
+
+
+        Requires permission to access the DescribeSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -452,7 +470,10 @@ paths:
       - Security Profiles
     patch:
       operationId: UpdateSecurityProfile
-      description: <p>Updates a Device Defender security profile.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">UpdateSecurityProfile</a> action.</p>
+      description: 'Updates a Device Defender security profile.
+
+
+        Requires permission to access the UpdateSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -565,7 +586,13 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListSecurityProfiles
-      description: <p>Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListSecurityProfiles</a> action.</p> <note> <p> <code>dimensionName</code> and <code>metricName</code> cannot be used in the same request.</p> </note>
+      description: 'Lists the Device Defender security profiles you''ve created. You can filter security profiles by dimension or custom metric.
+
+
+        Requires permission to access the ListSecurityProfiles action.
+
+
+        dimensionName and metricName cannot be used in the same request.'
       responses:
         '200':
           description: Success
@@ -647,7 +674,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListTargetsForSecurityProfile
-      description: <p>Lists the targets (thing groups) associated with a given Device Defender security profile.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListTargetsForSecurityProfile</a> action.</p>
+      description: 'Lists the targets (thing groups) associated with a given Device Defender security profile.
+
+
+        Requires permission to access the ListTargetsForSecurityProfile action.'
       responses:
         '200':
           description: Success
@@ -711,104 +741,20 @@ paths:
       - Security Profiles
 components:
   schemas:
-    InternalFailureException: {}
-    AlertTarget:
-      type: object
-      required:
-      - alertTargetArn
-      - roleArn
-      properties:
-        alertTargetArn:
-          allOf:
-          - $ref: '#/components/schemas/AlertTargetArn'
-          - description: The Amazon Resource Name (ARN) of the notification target to which alerts are sent.
-        roleArn:
-          allOf:
-          - $ref: '#/components/schemas/RoleArn'
-          - description: The ARN of the role that grants permission to send alerts to the notification target.
-      description: A structure containing the alert target ARN and the role ARN.
-    ThrottlingException: {}
-    AttachSecurityProfileResponse:
-      type: object
-      properties: {}
-    BehaviorMetric:
+    DimensionName:
       type: string
-    Behaviors:
-      type: array
-      items:
-        $ref: '#/components/schemas/Behavior'
-      maxItems: 100
-    MetricValue:
-      type: object
-      properties:
-        count:
-          allOf:
-          - $ref: '#/components/schemas/UnsignedLong'
-          - description: If the <code>comparisonOperator</code> calls for a numeric value, use this to specify that numeric value to be compared with the <code>metric</code>.
-        cidrs:
-          allOf:
-          - $ref: '#/components/schemas/Cidrs'
-          - description: If the <code>comparisonOperator</code> calls for a set of CIDRs, use this to specify that set to be compared with the <code>metric</code>.
-        ports:
-          allOf:
-          - $ref: '#/components/schemas/Ports'
-          - description: If the <code>comparisonOperator</code> calls for a set of ports, use this to specify that set to be compared with the <code>metric</code>.
-        number:
-          allOf:
-          - $ref: '#/components/schemas/Number'
-          - description: ' The numeral value of a metric. '
-        numbers:
-          allOf:
-          - $ref: '#/components/schemas/NumberList'
-          - description: ' The numeral values of a metric. '
-        strings:
-          allOf:
-          - $ref: '#/components/schemas/StringList'
-          - description: ' The string values of a metric. '
-      description: The value to be compared with the <code>metric</code>.
-    DurationSeconds:
-      type: integer
-    SecurityProfileTargets:
-      type: array
-      items:
-        $ref: '#/components/schemas/SecurityProfileTarget'
-    Cidrs:
-      type: array
-      items:
-        $ref: '#/components/schemas/Cidr'
-    StatisticalThreshold:
-      type: object
-      properties:
-        statistic:
-          allOf:
-          - $ref: '#/components/schemas/EvaluationStatistic'
-          - description: The percentile that resolves to a threshold value by which compliance with a behavior is determined. Metrics are collected over the specified period (<code>durationSeconds</code>) from all reporting devices in your account and statistical ranks are calculated. Then, the measurements from a device are collected over the same period. If the accumulated measurements from the device fall above or below (<code>comparisonOperator</code>) the value associated with the percentile specified, then the device is considered to be in compliance with the behavior, otherwise a violation occurs.
-      description: A statistical ranking (percentile) that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.
-    Port:
-      type: integer
-      minimum: 0
-      maximum: 65535
-    UnsignedLong:
-      type: integer
-      minimum: 0
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
     RoleArn:
       type: string
       minLength: 20
       maxLength: 2048
-    ResourceAlreadyExistsException: {}
-    AdditionalMetricsToRetainV2List:
-      type: array
-      items:
-        $ref: '#/components/schemas/MetricToRetain'
-    Cidr:
+    DimensionValueOperator:
       type: string
-      pattern: '[a-fA-F0-9:\.\/]+'
-      minLength: 2
-      maxLength: 43
-    DetachSecurityProfileResponse:
-      type: object
-      properties: {}
-    InvalidRequestException: {}
+      enum:
+      - IN
+      - NOT_IN
     UpdateSecurityProfileResponse:
       type: object
       properties:
@@ -853,99 +799,37 @@ components:
           allOf:
           - $ref: '#/components/schemas/Timestamp'
           - description: The time the security profile was last modified.
-    SecurityProfileTarget:
+    AlertTarget:
       type: object
       required:
-      - arn
+      - alertTargetArn
+      - roleArn
       properties:
-        arn:
+        alertTargetArn:
           allOf:
-          - $ref: '#/components/schemas/SecurityProfileTargetArn'
-          - description: The ARN of the security profile.
-      description: A target to which an alert is sent when a security profile behavior is violated.
-    StringList:
-      type: array
-      items:
-        $ref: '#/components/schemas/stringValue'
-    DimensionValueOperator:
-      type: string
-      enum:
-      - IN
-      - NOT_IN
-    ComparisonOperator:
-      type: string
-      enum:
-      - less-than
-      - less-than-equals
-      - greater-than
-      - greater-than-equals
-      - in-cidr-set
-      - not-in-cidr-set
-      - in-port-set
-      - not-in-port-set
-      - in-set
-      - not-in-set
-    MachineLearningDetectionConfig:
-      type: object
-      required:
-      - confidenceLevel
-      properties:
-        confidenceLevel:
+          - $ref: '#/components/schemas/AlertTargetArn'
+          - description: The Amazon Resource Name (ARN) of the notification target to which alerts are sent.
+        roleArn:
           allOf:
-          - $ref: '#/components/schemas/ConfidenceLevel'
-          - description: ' The sensitivity of anomalous behavior evaluation. Can be <code>Low</code>, <code>Medium</code>, or <code>High</code>. '
-      description: ' The configuration of an ML Detect Security Profile. '
-    AlertTargets:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AlertTarget'
-    SecurityProfileIdentifiers:
-      type: array
-      items:
-        $ref: '#/components/schemas/SecurityProfileIdentifier'
-    ConsecutiveDatapointsToClear:
-      type: integer
-      minimum: 1
-      maximum: 10
-    SecurityProfileTargetArn:
+          - $ref: '#/components/schemas/RoleArn'
+          - description: The ARN of the role that grants permission to send alerts to the notification target.
+      description: A structure containing the alert target ARN and the role ARN.
+    LimitExceededException: {}
+    BehaviorMetric:
       type: string
-    ListTargetsForSecurityProfileResponse:
+    InvalidRequestException: {}
+    ListSecurityProfilesResponse:
       type: object
       properties:
-        securityProfileTargets:
+        securityProfileIdentifiers:
           allOf:
-          - $ref: '#/components/schemas/SecurityProfileTargets'
-          - description: The thing groups to which the security profile is attached.
+          - $ref: '#/components/schemas/SecurityProfileIdentifiers'
+          - description: A list of security profile identifiers (names and ARNs).
         nextToken:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
-    MetricToRetain:
-      type: object
-      required:
-      - metric
-      properties:
-        metric:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorMetric'
-          - description: What is measured by the behavior.
-        metricDimension:
-          allOf:
-          - $ref: '#/components/schemas/MetricDimension'
-          - description: The dimension of a metric. This can't be used with custom metrics.
-      description: The metric you want to retain. Dimensions are optional.
-    BehaviorName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    Number:
-      type: number
-      format: double
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
+    VersionConflictException: {}
     ConsecutiveDatapointsToAlarm:
       type: integer
       minimum: 1
@@ -953,80 +837,46 @@ components:
     DeleteSecurityProfileResponse:
       type: object
       properties: {}
-    MetricDimension:
-      type: object
-      required:
-      - dimensionName
-      properties:
-        dimensionName:
-          allOf:
-          - $ref: '#/components/schemas/DimensionName'
-          - description: A unique identifier for the dimension.
-        operator:
-          allOf:
-          - $ref: '#/components/schemas/DimensionValueOperator'
-          - description: 'Defines how the <code>dimensionValues</code> of a dimension are interpreted. For example, for dimension type TOPIC_FILTER, the <code>IN</code> operator, a message will be counted only if its topic matches one of the topic filters. With <code>NOT_IN</code> operator, a message will be counted only if it doesn''t match any of the topic filters. The operator is optional: if it''s not provided (is <code>null</code>), it will be interpreted as <code>IN</code>.'
-      description: The dimension of a metric.
-    ConfidenceLevel:
-      type: string
-      enum:
-      - LOW
-      - MEDIUM
-      - HIGH
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
-    EvaluationStatistic:
-      type: string
-      pattern: (p0|p0\.1|p0\.01|p1|p10|p50|p90|p99|p99\.9|p99\.99|p100)
-    AlertTargetArn:
-      type: string
-    Behavior:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorName'
-          - description: The name you've given to the behavior.
-        metric:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorMetric'
-          - description: What is measured by the behavior.
-        metricDimension:
-          allOf:
-          - $ref: '#/components/schemas/MetricDimension'
-          - description: The dimension for a metric in your behavior. For example, using a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of the metric to only MQTT topics where the name matches the pattern specified in the dimension. This can't be used with custom metrics.
-        criteria:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorCriteria'
-          - description: The criteria that determine if a device is behaving normally in regard to the <code>metric</code>.
-        suppressAlerts:
-          allOf:
-          - $ref: '#/components/schemas/SuppressAlerts'
-          - description: ' Suppresses alerts. '
-      description: A Device Defender security profile behavior.
-    NextToken:
-      type: string
-    Ports:
+    SecurityProfileTargets:
       type: array
       items:
-        $ref: '#/components/schemas/Port'
+        $ref: '#/components/schemas/SecurityProfileTarget'
     Timestamp:
       type: string
       format: date-time
+    Cidr:
+      type: string
+      pattern: '[a-fA-F0-9:\.\/]+'
+      minLength: 2
+      maxLength: 43
+    Behaviors:
+      type: array
+      items:
+        $ref: '#/components/schemas/Behavior'
+      maxItems: 100
+    DurationSeconds:
+      type: integer
+    SecurityProfileName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    ConsecutiveDatapointsToClear:
+      type: integer
+      minimum: 1
+      maximum: 10
+    ThrottlingException: {}
+    CreateSecurityProfileResponse:
+      type: object
+      properties:
+        securityProfileName:
+          allOf:
+          - $ref: '#/components/schemas/SecurityProfileName'
+          - description: The name you gave to the security profile.
+        securityProfileArn:
+          allOf:
+          - $ref: '#/components/schemas/SecurityProfileArn'
+          - description: The ARN of the security profile.
     BehaviorCriteria:
       type: object
       properties:
@@ -1059,59 +909,144 @@ components:
           - $ref: '#/components/schemas/MachineLearningDetectionConfig'
           - description: ' The configuration of an ML Detect '
       description: The criteria by which the behavior is determined to be normal.
-    VersionConflictException: {}
-    stringValue:
+    SecurityProfileArn:
       type: string
-    TagKey:
+    Number:
+      type: number
+      format: double
+    NextToken:
       type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    AdditionalMetricsToRetainList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BehaviorMetric'
-    ListSecurityProfilesResponse:
+    MetricDimension:
+      type: object
+      required:
+      - dimensionName
+      properties:
+        dimensionName:
+          allOf:
+          - $ref: '#/components/schemas/DimensionName'
+          - description: A unique identifier for the dimension.
+        operator:
+          allOf:
+          - $ref: '#/components/schemas/DimensionValueOperator'
+          - description: 'Defines how the <code>dimensionValues</code> of a dimension are interpreted. For example, for dimension type TOPIC_FILTER, the <code>IN</code> operator, a message will be counted only if its topic matches one of the topic filters. With <code>NOT_IN</code> operator, a message will be counted only if it doesn''t match any of the topic filters. The operator is optional: if it''s not provided (is <code>null</code>), it will be interpreted as <code>IN</code>.'
+      description: The dimension of a metric.
+    DetachSecurityProfileResponse:
+      type: object
+      properties: {}
+    StatisticalThreshold:
       type: object
       properties:
-        securityProfileIdentifiers:
+        statistic:
           allOf:
-          - $ref: '#/components/schemas/SecurityProfileIdentifiers'
-          - description: A list of security profile identifiers (names and ARNs).
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
-    LimitExceededException: {}
-    SecurityProfileName:
+          - $ref: '#/components/schemas/EvaluationStatistic'
+          - description: The percentile that resolves to a threshold value by which compliance with a behavior is determined. Metrics are collected over the specified period (<code>durationSeconds</code>) from all reporting devices in your account and statistical ranks are calculated. Then, the measurements from a device are collected over the same period. If the accumulated measurements from the device fall above or below (<code>comparisonOperator</code>) the value associated with the percentile specified, then the device is considered to be in compliance with the behavior, otherwise a violation occurs.
+      description: A statistical ranking (percentile) that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.
+    Ports:
+      type: array
+      items:
+        $ref: '#/components/schemas/Port'
+    ConfidenceLevel:
+      type: string
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+    Port:
+      type: integer
+      minimum: 0
+      maximum: 65535
+    UnsignedLong:
+      type: integer
+      minimum: 0
+    stringValue:
+      type: string
+    Cidrs:
+      type: array
+      items:
+        $ref: '#/components/schemas/Cidr'
+    EvaluationStatistic:
+      type: string
+      pattern: (p0|p0\.1|p0\.01|p1|p10|p50|p90|p99|p99\.9|p99\.99|p100)
+    ResourceNotFoundException: {}
+    SuppressAlerts:
+      type: boolean
+    Version:
+      type: integer
+    AlertTargets:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AlertTarget'
+    BehaviorName:
       type: string
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    SuppressAlerts:
-      type: boolean
-    ResourceNotFoundException: {}
-    SecurityProfileArn:
-      type: string
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    MetricToRetain:
+      type: object
+      required:
+      - metric
+      properties:
+        metric:
+          allOf:
+          - $ref: '#/components/schemas/BehaviorMetric'
+          - description: What is measured by the behavior.
+        metricDimension:
+          allOf:
+          - $ref: '#/components/schemas/MetricDimension'
+          - description: The dimension of a metric. This can't be used with custom metrics.
+      description: The metric you want to retain. Dimensions are optional.
     NumberList:
       type: array
       items:
         $ref: '#/components/schemas/Number'
-    SecurityProfileIdentifier:
+    StringList:
+      type: array
+      items:
+        $ref: '#/components/schemas/stringValue'
+    Behavior:
       type: object
       required:
       - name
-      - arn
       properties:
         name:
           allOf:
-          - $ref: '#/components/schemas/SecurityProfileName'
-          - description: The name you've given to the security profile.
-        arn:
+          - $ref: '#/components/schemas/BehaviorName'
+          - description: The name you've given to the behavior.
+        metric:
           allOf:
-          - $ref: '#/components/schemas/SecurityProfileArn'
-          - description: The ARN of the security profile.
-      description: Identifying information for a Device Defender security profile.
+          - $ref: '#/components/schemas/BehaviorMetric'
+          - description: What is measured by the behavior.
+        metricDimension:
+          allOf:
+          - $ref: '#/components/schemas/MetricDimension'
+          - description: The dimension for a metric in your behavior. For example, using a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of the metric to only MQTT topics where the name matches the pattern specified in the dimension. This can't be used with custom metrics.
+        criteria:
+          allOf:
+          - $ref: '#/components/schemas/BehaviorCriteria'
+          - description: The criteria that determine if a device is behaving normally in regard to the <code>metric</code>.
+        suppressAlerts:
+          allOf:
+          - $ref: '#/components/schemas/SuppressAlerts'
+          - description: ' Suppresses alerts. '
+      description: A Device Defender security profile behavior.
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
     DescribeSecurityProfileResponse:
       type: object
       properties:
@@ -1156,49 +1091,132 @@ components:
           allOf:
           - $ref: '#/components/schemas/Timestamp'
           - description: The time the security profile was last modified.
-    Version:
-      type: integer
-    DimensionName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    CreateSecurityProfileResponse:
+    AdditionalMetricsToRetainList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BehaviorMetric'
+    SecurityProfileIdentifiers:
+      type: array
+      items:
+        $ref: '#/components/schemas/SecurityProfileIdentifier'
+    SecurityProfileTarget:
       type: object
+      required:
+      - arn
       properties:
-        securityProfileName:
+        arn:
           allOf:
-          - $ref: '#/components/schemas/SecurityProfileName'
-          - description: The name you gave to the security profile.
-        securityProfileArn:
-          allOf:
-          - $ref: '#/components/schemas/SecurityProfileArn'
+          - $ref: '#/components/schemas/SecurityProfileTargetArn'
           - description: The ARN of the security profile.
+      description: A target to which an alert is sent when a security profile behavior is violated.
     SecurityProfileDescription:
       type: string
       pattern: '[\p{Graph}\x20]*'
       maxLength: 1000
+    AdditionalMetricsToRetainV2List:
+      type: array
+      items:
+        $ref: '#/components/schemas/MetricToRetain'
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    ResourceAlreadyExistsException: {}
+    SecurityProfileTargetArn:
+      type: string
+    InternalFailureException: {}
+    ComparisonOperator:
+      type: string
+      enum:
+      - less-than
+      - less-than-equals
+      - greater-than
+      - greater-than-equals
+      - in-cidr-set
+      - not-in-cidr-set
+      - in-port-set
+      - not-in-port-set
+      - in-set
+      - not-in-set
+    MetricValue:
+      type: object
+      properties:
+        count:
+          allOf:
+          - $ref: '#/components/schemas/UnsignedLong'
+          - description: If the <code>comparisonOperator</code> calls for a numeric value, use this to specify that numeric value to be compared with the <code>metric</code>.
+        cidrs:
+          allOf:
+          - $ref: '#/components/schemas/Cidrs'
+          - description: If the <code>comparisonOperator</code> calls for a set of CIDRs, use this to specify that set to be compared with the <code>metric</code>.
+        ports:
+          allOf:
+          - $ref: '#/components/schemas/Ports'
+          - description: If the <code>comparisonOperator</code> calls for a set of ports, use this to specify that set to be compared with the <code>metric</code>.
+        number:
+          allOf:
+          - $ref: '#/components/schemas/Number'
+          - description: ' The numeral value of a metric. '
+        numbers:
+          allOf:
+          - $ref: '#/components/schemas/NumberList'
+          - description: ' The numeral values of a metric. '
+        strings:
+          allOf:
+          - $ref: '#/components/schemas/StringList'
+          - description: ' The string values of a metric. '
+      description: The value to be compared with the <code>metric</code>.
+    AttachSecurityProfileResponse:
+      type: object
+      properties: {}
+    MachineLearningDetectionConfig:
+      type: object
+      required:
+      - confidenceLevel
+      properties:
+        confidenceLevel:
+          allOf:
+          - $ref: '#/components/schemas/ConfidenceLevel'
+          - description: ' The sensitivity of anomalous behavior evaluation. Can be <code>Low</code>, <code>Medium</code>, or <code>High</code>. '
+      description: ' The configuration of an ML Detect Security Profile. '
+    SecurityProfileIdentifier:
+      type: object
+      required:
+      - name
+      - arn
+      properties:
+        name:
+          allOf:
+          - $ref: '#/components/schemas/SecurityProfileName'
+          - description: The name you've given to the security profile.
+        arn:
+          allOf:
+          - $ref: '#/components/schemas/SecurityProfileArn'
+          - description: The ARN of the security profile.
+      description: Identifying information for a Device Defender security profile.
+    ListTargetsForSecurityProfileResponse:
+      type: object
+      properties:
+        securityProfileTargets:
+          allOf:
+          - $ref: '#/components/schemas/SecurityProfileTargets'
+          - description: The thing groups to which the security profile is attached.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
+    AlertTargetArn:
+      type: string
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -1215,8 +1233,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string

@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: 2015-05-28
   x-release: v4
-  title: AWS IoT Accept Certificate Transfer Things API
-  description: '<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>'
+  title: AWS IoT Things API
+  description: 'IoT
+
+    IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
   x-logo:
     url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
     backgroundColor: '#FFFFFF'
@@ -24,6 +26,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot-2015-05-28.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +128,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     put:
       operationId: AttachThingPrincipal
-      description: <p>Attaches the specified principal to the specified thing. A principal can be X.509 certificates, Amazon Cognito identities or federated identities.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">AttachThingPrincipal</a> action.</p>
+      description: 'Attaches the specified principal to the specified thing. A principal can be X.509 certificates, Amazon Cognito identities or federated identities.
+
+
+        Requires permission to access the AttachThingPrincipal action.'
       responses:
         '200':
           description: Success
@@ -193,7 +199,13 @@ paths:
       - Things
     delete:
       operationId: DetachThingPrincipal
-      description: <p>Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p> <note> <p>This call is asynchronous. It might take several seconds for the detachment to propagate.</p> </note> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DetachThingPrincipal</a> action.</p>
+      description: 'Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.
+
+
+        This call is asynchronous. It might take several seconds for the detachment to propagate.
+
+
+        Requires permission to access the DetachThingPrincipal action.'
       responses:
         '200':
           description: Success
@@ -270,7 +282,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     put:
       operationId: CancelJobExecution
-      description: <p>Cancels the execution of a job for a given thing.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">CancelJobExecution</a> action.</p>
+      description: 'Cancels the execution of a job for a given thing.
+
+
+        Requires permission to access the CancelJobExecution action.'
       responses:
         '200':
           description: Success
@@ -367,7 +382,13 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateThing
-      description: <p>Creates a thing record in the registry. If this call is made multiple times using the same thing name and configuration, the call will succeed. If this call is made with the same thing name but different configuration a <code>ResourceAlreadyExistsException</code> is thrown.</p> <note> <p>This is a control plane operation. See <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html">Authorization</a> for information about authorizing control plane actions.</p> </note> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">CreateThing</a> action.</p>
+      description: 'Creates a thing record in the registry. If this call is made multiple times using the same thing name and configuration, the call will succeed. If this call is made with the same thing name but different configuration a ResourceAlreadyExistsException is thrown.
+
+
+        This is a control plane operation. See Authorization for information about authorizing control plane actions.
+
+
+        Requires permission to access the CreateThing action.'
       responses:
         '200':
           description: Success
@@ -466,7 +487,10 @@ paths:
       - Things
     delete:
       operationId: DeleteThing
-      description: <p>Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn't exist.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeleteThing</a> action.</p>
+      description: 'Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn''t exist.
+
+
+        Requires permission to access the DeleteThing action.'
       responses:
         '200':
           description: Success
@@ -540,7 +564,10 @@ paths:
       - Things
     get:
       operationId: DescribeThing
-      description: <p>Gets information about the specified thing.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DescribeThing</a> action.</p>
+      description: 'Gets information about the specified thing.
+
+
+        Requires permission to access the DescribeThing action.'
       responses:
         '200':
           description: Success
@@ -602,7 +629,10 @@ paths:
       - Things
     patch:
       operationId: UpdateThing
-      description: <p>Updates the data for a thing.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">UpdateThing</a> action.</p>
+      description: 'Updates the data for a thing.
+
+
+        Requires permission to access the UpdateThing action.'
       responses:
         '200':
           description: Success
@@ -710,7 +740,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     delete:
       operationId: DeleteJobExecution
-      description: <p>Deletes a job execution.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DeleteJobExecution</a> action.</p>
+      description: 'Deletes a job execution.
+
+
+        Requires permission to access the DeleteJobExecution action.'
       responses:
         '200':
           description: Success
@@ -799,7 +832,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: DescribeJobExecution
-      description: <p>Describes a job execution.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">DescribeJobExecution</a> action.</p>
+      description: 'Describes a job execution.
+
+
+        Requires permission to access the DescribeJobExecution action.'
       responses:
         '200':
           description: Success
@@ -873,7 +909,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListJobExecutionsForThing
-      description: <p>Lists the job executions for the specified thing.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListJobExecutionsForThing</a> action.</p>
+      description: 'Lists the job executions for the specified thing.
+
+
+        Requires permission to access the ListJobExecutionsForThing action.'
       responses:
         '200':
           description: Success
@@ -977,7 +1016,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListThingGroupsForThing
-      description: <p>List the thing groups to which the specified thing belongs.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListThingGroupsForThing</a> action.</p>
+      description: 'List the thing groups to which the specified thing belongs.
+
+
+        Requires permission to access the ListThingGroupsForThing action.'
       responses:
         '200':
           description: Success
@@ -1050,7 +1092,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListThingPrincipals
-      description: <p>Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListThingPrincipals</a> action.</p>
+      description: 'Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.
+
+
+        Requires permission to access the ListThingPrincipals action.'
       responses:
         '200':
           description: Success
@@ -1135,7 +1180,13 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: ListThings
-      description: <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b> parameters to filter your things. For example, calling <code>ListThings</code> with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute <b>Color</b> with the value <b>Red</b>. For more information, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/thing-registry.html#list-things">List Things</a> from the <i>Amazon Web Services IoT Core Developer Guide</i>.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">ListThings</a> action.</p> <note> <p>You will not be charged for calling this API if an <code>Access denied</code> error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned.</p> </note>
+      description: 'Lists your things. Use the attributeName and attributeValue parameters to filter your things. For example, calling ListThings with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute Color with the value Red. For more information, see List Things from the Amazon Web Services IoT Core Developer Guide.
+
+
+        Requires permission to access the ListThings action.
+
+
+        You will not be charged for calling this API if an Access denied error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned.'
       responses:
         '200':
           description: Success
@@ -1227,7 +1278,10 @@ paths:
       - Things
     post:
       operationId: RegisterThing
-      description: <p>Provisions a thing in the device registry. RegisterThing calls other IoT control plane APIs. These calls might exceed your account level <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot"> IoT Throttling Limits</a> and cause throttle errors. Please contact <a href="https://console.aws.amazon.com/support/home">Amazon Web Services Customer Support</a> to raise your throttling limits if necessary.</p> <p>Requires permission to access the <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions">RegisterThing</a> action.</p>
+      description: 'Provisions a thing in the device registry. RegisterThing calls other IoT control plane APIs. These calls might exceed your account level IoT Throttling Limits and cause throttle errors. Please contact Amazon Web Services Customer Support to raise your throttling limits if necessary.
+
+
+        Requires permission to access the RegisterThing action.'
       responses:
         '200':
           description: Success
@@ -1306,22 +1360,50 @@ paths:
       - Things
 components:
   schemas:
-    InternalFailureException: {}
+    PrincipalArn:
+      type: string
+    ThingAttributeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ThingAttribute'
+    DateType:
+      type: string
+      format: date-time
+    Forced:
+      type: boolean
+    DetailsValue:
+      type: string
+      pattern: '[^\p{C}]+'
+      minLength: 1
     Principals:
       type: array
       items:
         $ref: '#/components/schemas/PrincipalArn'
-    Attributes:
+    ConflictingResourceUpdateException: {}
+    ThingGroupArn:
+      type: string
+    Flag:
+      type: boolean
+    InvalidRequestException: {}
+    VersionConflictException: {}
+    ThingName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    ResourceNotFoundException: {}
+    JobExecutionStatusDetails:
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeValue'
-    ThrottlingException: {}
-    ThingGroupNameAndArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GroupNameAndArn'
-    ApproximateSecondsBeforeTimedOut:
-      type: integer
+      properties:
+        detailsMap:
+          allOf:
+          - $ref: '#/components/schemas/DetailsMap'
+          - description: The job execution status.
+      description: Details of the job execution status.
+    AttachThingPrincipalResponse:
+      type: object
+      properties: {}
+      description: The output from the AttachThingPrincipal operation.
     JobExecution:
       type: object
       properties:
@@ -1370,178 +1452,23 @@ components:
           - $ref: '#/components/schemas/ApproximateSecondsBeforeTimedOut'
           - description: The estimated number of seconds that remain before the job execution status will be changed to <code>TIMED_OUT</code>. The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The actual job execution timeout can occur up to 60 seconds later than the estimated duration. This value will not be included if the job execution has reached a terminal status.
       description: The job execution object represents the execution of a job on a particular device.
-    DetailsValue:
-      type: string
-      pattern: '[^\p{C}]+'
-      minLength: 1
-    ClientId:
-      type: string
-    BillingGroupName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    DateType:
-      type: string
-      format: date-time
-    ListThingGroupsForThingResponse:
-      type: object
-      properties:
-        thingGroups:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupNameAndArnList'
-          - description: The thing groups.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    JobExecutionSummaryForThingList:
-      type: array
-      items:
-        $ref: '#/components/schemas/JobExecutionSummaryForThing'
-    ThingAttribute:
-      type: object
-      properties:
-        thingName:
-          allOf:
-          - $ref: '#/components/schemas/ThingName'
-          - description: The name of the thing.
-        thingTypeName:
-          allOf:
-          - $ref: '#/components/schemas/ThingTypeName'
-          - description: The name of the thing type, if the thing has been associated with a type.
-        thingArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingArn'
-          - description: The thing ARN.
-        attributes:
-          allOf:
-          - $ref: '#/components/schemas/Attributes'
-          - description: A list of thing attributes which are name-value pairs.
-        version:
-          allOf:
-          - $ref: '#/components/schemas/Version'
-          - description: The version of the thing record in the registry.
-      description: The properties of the thing, including thing name, thing type name, and a list of thing attributes.
-    CertificatePem:
-      type: string
-      pattern: '[\s\S]*'
-      description: The PEM of a certificate.
-      minLength: 1
-      maxLength: 65536
-    ResourceRegistrationFailureException: {}
-    ResourceAlreadyExistsException: {}
-    JobExecutionStatus:
-      type: string
-      enum:
-      - QUEUED
-      - IN_PROGRESS
-      - SUCCEEDED
-      - FAILED
-      - TIMED_OUT
-      - REJECTED
-      - REMOVED
-      - CANCELED
-    ResourceArns:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ResourceArn'
-    RetryAttempt:
+    VersionNumber:
       type: integer
-    ThingGroupArn:
-      type: string
-    Flag:
-      type: boolean
-    InvalidRequestException: {}
-    ListThingsResponse:
-      type: object
-      properties:
-        things:
-          allOf:
-          - $ref: '#/components/schemas/ThingAttributeList'
-          - description: The things.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
-      description: The output from the ListThings operation.
-    ResourceArn:
-      type: string
-    UpdateThingResponse:
-      type: object
-      properties: {}
-      description: The output from the UpdateThing operation.
     ThingGroupName:
       type: string
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    Forced:
-      type: boolean
-    JobExecutionSummaryForThing:
-      type: object
-      properties:
-        jobId:
-          allOf:
-          - $ref: '#/components/schemas/JobId'
-          - description: The unique identifier you assigned to this job when it was created.
-        jobExecutionSummary:
-          allOf:
-          - $ref: '#/components/schemas/JobExecutionSummary'
-          - description: Contains a subset of information about a job execution.
-      description: The job execution summary for a thing.
-    UnauthorizedException: {}
-    ThingId:
+    ThrottlingException: {}
+    ThingArn:
       type: string
-    PrincipalArn:
+    ServiceUnavailableException: {}
+    NextToken:
       type: string
-    ThingTypeName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    ListJobExecutionsForThingResponse:
+    UpdateThingResponse:
       type: object
-      properties:
-        executionSummaries:
-          allOf:
-          - $ref: '#/components/schemas/JobExecutionSummaryForThingList'
-          - description: A list of job execution summaries.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token for the next set of results, or <b>null</b> if there are no additional results.
-    RegisterThingResponse:
-      type: object
-      properties:
-        certificatePem:
-          allOf:
-          - $ref: '#/components/schemas/CertificatePem'
-          - description: The certificate data, in PEM format.
-        resourceArns:
-          allOf:
-          - $ref: '#/components/schemas/ResourceArns'
-          - description: ARNs for the generated resources.
-    DetailsMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/DetailsValue'
-    CreateThingResponse:
-      type: object
-      properties:
-        thingName:
-          allOf:
-          - $ref: '#/components/schemas/ThingName'
-          - description: The name of the new thing.
-        thingArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingArn'
-          - description: The ARN of the new thing.
-        thingId:
-          allOf:
-          - $ref: '#/components/schemas/ThingId'
-          - description: The thing ID.
-      description: The output of the CreateThing operation.
+      properties: {}
+      description: The output from the UpdateThing operation.
     JobExecutionSummary:
       type: object
       properties:
@@ -1570,21 +1497,170 @@ components:
           - $ref: '#/components/schemas/RetryAttempt'
           - description: The number that indicates how many retry attempts have been completed for this job on this device.
       description: The job execution summary.
-    VersionNumber:
-      type: integer
-    ThingArn:
+    CertificatePem:
       type: string
-    ConflictingResourceUpdateException: {}
-    ServiceUnavailableException: {}
+      pattern: '[\s\S]*'
+      description: The PEM of a certificate.
+      minLength: 1
+      maxLength: 65536
+    ListThingGroupsForThingResponse:
+      type: object
+      properties:
+        thingGroups:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupNameAndArnList'
+          - description: The thing groups.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    AttributeValue:
+      type: string
+      pattern: '[a-zA-Z0-9_.,@/:#-]*'
+      maxLength: 800
+    ExecutionNumber:
+      type: integer
+    JobExecutionSummaryForThingList:
+      type: array
+      items:
+        $ref: '#/components/schemas/JobExecutionSummaryForThing'
+    ApproximateSecondsBeforeTimedOut:
+      type: integer
     Value:
       type: string
       pattern: '[\s\S]*'
       minLength: 0
       maxLength: 4096
-    AttributeValue:
+    ThingTypeName:
       type: string
-      pattern: '[a-zA-Z0-9_.,@/:#-]*'
-      maxLength: 800
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    JobExecutionSummaryForThing:
+      type: object
+      properties:
+        jobId:
+          allOf:
+          - $ref: '#/components/schemas/JobId'
+          - description: The unique identifier you assigned to this job when it was created.
+        jobExecutionSummary:
+          allOf:
+          - $ref: '#/components/schemas/JobExecutionSummary'
+          - description: Contains a subset of information about a job execution.
+      description: The job execution summary for a thing.
+    RetryAttempt:
+      type: integer
+    ThingGroupNameAndArnList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GroupNameAndArn'
+    ResourceArns:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ResourceArn'
+    Version:
+      type: integer
+    DescribeJobExecutionResponse:
+      type: object
+      properties:
+        execution:
+          allOf:
+          - $ref: '#/components/schemas/JobExecution'
+          - description: Information about the job execution.
+    InvalidStateTransitionException: {}
+    DetachThingPrincipalResponse:
+      type: object
+      properties: {}
+      description: The output from the DetachThingPrincipal operation.
+    Attributes:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
+    ListThingsResponse:
+      type: object
+      properties:
+        things:
+          allOf:
+          - $ref: '#/components/schemas/ThingAttributeList'
+          - description: The things.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
+      description: The output from the ListThings operation.
+    BillingGroupName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    DetailsMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/DetailsValue'
+    JobExecutionStatus:
+      type: string
+      enum:
+      - QUEUED
+      - IN_PROGRESS
+      - SUCCEEDED
+      - FAILED
+      - TIMED_OUT
+      - REJECTED
+      - REMOVED
+      - CANCELED
+    JobId:
+      type: string
+      pattern: '[a-zA-Z0-9_-]+'
+      minLength: 1
+      maxLength: 64
+    ResourceArn:
+      type: string
+    DeleteThingResponse:
+      type: object
+      properties: {}
+      description: The output of the DeleteThing operation.
+    ThingAttribute:
+      type: object
+      properties:
+        thingName:
+          allOf:
+          - $ref: '#/components/schemas/ThingName'
+          - description: The name of the thing.
+        thingTypeName:
+          allOf:
+          - $ref: '#/components/schemas/ThingTypeName'
+          - description: The name of the thing type, if the thing has been associated with a type.
+        thingArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingArn'
+          - description: The thing ARN.
+        attributes:
+          allOf:
+          - $ref: '#/components/schemas/Attributes'
+          - description: A list of thing attributes which are name-value pairs.
+        version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          - description: The version of the thing record in the registry.
+      description: The properties of the thing, including thing name, thing type name, and a list of thing attributes.
+    ListThingPrincipalsResponse:
+      type: object
+      properties:
+        principals:
+          allOf:
+          - $ref: '#/components/schemas/Principals'
+          - description: The principals associated with the thing.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+      description: The output from the ListThingPrincipals operation.
+    ThingId:
+      type: string
+    ClientId:
+      type: string
+    ResourceAlreadyExistsException: {}
+    InternalFailureException: {}
     DescribeThingResponse:
       type: object
       properties:
@@ -1621,41 +1697,7 @@ components:
           - $ref: '#/components/schemas/BillingGroupName'
           - description: The name of the billing group the thing belongs to.
       description: The output from the DescribeThing operation.
-    NextToken:
-      type: string
-    ExecutionNumber:
-      type: integer
-    DescribeJobExecutionResponse:
-      type: object
-      properties:
-        execution:
-          allOf:
-          - $ref: '#/components/schemas/JobExecution'
-          - description: Information about the job execution.
-    JobId:
-      type: string
-      pattern: '[a-zA-Z0-9_-]+'
-      minLength: 1
-      maxLength: 64
-    VersionConflictException: {}
-    InvalidStateTransitionException: {}
-    ListThingPrincipalsResponse:
-      type: object
-      properties:
-        principals:
-          allOf:
-          - $ref: '#/components/schemas/Principals'
-          - description: The principals associated with the thing.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-      description: The output from the ListThingPrincipals operation.
-    ThingName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
+    UnauthorizedException: {}
     GroupNameAndArn:
       type: object
       properties:
@@ -1668,54 +1710,54 @@ components:
           - $ref: '#/components/schemas/ThingGroupArn'
           - description: The group ARN.
       description: The name and ARN of a group.
-    ThingAttributeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ThingAttribute'
-    ResourceNotFoundException: {}
-    DeleteThingResponse:
-      type: object
-      properties: {}
-      description: The output of the DeleteThing operation.
-    JobExecutionStatusDetails:
+    ResourceRegistrationFailureException: {}
+    RegisterThingResponse:
       type: object
       properties:
-        detailsMap:
+        certificatePem:
           allOf:
-          - $ref: '#/components/schemas/DetailsMap'
-          - description: The job execution status.
-      description: Details of the job execution status.
-    DetachThingPrincipalResponse:
+          - $ref: '#/components/schemas/CertificatePem'
+          - description: The certificate data, in PEM format.
+        resourceArns:
+          allOf:
+          - $ref: '#/components/schemas/ResourceArns'
+          - description: ARNs for the generated resources.
+    ListJobExecutionsForThingResponse:
       type: object
-      properties: {}
-      description: The output from the DetachThingPrincipal operation.
-    AttachThingPrincipalResponse:
+      properties:
+        executionSummaries:
+          allOf:
+          - $ref: '#/components/schemas/JobExecutionSummaryForThingList'
+          - description: A list of job execution summaries.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token for the next set of results, or <b>null</b> if there are no additional results.
+    CreateThingResponse:
       type: object
-      properties: {}
-      description: The output from the AttachThingPrincipal operation.
-    Version:
-      type: integer
+      properties:
+        thingName:
+          allOf:
+          - $ref: '#/components/schemas/ThingName'
+          - description: The name of the new thing.
+        thingArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingArn'
+          - description: The ARN of the new thing.
+        thingId:
+          allOf:
+          - $ref: '#/components/schemas/ThingId'
+          - description: The thing ID.
+      description: The output of the CreateThing operation.
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -1732,8 +1774,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
