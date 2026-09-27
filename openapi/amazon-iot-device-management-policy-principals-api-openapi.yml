@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: 2015-05-28
   x-release: v4
-  title: AWS IoT Tags#resource Arn API
+  title: AWS IoT Policy Principals API
   description: 'IoT
 
     IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud.'
@@ -115,9 +115,9 @@ servers:
 security:
 - hmac: []
 tags:
-- name: Tags#resourceArn
+- name: Policy Principals
 paths:
-  /tags#resourceArn:
+  /policy-principals#x-amzn-iot-policy:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
     - $ref: '#/components/parameters/X-Amz-Date'
@@ -127,77 +127,106 @@ paths:
     - $ref: '#/components/parameters/X-Amz-Signature'
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
-      operationId: ListTagsForResource
-      description: 'Lists the tags (metadata) you have assigned to the resource.
+      deprecated: true
+      operationId: ListPolicyPrincipals
+      description: 'Lists the principals associated with the specified policy.
 
 
-        Requires permission to access the ListTagsForResource action.'
+        Note: This action is deprecated and works as expected for backward compatibility, but we won''t add enhancements. Use ListTargetsForPolicy instead.
+
+
+        Requires permission to access the ListPolicyPrincipals action.'
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTagsForResourceResponse'
+                $ref: '#/components/schemas/ListPolicyPrincipalsResponse'
         '480':
-          description: InvalidRequestException
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InvalidRequestException'
-        '481':
-          description: InternalFailureException
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InternalFailureException'
-        '482':
           description: ResourceNotFoundException
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceNotFoundException'
-        '483':
+        '481':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '482':
           description: ThrottlingException
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ThrottlingException'
+        '483':
+          description: UnauthorizedException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedException'
+        '484':
+          description: ServiceUnavailableException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailableException'
+        '485':
+          description: InternalFailureException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalFailureException'
       parameters:
-      - name: resourceArn
-        in: query
+      - name: x-amzn-iot-policy
+        in: header
         required: true
-        description: The ARN of the resource.
+        description: The policy name.
         schema:
           type: string
-      - name: nextToken
+          pattern: '[\w+=,.@-]+'
+          minLength: 1
+          maxLength: 128
+      - name: marker
         in: query
         required: false
-        description: To retrieve the next set of results, the <code>nextToken</code> value from a previous response; otherwise <b>null</b> to receive the first set of results.
+        description: The marker for the next set of results.
         schema:
           type: string
-      summary: Amazon IoT Device Management List Tags for Resource
+          pattern: '[A-Za-z0-9+/]+={0,2}'
+          maxLength: 1024
+      - name: pageSize
+        in: query
+        required: false
+        description: The result page size.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 250
+      - name: isAscendingOrder
+        in: query
+        required: false
+        description: Specifies the order for results. If true, the results are returned in ascending creation order.
+        schema:
+          type: boolean
+      summary: Amazon IoT Device Management List Policy Principals
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
       tags:
-      - Tags#resourceArn
+      - Policy Principals
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -214,63 +243,53 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
   schemas:
-    TagList:
+    ListPolicyPrincipalsResponse:
+      type: object
+      properties:
+        principals:
+          allOf:
+          - $ref: '#/components/schemas/Principals'
+          - description: The descriptions of the principals.
+        nextMarker:
+          allOf:
+          - $ref: '#/components/schemas/Marker'
+          - description: The marker for the next set of results, or null if there are no additional results.
+      description: The output from the ListPolicyPrincipals operation.
+    ResourceNotFoundException: {}
+    Marker:
+      type: string
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
+    Principals:
       type: array
       items:
-        $ref: '#/components/schemas/Tag'
-    NextToken:
-      type: string
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    InvalidRequestException: {}
+        $ref: '#/components/schemas/PrincipalArn'
     InternalFailureException: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
-    ListTagsForResourceResponse:
-      type: object
-      properties:
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/TagList'
-          - description: The list of tags assigned to the resource.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    ResourceNotFoundException: {}
     ThrottlingException: {}
+    PrincipalArn:
+      type: string
+    InvalidRequestException: {}
+    UnauthorizedException: {}
+    ServiceUnavailableException: {}
   securitySchemes:
     hmac:
       type: apiKey

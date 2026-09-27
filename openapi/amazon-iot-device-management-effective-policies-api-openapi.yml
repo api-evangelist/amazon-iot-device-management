@@ -211,56 +211,27 @@ paths:
       tags:
       - Effective Policies
 components:
-  schemas:
-    LimitExceededException: {}
-    PolicyDocument:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 0
-      maxLength: 404600
-    InvalidRequestException: {}
-    GetEffectivePoliciesResponse:
-      type: object
-      properties:
-        effectivePolicies:
-          allOf:
-          - $ref: '#/components/schemas/EffectivePolicies'
-          - description: The effective policies.
-    ResourceNotFoundException: {}
-    PolicyArn:
-      type: string
-    ThrottlingException: {}
-    ServiceUnavailableException: {}
-    EffectivePolicies:
-      type: array
-      items:
-        $ref: '#/components/schemas/EffectivePolicy'
-    PolicyName:
-      type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
-    InternalFailureException: {}
-    UnauthorizedException: {}
-    EffectivePolicy:
-      type: object
-      properties:
-        policyName:
-          allOf:
-          - $ref: '#/components/schemas/PolicyName'
-          - description: The policy name.
-        policyArn:
-          allOf:
-          - $ref: '#/components/schemas/PolicyArn'
-          - description: The policy ARN.
-        policyDocument:
-          allOf:
-          - $ref: '#/components/schemas/PolicyDocument'
-          - description: The IAM policy document.
-      description: The policy that has the effect on the authorization results.
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -277,30 +248,59 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
+  schemas:
+    ResourceNotFoundException: {}
+    UnauthorizedException: {}
+    InternalFailureException: {}
+    EffectivePolicy:
+      type: object
+      properties:
+        policyName:
+          allOf:
+          - $ref: '#/components/schemas/PolicyName'
+          - description: The policy name.
+        policyArn:
+          allOf:
+          - $ref: '#/components/schemas/PolicyArn'
+          - description: The policy ARN.
+        policyDocument:
+          allOf:
+          - $ref: '#/components/schemas/PolicyDocument'
+          - description: The IAM policy document.
+      description: The policy that has the effect on the authorization results.
+    LimitExceededException: {}
+    EffectivePolicies:
+      type: array
+      items:
+        $ref: '#/components/schemas/EffectivePolicy'
+    InvalidRequestException: {}
+    ServiceUnavailableException: {}
+    PolicyArn:
+      type: string
+    PolicyName:
+      type: string
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
+    PolicyDocument:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 0
+      maxLength: 404600
+    ThrottlingException: {}
+    GetEffectivePoliciesResponse:
+      type: object
+      properties:
+        effectivePolicies:
+          allOf:
+          - $ref: '#/components/schemas/EffectivePolicies'
+          - description: The effective policies.
   securitySchemes:
     hmac:
       type: apiKey

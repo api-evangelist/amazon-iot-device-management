@@ -337,49 +337,27 @@ paths:
       tags:
       - Certificate
 components:
-  schemas:
-    CertificateValidationException: {}
-    InvalidRequestException: {}
-    ThrottlingException: {}
-    ServiceUnavailableException: {}
-    CertificateArn:
-      type: string
-    CertificateStateException: {}
-    RegisterCertificateWithoutCAResponse:
-      type: object
-      properties:
-        certificateArn:
-          allOf:
-          - $ref: '#/components/schemas/CertificateArn'
-          - description: The Amazon Resource Name (ARN) of the registered certificate.
-        certificateId:
-          allOf:
-          - $ref: '#/components/schemas/CertificateId'
-          - description: The ID of the registered certificate. (The last part of the certificate ARN contains the certificate ID.
-    CertificateId:
-      type: string
-      pattern: (0x)?[a-fA-F0-9]+
-      minLength: 64
-      maxLength: 64
-    CertificateConflictException: {}
-    ResourceAlreadyExistsException: {}
-    RegisterCertificateResponse:
-      type: object
-      properties:
-        certificateArn:
-          allOf:
-          - $ref: '#/components/schemas/CertificateArn'
-          - description: The certificate ARN.
-        certificateId:
-          allOf:
-          - $ref: '#/components/schemas/CertificateId'
-          - description: The certificate identifier.
-      description: The output from the RegisterCertificate operation.
-    InternalFailureException: {}
-    UnauthorizedException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -396,30 +374,52 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
+  schemas:
+    CertificateArn:
+      type: string
+    CertificateValidationException: {}
+    UnauthorizedException: {}
+    InternalFailureException: {}
+    ResourceAlreadyExistsException: {}
+    RegisterCertificateWithoutCAResponse:
+      type: object
+      properties:
+        certificateArn:
+          allOf:
+          - $ref: '#/components/schemas/CertificateArn'
+          - description: The Amazon Resource Name (ARN) of the registered certificate.
+        certificateId:
+          allOf:
+          - $ref: '#/components/schemas/CertificateId'
+          - description: The ID of the registered certificate. (The last part of the certificate ARN contains the certificate ID.
+    CertificateId:
+      type: string
+      pattern: (0x)?[a-fA-F0-9]+
+      minLength: 64
+      maxLength: 64
+    InvalidRequestException: {}
+    ServiceUnavailableException: {}
+    CertificateConflictException: {}
+    CertificateStateException: {}
+    ThrottlingException: {}
+    RegisterCertificateResponse:
+      type: object
+      properties:
+        certificateArn:
+          allOf:
+          - $ref: '#/components/schemas/CertificateArn'
+          - description: The certificate ARN.
+        certificateId:
+          allOf:
+          - $ref: '#/components/schemas/CertificateId'
+          - description: The certificate identifier.
+      description: The output from the RegisterCertificate operation.
   securitySchemes:
     hmac:
       type: apiKey

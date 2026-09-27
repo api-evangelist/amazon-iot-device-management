@@ -179,21 +179,41 @@ paths:
       tags:
       - Custom Metrics
 components:
+  schemas:
+    NextToken:
+      type: string
+    MetricName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    MetricNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/MetricName'
+    ListCustomMetricsResponse:
+      type: object
+      properties:
+        metricNames:
+          allOf:
+          - $ref: '#/components/schemas/MetricNames'
+          - description: ' The name of the custom metric. '
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: ' A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results. '
+    ThrottlingException: {}
+    InvalidRequestException: {}
+    InternalFailureException: {}
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -210,44 +230,24 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-  schemas:
-    NextToken:
-      type: string
-    MetricNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/MetricName'
-    InvalidRequestException: {}
-    ListCustomMetricsResponse:
-      type: object
-      properties:
-        metricNames:
-          allOf:
-          - $ref: '#/components/schemas/MetricNames'
-          - description: ' The name of the custom metric. '
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: ' A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results. '
-    InternalFailureException: {}
-    MetricName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    ThrottlingException: {}
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

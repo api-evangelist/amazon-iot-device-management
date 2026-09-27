@@ -226,47 +226,15 @@ paths:
       tags:
       - Logging Options
 components:
-  schemas:
-    LogLevel:
-      type: string
-      enum:
-      - DEBUG
-      - INFO
-      - ERROR
-      - WARN
-      - DISABLED
-    ServiceUnavailableException: {}
-    InvalidRequestException: {}
-    AwsArn:
-      type: string
-    GetLoggingOptionsResponse:
-      type: object
-      properties:
-        roleArn:
-          allOf:
-          - $ref: '#/components/schemas/AwsArn'
-          - description: The ARN of the IAM role that grants access.
-        logLevel:
-          allOf:
-          - $ref: '#/components/schemas/LogLevel'
-          - description: The logging level.
-      description: The output from the GetLoggingOptions operation.
-    InternalException: {}
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -283,18 +251,50 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+  schemas:
+    AwsArn:
+      type: string
+    LogLevel:
+      type: string
+      enum:
+      - DEBUG
+      - INFO
+      - ERROR
+      - WARN
+      - DISABLED
+    GetLoggingOptionsResponse:
+      type: object
+      properties:
+        roleArn:
+          allOf:
+          - $ref: '#/components/schemas/AwsArn'
+          - description: The ARN of the IAM role that grants access.
+        logLevel:
+          allOf:
+          - $ref: '#/components/schemas/LogLevel'
+          - description: The logging level.
+      description: The output from the GetLoggingOptions operation.
+    InvalidRequestException: {}
+    InternalException: {}
+    ServiceUnavailableException: {}
   securitySchemes:
     hmac:
       type: apiKey

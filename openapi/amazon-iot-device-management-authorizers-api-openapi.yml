@@ -209,23 +209,6 @@ paths:
       - Authorizers
 components:
   schemas:
-    Authorizers:
-      type: array
-      items:
-        $ref: '#/components/schemas/AuthorizerSummary'
-    AuthorizerSummary:
-      type: object
-      properties:
-        authorizerName:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerName'
-          - description: The authorizer name.
-        authorizerArn:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerArn'
-          - description: The authorizer ARN.
-      description: The authorizer summary.
-    ServiceUnavailableException: {}
     AuthorizerArn:
       type: string
       maxLength: 2048
@@ -240,34 +223,45 @@ components:
           allOf:
           - $ref: '#/components/schemas/Marker'
           - description: A marker used to get the next set of results.
-    InvalidRequestException: {}
-    InternalFailureException: {}
     Marker:
       type: string
       pattern: '[A-Za-z0-9+/]+={0,2}'
       maxLength: 1024
-    UnauthorizedException: {}
+    Authorizers:
+      type: array
+      items:
+        $ref: '#/components/schemas/AuthorizerSummary'
+    InternalFailureException: {}
+    ThrottlingException: {}
     AuthorizerName:
       type: string
       pattern: '[\w=,@-]+'
       minLength: 1
       maxLength: 128
-    ThrottlingException: {}
+    InvalidRequestException: {}
+    UnauthorizedException: {}
+    AuthorizerSummary:
+      type: object
+      properties:
+        authorizerName:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerName'
+          - description: The authorizer name.
+        authorizerArn:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerArn'
+          - description: The authorizer ARN.
+      description: The authorizer summary.
+    ServiceUnavailableException: {}
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -284,14 +278,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string

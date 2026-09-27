@@ -217,55 +217,27 @@ paths:
       tags:
       - Attached Policies
 components:
-  schemas:
-    LimitExceededException: {}
-    InvalidRequestException: {}
-    Marker:
-      type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
-    ResourceNotFoundException: {}
-    PolicyArn:
-      type: string
-    ThrottlingException: {}
-    ServiceUnavailableException: {}
-    Policy:
-      type: object
-      properties:
-        policyName:
-          allOf:
-          - $ref: '#/components/schemas/PolicyName'
-          - description: The policy name.
-        policyArn:
-          allOf:
-          - $ref: '#/components/schemas/PolicyArn'
-          - description: The policy ARN.
-      description: Describes an IoT policy.
-    PolicyName:
-      type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
-    Policies:
-      type: array
-      items:
-        $ref: '#/components/schemas/Policy'
-    ListAttachedPoliciesResponse:
-      type: object
-      properties:
-        policies:
-          allOf:
-          - $ref: '#/components/schemas/Policies'
-          - description: The policies.
-        nextMarker:
-          allOf:
-          - $ref: '#/components/schemas/Marker'
-          - description: The token to retrieve the next set of results, or ``null`` if there are no more results.
-    InternalFailureException: {}
-    UnauthorizedException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -282,30 +254,58 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
+  schemas:
+    ResourceNotFoundException: {}
+    Policies:
+      type: array
+      items:
+        $ref: '#/components/schemas/Policy'
+    UnauthorizedException: {}
+    InternalFailureException: {}
+    ListAttachedPoliciesResponse:
+      type: object
+      properties:
+        policies:
+          allOf:
+          - $ref: '#/components/schemas/Policies'
+          - description: The policies.
+        nextMarker:
+          allOf:
+          - $ref: '#/components/schemas/Marker'
+          - description: The token to retrieve the next set of results, or ``null`` if there are no more results.
+    LimitExceededException: {}
+    Policy:
+      type: object
+      properties:
+        policyName:
+          allOf:
+          - $ref: '#/components/schemas/PolicyName'
+          - description: The policy name.
+        policyArn:
+          allOf:
+          - $ref: '#/components/schemas/PolicyArn'
+          - description: The policy ARN.
+      description: Describes an IoT policy.
+    InvalidRequestException: {}
+    ServiceUnavailableException: {}
+    PolicyArn:
+      type: string
+    PolicyName:
+      type: string
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
+    Marker:
+      type: string
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
+    ThrottlingException: {}
   securitySchemes:
     hmac:
       type: apiKey

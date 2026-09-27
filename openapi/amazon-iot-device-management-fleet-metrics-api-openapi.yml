@@ -192,10 +192,10 @@ paths:
       - Fleet Metrics
 components:
   schemas:
-    FleetMetricNameAndArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FleetMetricNameAndArn'
+    NextToken:
+      type: string
+    FleetMetricArn:
+      type: string
     FleetMetricNameAndArn:
       type: object
       properties:
@@ -208,19 +208,19 @@ components:
           - $ref: '#/components/schemas/FleetMetricArn'
           - description: The fleet metric ARN.
       description: The name and ARN of a fleet metric.
-    ServiceUnavailableException: {}
-    NextToken:
-      type: string
     FleetMetricName:
       type: string
       pattern: '[a-zA-Z0-9_\-\.]+'
       minLength: 1
       maxLength: 128
-    FleetMetricArn:
-      type: string
-    InvalidRequestException: {}
-    InternalFailureException: {}
+    FleetMetricNameAndArnList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FleetMetricNameAndArn'
     UnauthorizedException: {}
+    InternalFailureException: {}
+    ThrottlingException: {}
+    InvalidRequestException: {}
     ListFleetMetricsResponse:
       type: object
       properties:
@@ -232,22 +232,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token for the next set of results. Will not be returned if the operation has returned all results.
-    ThrottlingException: {}
+    ServiceUnavailableException: {}
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -264,14 +258,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string

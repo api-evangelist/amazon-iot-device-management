@@ -194,34 +194,66 @@ paths:
       tags:
       - Behavior Model Training
 components:
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    InvalidRequestException: {}
     ResourceNotFoundException: {}
     Timestamp:
       type: string
       format: date-time
-    BehaviorModelTrainingSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/BehaviorModelTrainingSummary'
-    SecurityProfileName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    ThrottlingException: {}
-    NextToken:
-      type: string
-    DataCollectionPercentage:
-      type: number
-      format: double
-      minimum: 0
-      maximum: 100
-    BehaviorName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
+    InternalFailureException: {}
+    GetBehaviorModelTrainingSummariesResponse:
+      type: object
+      properties:
+        summaries:
+          allOf:
+          - $ref: '#/components/schemas/BehaviorModelTrainingSummaries'
+          - description: ' A list of all ML Detect behaviors and their model status for a given Security Profile. '
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: ' A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results. '
     BehaviorModelTrainingSummary:
       type: object
       properties:
@@ -250,67 +282,35 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: ' The date the model was last refreshed. '
       description: ' The summary of an ML Detect behavior model. '
-    GetBehaviorModelTrainingSummariesResponse:
-      type: object
-      properties:
-        summaries:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorModelTrainingSummaries'
-          - description: ' A list of all ML Detect behaviors and their model status for a given Security Profile. '
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: ' A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results. '
     ModelStatus:
       type: string
       enum:
       - PENDING_BUILD
       - ACTIVE
       - EXPIRED
-    InternalFailureException: {}
-  parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
+    BehaviorModelTrainingSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/BehaviorModelTrainingSummary'
+    InvalidRequestException: {}
+    DataCollectionPercentage:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 100
+    SecurityProfileName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    NextToken:
+      type: string
+    BehaviorName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    ThrottlingException: {}
   securitySchemes:
     hmac:
       type: apiKey

@@ -210,36 +210,6 @@ paths:
       - Event Configurations
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
@@ -252,17 +222,37 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    Configuration:
-      type: object
-      properties:
-        Enabled:
-          allOf:
-          - $ref: '#/components/schemas/Enabled'
-          - description: True to enable the configuration.
-      description: Configuration.
-    Enabled:
-      type: boolean
     DescribeEventConfigurationsResponse:
       type: object
       properties:
@@ -278,22 +268,32 @@ components:
           allOf:
           - $ref: '#/components/schemas/LastModifiedDate'
           - description: The date the event configurations were last modified.
-    InvalidRequestException: {}
-    InternalFailureException: {}
+    UpdateEventConfigurationsResponse:
+      type: object
+      properties: {}
+    Configuration:
+      type: object
+      properties:
+        Enabled:
+          allOf:
+          - $ref: '#/components/schemas/Enabled'
+          - description: True to enable the configuration.
+      description: Configuration.
+    Enabled:
+      type: boolean
+    ThrottlingException: {}
     EventConfigurations:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/Configuration'
-    CreationDate:
-      type: string
-      format: date-time
-    UpdateEventConfigurationsResponse:
-      type: object
-      properties: {}
+    InvalidRequestException: {}
     LastModifiedDate:
       type: string
       format: date-time
-    ThrottlingException: {}
+    CreationDate:
+      type: string
+      format: date-time
+    InternalFailureException: {}
   securitySchemes:
     hmac:
       type: apiKey

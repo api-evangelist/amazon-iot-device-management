@@ -399,34 +399,18 @@ paths:
       - Dynamic Thing Groups
 components:
   schemas:
-    IndexName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    LimitExceededException: {}
-    Flag:
-      type: boolean
-    ThingGroupArn:
-      type: string
-    UpdateDynamicThingGroupResponse:
-      type: object
-      properties:
-        version:
-          allOf:
-          - $ref: '#/components/schemas/Version'
-          - description: The dynamic thing group version.
-    InvalidRequestException: {}
     VersionConflictException: {}
-    QueryVersion:
-      type: string
-    ResourceNotFoundException: {}
     ThingGroupName:
       type: string
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    ThrottlingException: {}
+    ResourceNotFoundException: {}
+    ThingGroupId:
+      type: string
+      pattern: '[a-zA-Z0-9\-]+'
+      minLength: 1
+      maxLength: 128
     CreateDynamicThingGroupResponse:
       type: object
       properties:
@@ -454,19 +438,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/QueryVersion'
           - description: The dynamic thing group query version.
-    Version:
-      type: integer
-    ThingGroupDescription:
+    Flag:
+      type: boolean
+    TagValue:
       type: string
-      pattern: '[\p{Graph}\x20]*'
-      maxLength: 2028
-    QueryString:
+      minLength: 0
+      maxLength: 256
+    InternalFailureException: {}
+    InvalidQueryException: {}
+    ResourceAlreadyExistsException: {}
+    TagKey:
       type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
       minLength: 1
-    Attributes:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeValue'
+      maxLength: 128
     Tag:
       type: object
       required:
@@ -481,10 +466,29 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    TagValue:
+    QueryVersion:
       type: string
-      minLength: 0
-      maxLength: 256
+    ThingGroupDescription:
+      type: string
+      pattern: '[\p{Graph}\x20]*'
+      maxLength: 2028
+    LimitExceededException: {}
+    Attributes:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
+    UpdateDynamicThingGroupResponse:
+      type: object
+      properties:
+        version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          - description: The dynamic thing group version.
+    AttributeValue:
+      type: string
+      pattern: '[a-zA-Z0-9_.,@/:#-]*'
+      maxLength: 800
+    InvalidRequestException: {}
     AttributePayload:
       type: object
       properties:
@@ -497,29 +501,43 @@ components:
           - $ref: '#/components/schemas/Flag'
           - description: <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code> or <code>UpdateThingGroup</code>.</p> </note>
       description: The attribute payload.
-    TagKey:
+    Version:
+      type: integer
+    IndexName:
       type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    ResourceAlreadyExistsException: {}
-    InternalFailureException: {}
     DeleteDynamicThingGroupResponse:
       type: object
       properties: {}
-    AttributeValue:
+    ThingGroupArn:
       type: string
-      pattern: '[a-zA-Z0-9_.,@/:#-]*'
-      maxLength: 800
-    ThingGroupId:
+    ThrottlingException: {}
+    QueryString:
       type: string
-      pattern: '[a-zA-Z0-9\-]+'
       minLength: 1
-      maxLength: 128
-    InvalidQueryException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -536,26 +554,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

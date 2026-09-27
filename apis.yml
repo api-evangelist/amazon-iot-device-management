@@ -760,30 +760,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/faqs/
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
-- aid: >-
-    amazon-iot-device-management:amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api
-  name: Amazon IoT Device Management Metric Values#thingName&metricName&startTime&endTime API
-  description: >-
-    The Metric Values#thingName&metricName&startTime&endTime API from Amazon IoT Device Management — 1
-    operation(s) for metric values#thingname&metricname&starttime&endtime.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Metric Values#thingName&metricName&startTime&endTime
-  properties:
-  - type: OpenAPI
-    url: >-
-      openapi/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-mitigationactions-api
   name: Amazon IoT Device Management Mitigationactions API
   description: >-
@@ -815,29 +791,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-iot-device-management-policies-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
-- aid: >-
-    amazon-iot-device-management:amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api
-  name: Amazon IoT Device Management Policy Principals#x Amzn Iot Policy API
-  description: >-
-    The Policy Principals#x Amzn Iot Policy API from Amazon IoT Device Management — 1 operation(s) for
-    policy principals#x amzn iot policy.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Policy Principals#x Amzn Iot Policy
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
   - type: GettingStarted
@@ -880,30 +833,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-iot-device-management-principal-policies-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
-- aid: >-
-    amazon-iot-device-management:amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api
-  name: Amazon IoT Device Management Principal Policies#x Amzn Iot Principal API
-  description: >-
-    The Principal Policies#x Amzn Iot Principal API from Amazon IoT Device Management — 1 operation(s)
-    for principal policies#x amzn iot principal.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Principal Policies#x Amzn Iot Principal
-  properties:
-  - type: OpenAPI
-    url: >-
-      openapi/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
   - type: GettingStarted
@@ -1084,30 +1013,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/faqs/
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
-- aid: >-
-    amazon-iot-device-management:amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api
-  name: Amazon IoT Device Management Security Profiles For Target#securityProfileTargetArn API
-  description: >-
-    The Security Profiles For Target#securityProfileTargetArn API from Amazon IoT Device Management —
-    1 operation(s) for security profiles for target#securityprofiletargetarn.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Security Profiles For Target#securityProfileTargetArn
-  properties:
-  - type: OpenAPI
-    url: >-
-      openapi/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-streams-api
   name: Amazon IoT Device Management Streams API
   description: The Streams API from Amazon IoT Device Management — 2 operation(s) for streams.
@@ -1138,27 +1043,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-iot-device-management-tags-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
-- aid: amazon-iot-device-management:amazon-iot-device-management-tags-resourcearn-api
-  name: Amazon IoT Device Management Tags#resourceArn API
-  description: >-
-    The Tags#resourceArn API from Amazon IoT Device Management — 1 operation(s) for tags#resourcearn.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Tags#resourceArn
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-iot-device-management-tags-resourcearn-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
   - type: GettingStarted
@@ -1335,53 +1219,6 @@ apis:
     url: https://aws.amazon.com/iot-device-management/faqs/
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
-- aid: >-
-    amazon-iot-device-management:amazon-iot-device-management-v2logginglevel-targettype-targetname-api
-  name: Amazon IoT Device Management V2LoggingLevel#targetType&targetName API
-  description: >-
-    The V2LoggingLevel#targetType&targetName API from Amazon IoT Device Management — 1 operation(s) for
-    v2logginglevel#targettype&targetname.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - V2LoggingLevel#targetType&targetName
-  properties:
-  - type: OpenAPI
-    url: >-
-      openapi/amazon-iot-device-management-v2logginglevel-targettype-targetname-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
-- aid: >-
-    amazon-iot-device-management:amazon-iot-device-management-violation-events-starttime-endtime-api
-  name: Amazon IoT Device Management Violation Events#startTime&endTime API
-  description: >-
-    The Violation Events#startTime&endTime API from Amazon IoT Device Management — 1 operation(s) for
-    violation events#starttime&endtime.
-  humanURL: https://aws.amazon.com/iot-device-management/
-  baseURL: https://iot.amazonaws.com
-  tags:
-  - Violation Events#startTime&endTime
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-iot-device-management-violation-events-starttime-endtime-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
-  - type: Pricing
-    url: https://aws.amazon.com/iot-device-management/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/iot-device-management/faqs/
-  - type: GraphQL
-    url: graphql/amazon-iot-device-management-graphql.md
 - aid: amazon-iot-device-management:amazon-iot-device-management-violations-api
   name: Amazon IoT Device Management Violations API
   description: The Violations API from Amazon IoT Device Management — 1 operation(s) for violations.
@@ -1392,6 +1229,92 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-iot-device-management-violations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
+  - type: Pricing
+    url: https://aws.amazon.com/iot-device-management/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/iot-device-management/faqs/
+  - type: GraphQL
+    url: graphql/amazon-iot-device-management-graphql.md
+- aid: amazon-iot-device-management:amazon-iot-device-management-metric-values-api
+  name: Amazon IoT Device Management Metric Values API
+  description: >-
+    The Metric Values API from Amazon IoT Device Management — 1 operation(s) for metric values.
+  humanURL: https://aws.amazon.com/iot-device-management/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - Metric Values
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-iot-device-management-metric-values-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
+  - type: Pricing
+    url: https://aws.amazon.com/iot-device-management/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/iot-device-management/faqs/
+  - type: GraphQL
+    url: graphql/amazon-iot-device-management-graphql.md
+- aid: amazon-iot-device-management:amazon-iot-device-management-policy-principals-api
+  name: Amazon IoT Device Management Policy Principals API
+  description: >-
+    The Policy Principals API from Amazon IoT Device Management — 1 operation(s) for policy principals.
+  humanURL: https://aws.amazon.com/iot-device-management/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - Policy Principals
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-iot-device-management-policy-principals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
+  - type: Pricing
+    url: https://aws.amazon.com/iot-device-management/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/iot-device-management/faqs/
+  - type: GraphQL
+    url: graphql/amazon-iot-device-management-graphql.md
+- aid: >-
+    amazon-iot-device-management:amazon-iot-device-management-security-profiles-for-target-api
+  name: Amazon IoT Device Management Security Profiles For Target API
+  description: >-
+    The Security Profiles For Target API from Amazon IoT Device Management — 1 operation(s) for security
+    profiles for target.
+  humanURL: https://aws.amazon.com/iot-device-management/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - Security Profiles For Target
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-iot-device-management-security-profiles-for-target-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html
+  - type: Pricing
+    url: https://aws.amazon.com/iot-device-management/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/iot-device-management/faqs/
+  - type: GraphQL
+    url: graphql/amazon-iot-device-management-graphql.md
+- aid: amazon-iot-device-management:amazon-iot-device-management-violation-events-api
+  name: Amazon IoT Device Management Violation Events API
+  description: >-
+    The Violation Events API from Amazon IoT Device Management — 1 operation(s) for violation events.
+  humanURL: https://aws.amazon.com/iot-device-management/
+  baseURL: https://iot.amazonaws.com
+  tags:
+  - Violation Events
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-iot-device-management-violation-events-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/iot/latest/developerguide/iot-jobs.html
   - type: GettingStarted
@@ -1467,7 +1390,7 @@ apis:
 - aid: amazon-iot-device-management:amazon-iot-device-management-v2-logging-level-api
   name: Amazon IoT Device Management V2 Logging Level API
   description: >-
-    The V2 Logging Level API from Amazon IoT Device Management — 1 operation(s) for v2 logging level.
+    The V2 Logging Level API from Amazon IoT Device Management — 2 operation(s) for v2 logging level.
   humanURL: https://aws.amazon.com/iot-device-management/
   baseURL: https://iot.amazonaws.com
   tags:
@@ -1605,5 +1528,5 @@ integrations:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

@@ -117,6 +117,71 @@ security:
 tags:
 - name: Tags
 paths:
+  /tags#resourceArn:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: ListTagsForResource
+      description: 'Lists the tags (metadata) you have assigned to the resource.
+
+
+        Requires permission to access the ListTagsForResource action.'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceResponse'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: InternalFailureException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalFailureException'
+        '482':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '483':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+      parameters:
+      - name: resourceArn
+        in: query
+        required: true
+        description: The ARN of the resource.
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        required: false
+        description: To retrieve the next set of results, the <code>nextToken</code> value from a previous response; otherwise <b>null</b> to receive the first set of results.
+        schema:
+          type: string
+      summary: Amazon IoT Device Management List Tags for Resource
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Tags
   /tags:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -196,20 +261,20 @@ paths:
       - Tags
 components:
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
       required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -226,8 +291,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -239,17 +304,17 @@ components:
         type: string
       required: false
   schemas:
-    TagResourceResponse:
-      type: object
-      properties: {}
-    LimitExceededException: {}
+    ResourceNotFoundException: {}
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    InternalFailureException: {}
     TagKey:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
       minLength: 1
       maxLength: 128
-    InvalidRequestException: {}
-    InternalFailureException: {}
     Tag:
       type: object
       required:
@@ -264,11 +329,28 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    TagValue:
+    TagList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+    LimitExceededException: {}
+    InvalidRequestException: {}
+    TagResourceResponse:
+      type: object
+      properties: {}
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/TagList'
+          - description: The list of tags assigned to the resource.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    NextToken:
       type: string
-      minLength: 0
-      maxLength: 256
-    ResourceNotFoundException: {}
     ThrottlingException: {}
   securitySchemes:
     hmac:

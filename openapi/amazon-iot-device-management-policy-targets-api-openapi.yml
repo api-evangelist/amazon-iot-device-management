@@ -215,21 +215,17 @@ paths:
       - Policy Targets
 components:
   schemas:
-    ServiceUnavailableException: {}
+    PolicyTarget:
+      type: string
     PolicyTargets:
       type: array
       items:
         $ref: '#/components/schemas/PolicyTarget'
-    LimitExceededException: {}
     ResourceNotFoundException: {}
-    PolicyTarget:
-      type: string
-    InvalidRequestException: {}
+    LimitExceededException: {}
     InternalFailureException: {}
-    Marker:
-      type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
+    ThrottlingException: {}
+    InvalidRequestException: {}
     UnauthorizedException: {}
     ListTargetsForPolicyResponse:
       type: object
@@ -242,8 +238,30 @@ components:
           allOf:
           - $ref: '#/components/schemas/Marker'
           - description: A marker used to get the next set of results.
-    ThrottlingException: {}
+    Marker:
+      type: string
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
+    ServiceUnavailableException: {}
   parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -256,32 +274,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
