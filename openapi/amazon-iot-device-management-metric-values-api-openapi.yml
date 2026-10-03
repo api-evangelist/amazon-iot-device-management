@@ -228,58 +228,22 @@ paths:
       tags:
       - Metric Values
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    ResourceNotFoundException: {}
     Timestamp:
       type: string
       format: date-time
-    StringList:
-      type: array
-      items:
-        $ref: '#/components/schemas/stringValue'
+    InvalidRequestException: {}
+    ResourceNotFoundException: {}
+    Cidr:
+      type: string
+      pattern: '[a-fA-F0-9:\.\/]+'
+      minLength: 2
+      maxLength: 43
+    InternalFailureException: {}
+    Port:
+      type: integer
+      minimum: 0
+      maximum: 65535
     MetricValue:
       type: object
       properties:
@@ -308,6 +272,18 @@ components:
           - $ref: '#/components/schemas/StringList'
           - description: ' The string values of a metric. '
       description: The value to be compared with the <code>metric</code>.
+    ThrottlingException: {}
+    ListMetricValuesResponse:
+      type: object
+      properties:
+        metricDatumList:
+          allOf:
+          - $ref: '#/components/schemas/MetricDatumList'
+          - description: The data the thing reports for the metric during the specified time period.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
     MetricDatum:
       type: object
       properties:
@@ -320,55 +296,79 @@ components:
           - $ref: '#/components/schemas/MetricValue'
           - description: The value reported for the metric.
       description: A metric.
-    Ports:
+    StringList:
       type: array
       items:
-        $ref: '#/components/schemas/Port'
-    stringValue:
+        $ref: '#/components/schemas/stringValue'
+    NextToken:
       type: string
-    InternalFailureException: {}
-    Port:
-      type: integer
-      minimum: 0
-      maximum: 65535
-    ListMetricValuesResponse:
-      type: object
-      properties:
-        metricDatumList:
-          allOf:
-          - $ref: '#/components/schemas/MetricDatumList'
-          - description: The data the thing reports for the metric during the specified time period.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
     UnsignedLong:
       type: integer
       minimum: 0
-    InvalidRequestException: {}
-    Cidrs:
-      type: array
-      items:
-        $ref: '#/components/schemas/Cidr'
     Number:
       type: number
       format: double
+    stringValue:
+      type: string
     MetricDatumList:
       type: array
       items:
         $ref: '#/components/schemas/MetricDatum'
-    NextToken:
-      type: string
-    Cidr:
-      type: string
-      pattern: '[a-fA-F0-9:\.\/]+'
-      minLength: 2
-      maxLength: 43
     NumberList:
       type: array
       items:
         $ref: '#/components/schemas/Number'
-    ThrottlingException: {}
+    Cidrs:
+      type: array
+      items:
+        $ref: '#/components/schemas/Cidr'
+    Ports:
+      type: array
+      items:
+        $ref: '#/components/schemas/Port'
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

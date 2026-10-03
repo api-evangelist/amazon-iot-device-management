@@ -282,15 +282,17 @@ paths:
       tags:
       - Target Policies
 components:
+  schemas:
+    ResourceNotFoundException: {}
+    InvalidRequestException: {}
+    LimitExceededException: {}
+    InternalFailureException: {}
+    ServiceUnavailableException: {}
+    UnauthorizedException: {}
+    ThrottlingException: {}
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -301,14 +303,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -325,14 +327,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    ResourceNotFoundException: {}
-    LimitExceededException: {}
-    InternalFailureException: {}
-    ThrottlingException: {}
-    InvalidRequestException: {}
-    UnauthorizedException: {}
-    ServiceUnavailableException: {}
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

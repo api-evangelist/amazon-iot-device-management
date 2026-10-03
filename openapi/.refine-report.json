@@ -72,7 +72,7 @@
     "amazon-iot-device-management-violations-api-openapi.yml"
   ],
   "archived": [
-    "deleted 12 superseded output(s) from the previous generation"
+    "deleted 5 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -383,8 +383,8 @@
     "amazon-iot-device-management-openapi-original.yml: declared missing tag: V2LoggingOptions",
     "amazon-iot-device-management-openapi-original.yml: declared missing tag: Violation Events",
     "amazon-iot-device-management-openapi-original.yml: declared missing tag: Violations",
-    "superseded outputs removed: amazon-iot-device-management-domain-configurations-api-openapi.yml, amazon-iot-device-management-logging-options-api-openapi.yml, amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api-openapi.yml, amazon-iot-device-management-ota-updates-api-openapi.yml, amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api-openapi.yml \u2026",
-    "apis.yml register: written (+9 apis, 66 total)"
+    "superseded outputs removed: amazon-iot-device-management-domain-configurations-api-openapi.yml, amazon-iot-device-management-logging-options-api-openapi.yml, amazon-iot-device-management-ota-updates-api-openapi.yml, amazon-iot-device-management-v2-logging-level-api-openapi.yml, amazon-iot-device-management-v2-logging-options-api-openapi.yml",
+    "apis.yml register: written (+5 apis, 66 total)"
   ],
   "skipped": [
     "amazon-iot-device-management-accept-certificate-transfer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -423,14 +423,13 @@
     "amazon-iot-device-management-keys-and-certificate-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-logging-options-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-managed-job-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-iot-device-management-metric-values-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-mitigationactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-ota-updates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-iot-device-management-policy-principals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-policy-targets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-principal-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-principals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-provisioning-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-registrationcode-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -439,10 +438,9 @@
     "amazon-iot-device-management-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-security-profile-behaviors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-security-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-iot-device-management-security-profiles-for-target-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-streams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-tags-resourcearn-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-target-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-test-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-thing-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -453,8 +451,7 @@
     "amazon-iot-device-management-untag-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-v2-logging-level-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-v2-logging-options-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-v2logginglevel-targettype-targetname-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "amazon-iot-device-management-violation-events-starttime-endtime-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-iot-device-management-violation-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "amazon-iot-device-management-violations-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

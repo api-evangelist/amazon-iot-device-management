@@ -190,18 +190,18 @@ paths:
       - Untag
 components:
   schemas:
+    ResourceNotFoundException: {}
+    InvalidRequestException: {}
+    InternalFailureException: {}
+    ThrottlingException: {}
+    UntagResourceResponse:
+      type: object
+      properties: {}
     TagKey:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
       minLength: 1
       maxLength: 128
-    ResourceNotFoundException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    ThrottlingException: {}
-    InvalidRequestException: {}
-    InternalFailureException: {}
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
@@ -209,14 +209,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -227,8 +221,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -241,6 +235,12 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

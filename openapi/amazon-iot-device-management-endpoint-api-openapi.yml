@@ -179,6 +179,21 @@ paths:
       tags:
       - Endpoint
 components:
+  schemas:
+    InvalidRequestException: {}
+    DescribeEndpointResponse:
+      type: object
+      properties:
+        endpointAddress:
+          allOf:
+          - $ref: '#/components/schemas/EndpointAddress'
+          - description: 'The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.'
+      description: The output from the DescribeEndpoint operation.
+    InternalFailureException: {}
+    UnauthorizedException: {}
+    ThrottlingException: {}
+    EndpointAddress:
+      type: string
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
@@ -186,8 +201,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -204,12 +219,6 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
       in: header
@@ -222,21 +231,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    ThrottlingException: {}
-    DescribeEndpointResponse:
-      type: object
-      properties:
-        endpointAddress:
-          allOf:
-          - $ref: '#/components/schemas/EndpointAddress'
-          - description: 'The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.'
-      description: The output from the DescribeEndpoint operation.
-    InvalidRequestException: {}
-    EndpointAddress:
-      type: string
-    UnauthorizedException: {}
-    InternalFailureException: {}
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

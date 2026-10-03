@@ -212,15 +212,23 @@ paths:
       tags:
       - Reject Certificate Transfer
 components:
+  schemas:
+    ResourceNotFoundException: {}
+    InvalidRequestException: {}
+    TransferAlreadyCompletedException: {}
+    InternalFailureException: {}
+    ServiceUnavailableException: {}
+    UnauthorizedException: {}
+    ThrottlingException: {}
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -231,14 +239,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -255,14 +257,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    ResourceNotFoundException: {}
-    UnauthorizedException: {}
-    InternalFailureException: {}
-    ThrottlingException: {}
-    InvalidRequestException: {}
-    TransferAlreadyCompletedException: {}
-    ServiceUnavailableException: {}
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

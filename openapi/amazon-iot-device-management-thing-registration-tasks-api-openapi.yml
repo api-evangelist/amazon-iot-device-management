@@ -488,54 +488,28 @@ paths:
       tags:
       - Thing Registration Tasks
 components:
-  parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    S3FileUrl:
-      type: string
-      maxLength: 65535
     ResourceNotFoundException: {}
+    InvalidRequestException: {}
+    InternalFailureException: {}
+    TaskIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskId'
+    CreationDate:
+      type: string
+      format: date-time
+    StartThingRegistrationTaskResponse:
+      type: object
+      properties:
+        taskId:
+          allOf:
+          - $ref: '#/components/schemas/TaskId'
+          - description: The bulk thing provisioning task ID.
+    ThrottlingException: {}
+    TaskId:
+      type: string
+      maxLength: 40
     Status:
       type: string
       enum:
@@ -544,34 +518,23 @@ components:
       - Failed
       - Cancelled
       - Cancelling
-    StopThingRegistrationTaskResponse:
-      type: object
-      properties: {}
-    UnauthorizedException: {}
     TemplateBody:
       type: string
       pattern: '[\s\S]*'
       minLength: 0
       maxLength: 10240
-    ListThingRegistrationTasksResponse:
+    StopThingRegistrationTaskResponse:
       type: object
-      properties:
-        taskIds:
-          allOf:
-          - $ref: '#/components/schemas/TaskIdList'
-          - description: A list of bulk thing provisioning task IDs.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+      properties: {}
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    NextToken:
+      type: string
     ErrorMessage:
       type: string
       maxLength: 2048
-    TaskIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TaskId'
-    InternalFailureException: {}
     DescribeThingRegistrationTaskResponse:
       type: object
       properties:
@@ -623,47 +586,22 @@ components:
           allOf:
           - $ref: '#/components/schemas/Percentage'
           - description: The progress of the bulk provisioning task expressed as a percentage.
-    RegistryS3KeyName:
-      type: string
-      pattern: '[a-zA-Z0-9!_.*''()-\/]+'
-      minLength: 1
-      maxLength: 1024
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    InvalidRequestException: {}
-    LastModifiedDate:
-      type: string
-      format: date-time
     ReportType:
       type: string
       enum:
       - ERRORS
       - RESULTS
-    StartThingRegistrationTaskResponse:
+    ListThingRegistrationTasksResponse:
       type: object
       properties:
-        taskId:
+        taskIds:
           allOf:
-          - $ref: '#/components/schemas/TaskId'
-          - description: The bulk thing provisioning task ID.
-    RegistryS3BucketName:
-      type: string
-      pattern: '[a-zA-Z0-9._-]+'
-      minLength: 3
-      maxLength: 256
-    Count:
-      type: integer
-    CreationDate:
-      type: string
-      format: date-time
-    S3FileUrlList:
-      type: array
-      items:
-        $ref: '#/components/schemas/S3FileUrl'
-    NextToken:
-      type: string
+          - $ref: '#/components/schemas/TaskIdList'
+          - description: A list of bulk thing provisioning task IDs.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
     ListThingRegistrationTaskReportsResponse:
       type: object
       properties:
@@ -679,14 +617,76 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    TaskId:
+    S3FileUrlList:
+      type: array
+      items:
+        $ref: '#/components/schemas/S3FileUrl'
+    LastModifiedDate:
       type: string
-      maxLength: 40
+      format: date-time
+    UnauthorizedException: {}
+    RegistryS3KeyName:
+      type: string
+      pattern: '[a-zA-Z0-9!_.*''()-\/]+'
+      minLength: 1
+      maxLength: 1024
     Percentage:
       type: integer
       minimum: 0
       maximum: 100
-    ThrottlingException: {}
+    Count:
+      type: integer
+    S3FileUrl:
+      type: string
+      maxLength: 65535
+    RegistryS3BucketName:
+      type: string
+      pattern: '[a-zA-Z0-9._-]+'
+      minLength: 3
+      maxLength: 256
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

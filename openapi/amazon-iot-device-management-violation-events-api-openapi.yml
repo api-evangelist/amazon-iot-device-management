@@ -238,81 +238,51 @@ paths:
       - Violation Events
 components:
   schemas:
-    BehaviorMetric:
-      type: string
-    MetricDimension:
-      type: object
-      required:
-      - dimensionName
-      properties:
-        dimensionName:
-          allOf:
-          - $ref: '#/components/schemas/DimensionName'
-          - description: A unique identifier for the dimension.
-        operator:
-          allOf:
-          - $ref: '#/components/schemas/DimensionValueOperator'
-          - description: 'Defines how the <code>dimensionValues</code> of a dimension are interpreted. For example, for dimension type TOPIC_FILTER, the <code>IN</code> operator, a message will be counted only if its topic matches one of the topic filters. With <code>NOT_IN</code> operator, a message will be counted only if it doesn''t match any of the topic filters. The operator is optional: if it''s not provided (is <code>null</code>), it will be interpreted as <code>IN</code>.'
-      description: The dimension of a metric.
-    DeviceDefenderThingName:
-      type: string
-      minLength: 1
-      maxLength: 128
     Timestamp:
       type: string
       format: date-time
+    InvalidRequestException: {}
+    Cidr:
+      type: string
+      pattern: '[a-fA-F0-9:\.\/]+'
+      minLength: 2
+      maxLength: 43
     ViolationId:
       type: string
       pattern: '[a-zA-Z0-9\-]+'
       minLength: 1
       maxLength: 128
-    ConsecutiveDatapointsToClear:
-      type: integer
-      minimum: 1
-      maximum: 10
-    VerificationState:
-      type: string
-      enum:
-      - FALSE_POSITIVE
-      - BENIGN_POSITIVE
-      - TRUE_POSITIVE
-      - UNKNOWN
-    BehaviorCriteria:
+    InternalFailureException: {}
+    Behavior:
       type: object
+      required:
+      - name
       properties:
-        comparisonOperator:
+        name:
           allOf:
-          - $ref: '#/components/schemas/ComparisonOperator'
-          - description: '<p>The operator that relates the thing measured (<code>metric</code>) to the criteria (containing a <code>value</code> or <code>statisticalThreshold</code>). Valid operators include:</p> <ul> <li> <p> <code>string-list</code>: <code>in-set</code> and <code>not-in-set</code> </p> </li> <li> <p> <code>number-list</code>: <code>in-set</code> and <code>not-in-set</code> </p> </li> <li> <p> <code>ip-address-list</code>: <code>in-cidr-set</code> and <code>not-in-cidr-set</code> </p> </li> <li> <p> <code>number</code>: <code>less-than</code>, <code>less-than-equals</code>, <code>greater-than</code>, and <code>greater-than-equals</code> </p> </li> </ul>'
-        value:
+          - $ref: '#/components/schemas/BehaviorName'
+          - description: The name you've given to the behavior.
+        metric:
           allOf:
-          - $ref: '#/components/schemas/MetricValue'
-          - description: The value to be compared with the <code>metric</code>.
-        durationSeconds:
+          - $ref: '#/components/schemas/BehaviorMetric'
+          - description: What is measured by the behavior.
+        metricDimension:
           allOf:
-          - $ref: '#/components/schemas/DurationSeconds'
-          - description: Use this to specify the time duration over which the behavior is evaluated, for those criteria that have a time dimension (for example, <code>NUM_MESSAGES_SENT</code>). For a <code>statisticalThreshhold</code> metric comparison, measurements from all devices are accumulated over this time duration before being used to calculate percentiles, and later, measurements from an individual device are also accumulated over this time duration before being given a percentile rank. Cannot be used with list-based metric datatypes.
-        consecutiveDatapointsToAlarm:
+          - $ref: '#/components/schemas/MetricDimension'
+          - description: The dimension for a metric in your behavior. For example, using a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of the metric to only MQTT topics where the name matches the pattern specified in the dimension. This can't be used with custom metrics.
+        criteria:
           allOf:
-          - $ref: '#/components/schemas/ConsecutiveDatapointsToAlarm'
-          - description: If a device is in violation of the behavior for the specified number of consecutive datapoints, an alarm occurs. If not specified, the default is 1.
-        consecutiveDatapointsToClear:
+          - $ref: '#/components/schemas/BehaviorCriteria'
+          - description: The criteria that determine if a device is behaving normally in regard to the <code>metric</code>.
+        suppressAlerts:
           allOf:
-          - $ref: '#/components/schemas/ConsecutiveDatapointsToClear'
-          - description: If an alarm has occurred and the offending device is no longer in violation of the behavior for the specified number of consecutive datapoints, the alarm is cleared. If not specified, the default is 1.
-        statisticalThreshold:
-          allOf:
-          - $ref: '#/components/schemas/StatisticalThreshold'
-          - description: A statistical ranking (percentile)that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.
-        mlDetectionConfig:
-          allOf:
-          - $ref: '#/components/schemas/MachineLearningDetectionConfig'
-          - description: ' The configuration of an ML Detect '
-      description: The criteria by which the behavior is determined to be normal.
-    StringList:
-      type: array
-      items:
-        $ref: '#/components/schemas/stringValue'
+          - $ref: '#/components/schemas/SuppressAlerts'
+          - description: ' Suppresses alerts. '
+      description: A Device Defender security profile behavior.
+    Port:
+      type: integer
+      minimum: 0
+      maximum: 65535
     MetricValue:
       type: object
       properties:
@@ -341,10 +311,19 @@ components:
           - $ref: '#/components/schemas/StringList'
           - description: ' The string values of a metric. '
       description: The value to be compared with the <code>metric</code>.
-    Ports:
+    ViolationEventAdditionalInfo:
+      type: object
+      properties:
+        confidenceLevel:
+          allOf:
+          - $ref: '#/components/schemas/ConfidenceLevel'
+          - description: ' The sensitivity of anomalous behavior evaluation. Can be <code>Low</code>, <code>Medium</code>, or <code>High</code>. '
+      description: ' The details of a violation event. '
+    ThrottlingException: {}
+    ViolationEvents:
       type: array
       items:
-        $ref: '#/components/schemas/Port'
+        $ref: '#/components/schemas/ViolationEvent'
     StatisticalThreshold:
       type: object
       properties:
@@ -353,9 +332,84 @@ components:
           - $ref: '#/components/schemas/EvaluationStatistic'
           - description: The percentile that resolves to a threshold value by which compliance with a behavior is determined. Metrics are collected over the specified period (<code>durationSeconds</code>) from all reporting devices in your account and statistical ranks are calculated. Then, the measurements from a device are collected over the same period. If the accumulated measurements from the device fall above or below (<code>comparisonOperator</code>) the value associated with the percentile specified, then the device is considered to be in compliance with the behavior, otherwise a violation occurs.
       description: A statistical ranking (percentile) that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.
-    stringValue:
+    ConfidenceLevel:
       type: string
-    InternalFailureException: {}
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+    ConsecutiveDatapointsToAlarm:
+      type: integer
+      minimum: 1
+      maximum: 10
+    ListViolationEventsResponse:
+      type: object
+      properties:
+        violationEvents:
+          allOf:
+          - $ref: '#/components/schemas/ViolationEvents'
+          - description: The security profile violation alerts issued for this account during the given time period, potentially filtered by security profile, behavior violated, or thing (device) violating.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
+    ViolationEventType:
+      type: string
+      enum:
+      - in-alarm
+      - alarm-cleared
+      - alarm-invalidated
+    DeviceDefenderThingName:
+      type: string
+      minLength: 1
+      maxLength: 128
+    StringList:
+      type: array
+      items:
+        $ref: '#/components/schemas/stringValue'
+    BehaviorName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    DimensionValueOperator:
+      type: string
+      enum:
+      - IN
+      - NOT_IN
+    NextToken:
+      type: string
+    UnsignedLong:
+      type: integer
+      minimum: 0
+    VerificationState:
+      type: string
+      enum:
+      - FALSE_POSITIVE
+      - BENIGN_POSITIVE
+      - TRUE_POSITIVE
+      - UNKNOWN
+    ConsecutiveDatapointsToClear:
+      type: integer
+      minimum: 1
+      maximum: 10
+    MetricDimension:
+      type: object
+      required:
+      - dimensionName
+      properties:
+        dimensionName:
+          allOf:
+          - $ref: '#/components/schemas/DimensionName'
+          - description: A unique identifier for the dimension.
+        operator:
+          allOf:
+          - $ref: '#/components/schemas/DimensionValueOperator'
+          - description: 'Defines how the <code>dimensionValues</code> of a dimension are interpreted. For example, for dimension type TOPIC_FILTER, the <code>IN</code> operator, a message will be counted only if its topic matches one of the topic filters. With <code>NOT_IN</code> operator, a message will be counted only if it doesn''t match any of the topic filters. The operator is optional: if it''s not provided (is <code>null</code>), it will be interpreted as <code>IN</code>.'
+      description: The dimension of a metric.
+    Number:
+      type: number
+      format: double
     ViolationEvent:
       type: object
       properties:
@@ -400,71 +454,26 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: The time the violation event occurred.
       description: Information about a Device Defender security profile behavior violation.
-    ViolationEventType:
+    stringValue:
       type: string
-      enum:
-      - in-alarm
-      - alarm-cleared
-      - alarm-invalidated
-    ListViolationEventsResponse:
-      type: object
-      properties:
-        violationEvents:
-          allOf:
-          - $ref: '#/components/schemas/ViolationEvents'
-          - description: The security profile violation alerts issued for this account during the given time period, potentially filtered by security profile, behavior violated, or thing (device) violating.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
-    Port:
-      type: integer
-      minimum: 0
-      maximum: 65535
-    DimensionValueOperator:
+    BehaviorMetric:
       type: string
-      enum:
-      - IN
-      - NOT_IN
-    UnsignedLong:
-      type: integer
-      minimum: 0
-    EvaluationStatistic:
+    VerificationStateDescription:
       type: string
-      pattern: (p0|p0\.1|p0\.01|p1|p10|p50|p90|p99|p99\.9|p99\.99|p100)
-    InvalidRequestException: {}
+      pattern: '[^\p{Cntrl}]*'
+      maxLength: 1000
     DimensionName:
       type: string
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    Cidrs:
-      type: array
-      items:
-        $ref: '#/components/schemas/Cidr'
-    Number:
-      type: number
-      format: double
-    ViolationEventAdditionalInfo:
-      type: object
-      properties:
-        confidenceLevel:
-          allOf:
-          - $ref: '#/components/schemas/ConfidenceLevel'
-          - description: ' The sensitivity of anomalous behavior evaluation. Can be <code>Low</code>, <code>Medium</code>, or <code>High</code>. '
-      description: ' The details of a violation event. '
+    SecurityProfileName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
     SuppressAlerts:
       type: boolean
-    ViolationEvents:
-      type: array
-      items:
-        $ref: '#/components/schemas/ViolationEvent'
-    ConfidenceLevel:
-      type: string
-      enum:
-      - LOW
-      - MEDIUM
-      - HIGH
     MachineLearningDetectionConfig:
       type: object
       required:
@@ -477,52 +486,9 @@ components:
       description: ' The configuration of an ML Detect Security Profile. '
     DurationSeconds:
       type: integer
-    SecurityProfileName:
+    EvaluationStatistic:
       type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    Behavior:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorName'
-          - description: The name you've given to the behavior.
-        metric:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorMetric'
-          - description: What is measured by the behavior.
-        metricDimension:
-          allOf:
-          - $ref: '#/components/schemas/MetricDimension'
-          - description: The dimension for a metric in your behavior. For example, using a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of the metric to only MQTT topics where the name matches the pattern specified in the dimension. This can't be used with custom metrics.
-        criteria:
-          allOf:
-          - $ref: '#/components/schemas/BehaviorCriteria'
-          - description: The criteria that determine if a device is behaving normally in regard to the <code>metric</code>.
-        suppressAlerts:
-          allOf:
-          - $ref: '#/components/schemas/SuppressAlerts'
-          - description: ' Suppresses alerts. '
-      description: A Device Defender security profile behavior.
-    NextToken:
-      type: string
-    Cidr:
-      type: string
-      pattern: '[a-fA-F0-9:\.\/]+'
-      minLength: 2
-      maxLength: 43
-    VerificationStateDescription:
-      type: string
-      pattern: '[^\p{Cntrl}]*'
-      maxLength: 1000
-    ConsecutiveDatapointsToAlarm:
-      type: integer
-      minimum: 1
-      maximum: 10
+      pattern: (p0|p0\.1|p0\.01|p1|p10|p50|p90|p99|p99\.9|p99\.99|p100)
     NumberList:
       type: array
       items:
@@ -540,13 +506,53 @@ components:
       - not-in-port-set
       - in-set
       - not-in-set
-    BehaviorName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    ThrottlingException: {}
+    BehaviorCriteria:
+      type: object
+      properties:
+        comparisonOperator:
+          allOf:
+          - $ref: '#/components/schemas/ComparisonOperator'
+          - description: '<p>The operator that relates the thing measured (<code>metric</code>) to the criteria (containing a <code>value</code> or <code>statisticalThreshold</code>). Valid operators include:</p> <ul> <li> <p> <code>string-list</code>: <code>in-set</code> and <code>not-in-set</code> </p> </li> <li> <p> <code>number-list</code>: <code>in-set</code> and <code>not-in-set</code> </p> </li> <li> <p> <code>ip-address-list</code>: <code>in-cidr-set</code> and <code>not-in-cidr-set</code> </p> </li> <li> <p> <code>number</code>: <code>less-than</code>, <code>less-than-equals</code>, <code>greater-than</code>, and <code>greater-than-equals</code> </p> </li> </ul>'
+        value:
+          allOf:
+          - $ref: '#/components/schemas/MetricValue'
+          - description: The value to be compared with the <code>metric</code>.
+        durationSeconds:
+          allOf:
+          - $ref: '#/components/schemas/DurationSeconds'
+          - description: Use this to specify the time duration over which the behavior is evaluated, for those criteria that have a time dimension (for example, <code>NUM_MESSAGES_SENT</code>). For a <code>statisticalThreshhold</code> metric comparison, measurements from all devices are accumulated over this time duration before being used to calculate percentiles, and later, measurements from an individual device are also accumulated over this time duration before being given a percentile rank. Cannot be used with list-based metric datatypes.
+        consecutiveDatapointsToAlarm:
+          allOf:
+          - $ref: '#/components/schemas/ConsecutiveDatapointsToAlarm'
+          - description: If a device is in violation of the behavior for the specified number of consecutive datapoints, an alarm occurs. If not specified, the default is 1.
+        consecutiveDatapointsToClear:
+          allOf:
+          - $ref: '#/components/schemas/ConsecutiveDatapointsToClear'
+          - description: If an alarm has occurred and the offending device is no longer in violation of the behavior for the specified number of consecutive datapoints, the alarm is cleared. If not specified, the default is 1.
+        statisticalThreshold:
+          allOf:
+          - $ref: '#/components/schemas/StatisticalThreshold'
+          - description: A statistical ranking (percentile)that indicates a threshold value by which a behavior is determined to be in compliance or in violation of the behavior.
+        mlDetectionConfig:
+          allOf:
+          - $ref: '#/components/schemas/MachineLearningDetectionConfig'
+          - description: ' The configuration of an ML Detect '
+      description: The criteria by which the behavior is determined to be normal.
+    Cidrs:
+      type: array
+      items:
+        $ref: '#/components/schemas/Cidr'
+    Ports:
+      type: array
+      items:
+        $ref: '#/components/schemas/Port'
   parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
@@ -559,8 +565,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -571,20 +577,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
     X-Amz-Date:
       name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

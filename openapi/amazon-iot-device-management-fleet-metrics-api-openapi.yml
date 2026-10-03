@@ -192,10 +192,16 @@ paths:
       - Fleet Metrics
 components:
   schemas:
-    NextToken:
-      type: string
+    InvalidRequestException: {}
     FleetMetricArn:
       type: string
+    InternalFailureException: {}
+    ServiceUnavailableException: {}
+    FleetMetricNameAndArnList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FleetMetricNameAndArn'
+    UnauthorizedException: {}
     FleetMetricNameAndArn:
       type: object
       properties:
@@ -208,19 +214,9 @@ components:
           - $ref: '#/components/schemas/FleetMetricArn'
           - description: The fleet metric ARN.
       description: The name and ARN of a fleet metric.
-    FleetMetricName:
-      type: string
-      pattern: '[a-zA-Z0-9_\-\.]+'
-      minLength: 1
-      maxLength: 128
-    FleetMetricNameAndArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FleetMetricNameAndArn'
-    UnauthorizedException: {}
-    InternalFailureException: {}
     ThrottlingException: {}
-    InvalidRequestException: {}
+    NextToken:
+      type: string
     ListFleetMetricsResponse:
       type: object
       properties:
@@ -232,7 +228,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token for the next set of results. Will not be returned if the operation has returned all results.
-    ServiceUnavailableException: {}
+    FleetMetricName:
+      type: string
+      pattern: '[a-zA-Z0-9_\-\.]+'
+      minLength: 1
+      maxLength: 128
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
@@ -240,20 +240,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
     X-Amz-Credential:
       name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -272,6 +266,12 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

@@ -237,21 +237,28 @@ paths:
       tags:
       - Transfer Certificate
 components:
+  schemas:
+    ResourceNotFoundException: {}
+    InvalidRequestException: {}
+    TransferConflictException: {}
+    InternalFailureException: {}
+    ServiceUnavailableException: {}
+    CertificateStateException: {}
+    TransferCertificateResponse:
+      type: object
+      properties:
+        transferredCertificateArn:
+          allOf:
+          - $ref: '#/components/schemas/CertificateArn'
+          - description: The ARN of the certificate.
+      description: The output from the TransferCertificate operation.
+    UnauthorizedException: {}
+    ThrottlingException: {}
+    CertificateArn:
+      type: string
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -268,6 +275,12 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
       in: header
@@ -280,25 +293,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    ResourceNotFoundException: {}
-    TransferCertificateResponse:
-      type: object
-      properties:
-        transferredCertificateArn:
-          allOf:
-          - $ref: '#/components/schemas/CertificateArn'
-          - description: The ARN of the certificate.
-      description: The output from the TransferCertificate operation.
-    CertificateArn:
-      type: string
-    CertificateStateException: {}
-    InternalFailureException: {}
-    ThrottlingException: {}
-    TransferConflictException: {}
-    InvalidRequestException: {}
-    UnauthorizedException: {}
-    ServiceUnavailableException: {}
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

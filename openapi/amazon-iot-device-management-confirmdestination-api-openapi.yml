@@ -185,6 +185,15 @@ paths:
       tags:
       - Confirmdestination
 components:
+  schemas:
+    InternalException: {}
+    InvalidRequestException: {}
+    ConflictingResourceUpdateException: {}
+    ServiceUnavailableException: {}
+    ConfirmTopicRuleDestinationResponse:
+      type: object
+      properties: {}
+    UnauthorizedException: {}
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
@@ -192,8 +201,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -210,12 +219,6 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
       in: header
@@ -228,15 +231,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    ConflictingResourceUpdateException: {}
-    ConfirmTopicRuleDestinationResponse:
-      type: object
-      properties: {}
-    InvalidRequestException: {}
-    UnauthorizedException: {}
-    InternalException: {}
-    ServiceUnavailableException: {}
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

@@ -228,13 +228,15 @@ paths:
       - Registrationcode
 components:
   schemas:
-    InvalidRequestException: {}
     ResourceNotFoundException: {}
+    InvalidRequestException: {}
     DeleteRegistrationCodeResponse:
       type: object
       properties: {}
       description: The output for the DeleteRegistrationCode operation.
     InternalFailureException: {}
+    ServiceUnavailableException: {}
+    UnauthorizedException: {}
     ThrottlingException: {}
     RegistrationCode:
       type: string
@@ -249,23 +251,9 @@ components:
           - $ref: '#/components/schemas/RegistrationCode'
           - description: The CA certificate registration code.
       description: The output from the GetRegistrationCode operation.
-    UnauthorizedException: {}
-    ServiceUnavailableException: {}
   parameters:
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -282,6 +270,12 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Security-Token:
       name: X-Amz-Security-Token
       in: header
@@ -290,6 +284,12 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

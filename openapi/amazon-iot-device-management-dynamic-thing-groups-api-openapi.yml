@@ -399,18 +399,59 @@ paths:
       - Dynamic Thing Groups
 components:
   schemas:
+    ResourceNotFoundException: {}
+    InvalidRequestException: {}
+    LimitExceededException: {}
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    InternalFailureException: {}
+    IndexName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    QueryString:
+      type: string
+      minLength: 1
+    ThingGroupDescription:
+      type: string
+      pattern: '[\p{Graph}\x20]*'
+      maxLength: 2028
+    ThrottlingException: {}
+    ThingGroupArn:
+      type: string
     VersionConflictException: {}
+    Version:
+      type: integer
     ThingGroupName:
       type: string
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    ResourceNotFoundException: {}
-    ThingGroupId:
-      type: string
-      pattern: '[a-zA-Z0-9\-]+'
-      minLength: 1
-      maxLength: 128
+    AttributePayload:
+      type: object
+      properties:
+        attributes:
+          allOf:
+          - $ref: '#/components/schemas/Attributes'
+          - description: <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
+        merge:
+          allOf:
+          - $ref: '#/components/schemas/Flag'
+          - description: <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code> or <code>UpdateThingGroup</code>.</p> </note>
+      description: The attribute payload.
     CreateDynamicThingGroupResponse:
       type: object
       properties:
@@ -438,45 +479,28 @@ components:
           allOf:
           - $ref: '#/components/schemas/QueryVersion'
           - description: The dynamic thing group query version.
+    QueryVersion:
+      type: string
     Flag:
       type: boolean
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    InternalFailureException: {}
-    InvalidQueryException: {}
-    ResourceAlreadyExistsException: {}
+    DeleteDynamicThingGroupResponse:
+      type: object
+      properties: {}
     TagKey:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
       minLength: 1
       maxLength: 128
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
-    QueryVersion:
+    ThingGroupId:
       type: string
-    ThingGroupDescription:
+      pattern: '[a-zA-Z0-9\-]+'
+      minLength: 1
+      maxLength: 128
+    AttributeValue:
       type: string
-      pattern: '[\p{Graph}\x20]*'
-      maxLength: 2028
-    LimitExceededException: {}
-    Attributes:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeValue'
+      pattern: '[a-zA-Z0-9_.,@/:#-]*'
+      maxLength: 800
+    ResourceAlreadyExistsException: {}
     UpdateDynamicThingGroupResponse:
       type: object
       properties:
@@ -484,40 +508,22 @@ components:
           allOf:
           - $ref: '#/components/schemas/Version'
           - description: The dynamic thing group version.
-    AttributeValue:
-      type: string
-      pattern: '[a-zA-Z0-9_.,@/:#-]*'
-      maxLength: 800
-    InvalidRequestException: {}
-    AttributePayload:
+    Attributes:
       type: object
-      properties:
-        attributes:
-          allOf:
-          - $ref: '#/components/schemas/Attributes'
-          - description: <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-        merge:
-          allOf:
-          - $ref: '#/components/schemas/Flag'
-          - description: <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code> or <code>UpdateThingGroup</code>.</p> </note>
-      description: The attribute payload.
-    Version:
-      type: integer
-    IndexName:
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
+    InvalidQueryException: {}
+    TagValue:
       type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    DeleteDynamicThingGroupResponse:
-      type: object
-      properties: {}
-    ThingGroupArn:
-      type: string
-    ThrottlingException: {}
-    QueryString:
-      type: string
-      minLength: 1
+      minLength: 0
+      maxLength: 256
   parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
@@ -530,8 +536,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -542,20 +548,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
     X-Amz-Date:
       name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
