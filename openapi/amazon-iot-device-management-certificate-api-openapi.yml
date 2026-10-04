@@ -338,9 +338,29 @@ paths:
       - Certificate
 components:
   schemas:
-    InvalidRequestException: {}
-    CertificateConflictException: {}
+    CertificateId:
+      type: string
+      pattern: (0x)?[a-fA-F0-9]+
+      minLength: 64
+      maxLength: 64
+    ResourceAlreadyExistsException: {}
+    UnauthorizedException: {}
+    RegisterCertificateWithoutCAResponse:
+      type: object
+      properties:
+        certificateArn:
+          allOf:
+          - $ref: '#/components/schemas/CertificateArn'
+          - description: The Amazon Resource Name (ARN) of the registered certificate.
+        certificateId:
+          allOf:
+          - $ref: '#/components/schemas/CertificateId'
+          - description: The ID of the registered certificate. (The last part of the certificate ARN contains the certificate ID.
+    ServiceUnavailableException: {}
     InternalFailureException: {}
+    InvalidRequestException: {}
+    CertificateArn:
+      type: string
     RegisterCertificateResponse:
       type: object
       properties:
@@ -353,49 +373,11 @@ components:
           - $ref: '#/components/schemas/CertificateId'
           - description: The certificate identifier.
       description: The output from the RegisterCertificate operation.
-    ThrottlingException: {}
-    CertificateArn:
-      type: string
-    CertificateId:
-      type: string
-      pattern: (0x)?[a-fA-F0-9]+
-      minLength: 64
-      maxLength: 64
-    RegisterCertificateWithoutCAResponse:
-      type: object
-      properties:
-        certificateArn:
-          allOf:
-          - $ref: '#/components/schemas/CertificateArn'
-          - description: The Amazon Resource Name (ARN) of the registered certificate.
-        certificateId:
-          allOf:
-          - $ref: '#/components/schemas/CertificateId'
-          - description: The ID of the registered certificate. (The last part of the certificate ARN contains the certificate ID.
-    ResourceAlreadyExistsException: {}
     CertificateValidationException: {}
-    ServiceUnavailableException: {}
+    ThrottlingException: {}
+    CertificateConflictException: {}
     CertificateStateException: {}
-    UnauthorizedException: {}
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -410,6 +392,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

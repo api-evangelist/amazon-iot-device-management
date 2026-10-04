@@ -218,10 +218,6 @@ paths:
       - Attached Policies
 components:
   schemas:
-    ResourceNotFoundException: {}
-    InvalidRequestException: {}
-    LimitExceededException: {}
-    InternalFailureException: {}
     Policy:
       type: object
       properties:
@@ -234,18 +230,23 @@ components:
           - $ref: '#/components/schemas/PolicyArn'
           - description: The policy ARN.
       description: Describes an IoT policy.
+    ResourceNotFoundException: {}
+    PolicyArn:
+      type: string
+    UnauthorizedException: {}
+    ServiceUnavailableException: {}
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    LimitExceededException: {}
+    Marker:
+      type: string
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
     ThrottlingException: {}
     Policies:
       type: array
       items:
         $ref: '#/components/schemas/Policy'
-    PolicyArn:
-      type: string
-    PolicyName:
-      type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
     ListAttachedPoliciesResponse:
       type: object
       properties:
@@ -257,31 +258,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/Marker'
           - description: The token to retrieve the next set of results, or ``null`` if there are no more results.
-    ServiceUnavailableException: {}
-    UnauthorizedException: {}
-    Marker:
+    PolicyName:
       type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -296,6 +278,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

@@ -187,29 +187,11 @@ paths:
       - Keys And Certificate
 components:
   schemas:
-    InvalidRequestException: {}
-    InternalFailureException: {}
-    ThrottlingException: {}
-    CertificateArn:
-      type: string
     CertificateId:
       type: string
       pattern: (0x)?[a-fA-F0-9]+
       minLength: 64
       maxLength: 64
-    PrivateKey:
-      type: string
-      minLength: 1
-      format: password
-    CertificatePem:
-      type: string
-      pattern: '[\s\S]*'
-      description: The PEM of a certificate.
-      minLength: 1
-      maxLength: 65536
-    PublicKey:
-      type: string
-      minLength: 1
     CreateKeysAndCertificateResponse:
       type: object
       properties:
@@ -230,6 +212,26 @@ components:
           - $ref: '#/components/schemas/KeyPair'
           - description: The generated key pair.
       description: The output of the CreateKeysAndCertificate operation.
+    PublicKey:
+      type: string
+      minLength: 1
+    UnauthorizedException: {}
+    ServiceUnavailableException: {}
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    CertificateArn:
+      type: string
+    PrivateKey:
+      type: string
+      minLength: 1
+      format: password
+    ThrottlingException: {}
+    CertificatePem:
+      type: string
+      pattern: '[\s\S]*'
+      description: The PEM of a certificate.
+      minLength: 1
+      maxLength: 65536
     KeyPair:
       type: object
       properties:
@@ -242,27 +244,7 @@ components:
           - $ref: '#/components/schemas/PrivateKey'
           - description: The private key.
       description: Describes a key pair.
-    ServiceUnavailableException: {}
-    UnauthorizedException: {}
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -277,6 +259,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

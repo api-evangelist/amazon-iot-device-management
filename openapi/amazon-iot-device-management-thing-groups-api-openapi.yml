@@ -823,26 +823,64 @@ paths:
       - Thing Groups
 components:
   schemas:
-    ResourceNotFoundException: {}
-    InvalidRequestException: {}
+    ThingName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
     DynamicGroupStatus:
       type: string
       enum:
       - ACTIVE
       - BUILDING
       - REBUILDING
-    ThingGroupProperties:
+    IndexName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    VersionConflictException: {}
+    ResourceNotFoundException: {}
+    ListThingGroupsResponse:
       type: object
       properties:
-        thingGroupDescription:
+        thingGroups:
           allOf:
-          - $ref: '#/components/schemas/ThingGroupDescription'
-          - description: The thing group description.
-        attributePayload:
+          - $ref: '#/components/schemas/ThingGroupNameAndArnList'
+          - description: The thing groups.
+        nextToken:
           allOf:
-          - $ref: '#/components/schemas/AttributePayload'
-          - description: The thing group attributes in JSON format.
-      description: Thing group properties.
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
+    ResourceAlreadyExistsException: {}
+    RemoveThingFromThingGroupResponse:
+      type: object
+      properties: {}
+    DeleteThingGroupResponse:
+      type: object
+      properties: {}
+    Attributes:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AttributeValue'
+    CreationDate:
+      type: string
+      format: date-time
+    UpdateThingGroupResponse:
+      type: object
+      properties:
+        version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          - description: The version of the updated thing group.
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    Version:
+      type: integer
     Tag:
       type: object
       required:
@@ -857,75 +895,15 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    InternalFailureException: {}
-    IndexName:
+    ThingGroupArn:
       type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    AddThingToThingGroupResponse:
-      type: object
-      properties: {}
-    CreationDate:
-      type: string
-      format: date-time
-    QueryString:
-      type: string
-      minLength: 1
     ThingNameList:
       type: array
       items:
         $ref: '#/components/schemas/ThingName'
-    ThingGroupDescription:
-      type: string
-      pattern: '[\p{Graph}\x20]*'
-      maxLength: 2028
-    ThrottlingException: {}
-    ThingGroupArn:
-      type: string
-    VersionConflictException: {}
-    Version:
-      type: integer
-    RemoveThingFromThingGroupResponse:
+    AddThingToThingGroupResponse:
       type: object
       properties: {}
-    ThingGroupName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    UpdateThingGroupResponse:
-      type: object
-      properties:
-        version:
-          allOf:
-          - $ref: '#/components/schemas/Version'
-          - description: The version of the updated thing group.
-    DeleteThingGroupResponse:
-      type: object
-      properties: {}
-    AttributePayload:
-      type: object
-      properties:
-        attributes:
-          allOf:
-          - $ref: '#/components/schemas/Attributes'
-          - description: <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
-        merge:
-          allOf:
-          - $ref: '#/components/schemas/Flag'
-          - description: <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code> or <code>UpdateThingGroup</code>.</p> </note>
-      description: The attribute payload.
-    QueryVersion:
-      type: string
-    NextToken:
-      type: string
-    Flag:
-      type: boolean
-    ThingGroupNameAndArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GroupNameAndArn'
     TagKey:
       type: string
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
@@ -934,27 +912,25 @@ components:
     UpdateThingGroupsForThingResponse:
       type: object
       properties: {}
-    ThingGroupId:
-      type: string
-      pattern: '[a-zA-Z0-9\-]+'
-      minLength: 1
-      maxLength: 128
-    AttributeValue:
-      type: string
-      pattern: '[a-zA-Z0-9_.,@/:#-]*'
-      maxLength: 800
-    ResourceAlreadyExistsException: {}
-    ListThingGroupsResponse:
+    ThrottlingException: {}
+    ListThingsInThingGroupResponse:
       type: object
       properties:
-        thingGroups:
+        things:
           allOf:
-          - $ref: '#/components/schemas/ThingGroupNameAndArnList'
-          - description: The thing groups.
+          - $ref: '#/components/schemas/ThingNameList'
+          - description: The things in the specified thing group.
         nextToken:
           allOf:
           - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    QueryVersion:
+      type: string
+    Flag:
+      type: boolean
+    QueryString:
+      type: string
+      minLength: 1
     ThingGroupMetadata:
       type: object
       properties:
@@ -971,26 +947,81 @@ components:
           - $ref: '#/components/schemas/CreationDate'
           - description: The UNIX timestamp of when the thing group was created.
       description: Thing group metadata.
-    ListThingsInThingGroupResponse:
+    ThingGroupDescription:
+      type: string
+      pattern: '[\p{Graph}\x20]*'
+      maxLength: 2028
+    ThingGroupId:
+      type: string
+      pattern: '[a-zA-Z0-9\-]+'
+      minLength: 1
+      maxLength: 128
+    AttributeValue:
+      type: string
+      pattern: '[a-zA-Z0-9_.,@/:#-]*'
+      maxLength: 800
+    GroupNameAndArn:
       type: object
       properties:
-        things:
+        groupName:
           allOf:
-          - $ref: '#/components/schemas/ThingNameList'
-          - description: The things in the specified thing group.
-        nextToken:
+          - $ref: '#/components/schemas/ThingGroupName'
+          - description: The group name.
+        groupArn:
           allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    ThingName:
+          - $ref: '#/components/schemas/ThingGroupArn'
+          - description: The group ARN.
+      description: The name and ARN of a group.
+    ThingGroupNameAndArnList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GroupNameAndArn'
+    ThingGroupProperties:
+      type: object
+      properties:
+        thingGroupDescription:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupDescription'
+          - description: The thing group description.
+        attributePayload:
+          allOf:
+          - $ref: '#/components/schemas/AttributePayload'
+          - description: The thing group attributes in JSON format.
+      description: Thing group properties.
+    NextToken:
+      type: string
+    ThingGroupName:
       type: string
       pattern: '[a-zA-Z0-9:_-]+'
       minLength: 1
       maxLength: 128
-    Attributes:
+    AttributePayload:
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AttributeValue'
+      properties:
+        attributes:
+          allOf:
+          - $ref: '#/components/schemas/Attributes'
+          - description: <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
+        merge:
+          allOf:
+          - $ref: '#/components/schemas/Flag'
+          - description: <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code> or <code>UpdateThingGroup</code>.</p> </note>
+      description: The attribute payload.
+    CreateThingGroupResponse:
+      type: object
+      properties:
+        thingGroupName:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupName'
+          - description: The thing group name.
+        thingGroupArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupArn'
+          - description: The thing group ARN.
+        thingGroupId:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupId'
+          - description: The thing group ID.
     DescribeThingGroupResponse:
       type: object
       properties:
@@ -1034,56 +1065,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DynamicGroupStatus'
           - description: The dynamic thing group status.
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    GroupNameAndArn:
-      type: object
-      properties:
-        groupName:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupName'
-          - description: The group name.
-        groupArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupArn'
-          - description: The group ARN.
-      description: The name and ARN of a group.
-    CreateThingGroupResponse:
-      type: object
-      properties:
-        thingGroupName:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupName'
-          - description: The thing group name.
-        thingGroupArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupArn'
-          - description: The thing group ARN.
-        thingGroupId:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupId'
-          - description: The thing group ID.
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -1098,6 +1080,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

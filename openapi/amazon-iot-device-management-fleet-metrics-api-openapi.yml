@@ -191,51 +191,33 @@ paths:
       tags:
       - Fleet Metrics
 components:
-  schemas:
-    InvalidRequestException: {}
-    FleetMetricArn:
-      type: string
-    InternalFailureException: {}
-    ServiceUnavailableException: {}
-    FleetMetricNameAndArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FleetMetricNameAndArn'
-    UnauthorizedException: {}
-    FleetMetricNameAndArn:
-      type: object
-      properties:
-        metricName:
-          allOf:
-          - $ref: '#/components/schemas/FleetMetricName'
-          - description: The fleet metric name.
-        metricArn:
-          allOf:
-          - $ref: '#/components/schemas/FleetMetricArn'
-          - description: The fleet metric ARN.
-      description: The name and ARN of a fleet metric.
-    ThrottlingException: {}
-    NextToken:
-      type: string
-    ListFleetMetricsResponse:
-      type: object
-      properties:
-        fleetMetrics:
-          allOf:
-          - $ref: '#/components/schemas/FleetMetricNameAndArnList'
-          - description: The list of fleet metrics objects.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token for the next set of results. Will not be returned if the operation has returned all results.
-    FleetMetricName:
-      type: string
-      pattern: '[a-zA-Z0-9_\-\.]+'
-      minLength: 1
-      maxLength: 128
   parameters:
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -252,30 +234,48 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
+  schemas:
+    NextToken:
+      type: string
+    FleetMetricNameAndArn:
+      type: object
+      properties:
+        metricName:
+          allOf:
+          - $ref: '#/components/schemas/FleetMetricName'
+          - description: The fleet metric name.
+        metricArn:
+          allOf:
+          - $ref: '#/components/schemas/FleetMetricArn'
+          - description: The fleet metric ARN.
+      description: The name and ARN of a fleet metric.
+    UnauthorizedException: {}
+    FleetMetricNameAndArnList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FleetMetricNameAndArn'
+    ServiceUnavailableException: {}
+    ThrottlingException: {}
+    FleetMetricArn:
+      type: string
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    FleetMetricName:
+      type: string
+      pattern: '[a-zA-Z0-9_\-\.]+'
+      minLength: 1
+      maxLength: 128
+    ListFleetMetricsResponse:
+      type: object
+      properties:
+        fleetMetrics:
+          allOf:
+          - $ref: '#/components/schemas/FleetMetricNameAndArnList'
+          - description: The list of fleet metrics objects.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token for the next set of results. Will not be returned if the operation has returned all results.
   securitySchemes:
     hmac:
       type: apiKey

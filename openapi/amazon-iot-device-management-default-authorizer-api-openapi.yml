@@ -317,42 +317,21 @@ paths:
       - Default Authorizer
 components:
   schemas:
-    ResourceNotFoundException: {}
-    InvalidRequestException: {}
-    EnableCachingForHttp:
-      type: boolean
-    InternalFailureException: {}
+    AuthorizerStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
     BooleanKey:
       type: boolean
-    SetDefaultAuthorizerResponse:
-      type: object
-      properties:
-        authorizerName:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerName'
-          - description: The authorizer name.
-        authorizerArn:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerArn'
-          - description: The authorizer ARN.
-    ThrottlingException: {}
-    AuthorizerArn:
+    EnableCachingForHttp:
+      type: boolean
+    ResourceNotFoundException: {}
+    AuthorizerFunctionArn:
       type: string
+      pattern: '[\s\S]*'
       maxLength: 2048
-    DescribeDefaultAuthorizerResponse:
-      type: object
-      properties:
-        authorizerDescription:
-          allOf:
-          - $ref: '#/components/schemas/AuthorizerDescription'
-          - description: The default authorizer's description.
-    TokenKeyName:
-      type: string
-      pattern: '[a-zA-Z0-9_-]+'
-      minLength: 1
-      maxLength: 128
     ResourceAlreadyExistsException: {}
-    ServiceUnavailableException: {}
     AuthorizerDescription:
       type: object
       properties:
@@ -397,54 +376,57 @@ components:
           - $ref: '#/components/schemas/EnableCachingForHttp'
           - description: When <code>true</code>, the result from the authorizer’s Lambda function is cached for the time specified in <code>refreshAfterInSeconds</code>. The cached result is used while the device reuses the same HTTP connection.
       description: The authorizer description.
-    AuthorizerFunctionArn:
-      type: string
-      pattern: '[\s\S]*'
-      maxLength: 2048
-    AuthorizerStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-    DateType:
-      type: string
-      format: date-time
-    KeyValue:
-      type: string
-      pattern: '[\s\S]*'
-      maxLength: 5120
     AuthorizerName:
       type: string
       pattern: '[\w=,@-]+'
       minLength: 1
       maxLength: 128
+    UnauthorizedException: {}
+    ServiceUnavailableException: {}
+    TokenKeyName:
+      type: string
+      pattern: '[a-zA-Z0-9_-]+'
+      minLength: 1
+      maxLength: 128
+    DateType:
+      type: string
+      format: date-time
+    InternalFailureException: {}
+    AuthorizerArn:
+      type: string
+      maxLength: 2048
+    InvalidRequestException: {}
+    ThrottlingException: {}
     ClearDefaultAuthorizerResponse:
       type: object
       properties: {}
-    UnauthorizedException: {}
+    SetDefaultAuthorizerResponse:
+      type: object
+      properties:
+        authorizerName:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerName'
+          - description: The authorizer name.
+        authorizerArn:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerArn'
+          - description: The authorizer ARN.
+    DescribeDefaultAuthorizerResponse:
+      type: object
+      properties:
+        authorizerDescription:
+          allOf:
+          - $ref: '#/components/schemas/AuthorizerDescription'
+          - description: The default authorizer's description.
     PublicKeyMap:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/KeyValue'
+    KeyValue:
+      type: string
+      pattern: '[\s\S]*'
+      maxLength: 5120
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -459,6 +441,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

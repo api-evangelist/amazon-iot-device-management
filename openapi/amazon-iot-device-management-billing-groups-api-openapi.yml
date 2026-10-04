@@ -703,11 +703,82 @@ paths:
       - Billing Groups
 components:
   schemas:
+    BillingGroupName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    BillingGroupProperties:
+      type: object
+      properties:
+        billingGroupDescription:
+          allOf:
+          - $ref: '#/components/schemas/BillingGroupDescription'
+          - description: The description of the billing group.
+      description: The properties of a billing group.
+    BillingGroupNameAndArnList:
+      type: array
+      items:
+        $ref: '#/components/schemas/GroupNameAndArn'
+    DeleteBillingGroupResponse:
+      type: object
+      properties: {}
+    ThingName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    VersionConflictException: {}
+    ListThingsInBillingGroupResponse:
+      type: object
+      properties:
+        things:
+          allOf:
+          - $ref: '#/components/schemas/ThingNameList'
+          - description: A list of things in the billing group.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
     ResourceNotFoundException: {}
-    InvalidRequestException: {}
+    ResourceAlreadyExistsException: {}
     BillingGroupArn:
       type: string
+    ListBillingGroupsResponse:
+      type: object
+      properties:
+        billingGroups:
+          allOf:
+          - $ref: '#/components/schemas/BillingGroupNameAndArnList'
+          - description: The list of billing groups.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    BillingGroupMetadata:
+      type: object
+      properties:
+        creationDate:
+          allOf:
+          - $ref: '#/components/schemas/CreationDate'
+          - description: The date the billing group was created.
+      description: Additional information about the billing group.
+    CreationDate:
+      type: string
+      format: date-time
+    BillingGroupId:
+      type: string
+      pattern: '[a-zA-Z0-9\-]+'
+      minLength: 1
+      maxLength: 128
     InternalFailureException: {}
+    InvalidRequestException: {}
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    Version:
+      type: integer
     Tag:
       type: object
       required:
@@ -722,58 +793,20 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    CreationDate:
+    AddThingToBillingGroupResponse:
+      type: object
+      properties: {}
+    ThingGroupArn:
       type: string
-      format: date-time
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
     ThingNameList:
       type: array
       items:
         $ref: '#/components/schemas/ThingName'
-    BillingGroupNameAndArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GroupNameAndArn'
-    ListBillingGroupsResponse:
-      type: object
-      properties:
-        billingGroups:
-          allOf:
-          - $ref: '#/components/schemas/BillingGroupNameAndArnList'
-          - description: The list of billing groups.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    ThrottlingException: {}
-    ThingGroupArn:
-      type: string
-    ListThingsInBillingGroupResponse:
-      type: object
-      properties:
-        things:
-          allOf:
-          - $ref: '#/components/schemas/ThingNameList'
-          - description: A list of things in the billing group.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
-    VersionConflictException: {}
-    Version:
-      type: integer
-    ThingGroupName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    BillingGroupMetadata:
-      type: object
-      properties:
-        creationDate:
-          allOf:
-          - $ref: '#/components/schemas/CreationDate'
-          - description: The date the billing group was created.
-      description: Additional information about the billing group.
     CreateBillingGroupResponse:
       type: object
       properties:
@@ -789,6 +822,37 @@ components:
           allOf:
           - $ref: '#/components/schemas/BillingGroupId'
           - description: The ID of the billing group.
+    UpdateBillingGroupResponse:
+      type: object
+      properties:
+        version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          - description: The latest version of the billing group.
+    ThrottlingException: {}
+    GroupNameAndArn:
+      type: object
+      properties:
+        groupName:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupName'
+          - description: The group name.
+        groupArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingGroupArn'
+          - description: The group ARN.
+      description: The name and ARN of a group.
+    BillingGroupDescription:
+      type: string
+      pattern: '[\p{Graph}\x20]*'
+      maxLength: 2028
+    ThingGroupName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    NextToken:
+      type: string
     DescribeBillingGroupResponse:
       type: object
       properties:
@@ -816,92 +880,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/BillingGroupMetadata'
           - description: Additional information about the billing group.
-    BillingGroupProperties:
-      type: object
-      properties:
-        billingGroupDescription:
-          allOf:
-          - $ref: '#/components/schemas/BillingGroupDescription'
-          - description: The description of the billing group.
-      description: The properties of a billing group.
-    AddThingToBillingGroupResponse:
-      type: object
-      properties: {}
-    NextToken:
-      type: string
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    BillingGroupDescription:
-      type: string
-      pattern: '[\p{Graph}\x20]*'
-      maxLength: 2028
     RemoveThingFromBillingGroupResponse:
       type: object
       properties: {}
-    ResourceAlreadyExistsException: {}
-    BillingGroupId:
-      type: string
-      pattern: '[a-zA-Z0-9\-]+'
-      minLength: 1
-      maxLength: 128
-    ThingName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    DeleteBillingGroupResponse:
-      type: object
-      properties: {}
-    UpdateBillingGroupResponse:
-      type: object
-      properties:
-        version:
-          allOf:
-          - $ref: '#/components/schemas/Version'
-          - description: The latest version of the billing group.
-    BillingGroupName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    GroupNameAndArn:
-      type: object
-      properties:
-        groupName:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupName'
-          - description: The group name.
-        groupArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingGroupArn'
-          - description: The group ARN.
-      description: The name and ARN of a group.
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -916,6 +898,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

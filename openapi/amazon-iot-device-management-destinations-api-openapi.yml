@@ -444,119 +444,9 @@ paths:
       - Destinations
 components:
   schemas:
-    InvalidRequestException: {}
-    TopicRuleDestinationSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/TopicRuleDestinationSummary'
-    HttpUrlDestinationConfiguration:
-      type: object
-      required:
-      - confirmationUrl
-      properties:
-        confirmationUrl:
-          allOf:
-          - $ref: '#/components/schemas/Url'
-          - description: The URL IoT uses to confirm ownership of or access to the topic rule destination URL.
-      description: HTTP URL destination configuration used by the topic rule's HTTP action.
-    GetTopicRuleDestinationResponse:
-      type: object
-      properties:
-        topicRuleDestination:
-          allOf:
-          - $ref: '#/components/schemas/TopicRuleDestination'
-          - description: The topic rule destination.
-    DeleteTopicRuleDestinationResponse:
-      type: object
-      properties: {}
-    String:
-      type: string
-    SecurityGroupId:
-      type: string
     Url:
       type: string
       maxLength: 2000
-    TopicRuleDestinationSummary:
-      type: object
-      properties:
-        arn:
-          allOf:
-          - $ref: '#/components/schemas/AwsArn'
-          - description: The topic rule destination ARN.
-        status:
-          allOf:
-          - $ref: '#/components/schemas/TopicRuleDestinationStatus'
-          - description: <p>The status of the topic rule destination. Valid values are:</p> <dl> <dt>IN_PROGRESS</dt> <dd> <p>A topic rule destination was created but has not been confirmed. You can set <code>status</code> to <code>IN_PROGRESS</code> by calling <code>UpdateTopicRuleDestination</code>. Calling <code>UpdateTopicRuleDestination</code> causes a new confirmation challenge to be sent to your confirmation endpoint.</p> </dd> <dt>ENABLED</dt> <dd> <p>Confirmation was completed, and traffic to this destination is allowed. You can set <code>status</code> to <code>DISABLED</code> by calling <code>UpdateTopicRuleDestination</code>.</p> </dd> <dt>DISABLED</dt> <dd> <p>Confirmation was completed, and traffic to this destination is not allowed. You can set <code>status</code> to <code>ENABLED</code> by calling <code>UpdateTopicRuleDestination</code>.</p> </dd> <dt>ERROR</dt> <dd> <p>Confirmation could not be completed, for example if the confirmation timed out. You can call <code>GetTopicRuleDestination</code> for details about the error. You can set <code>status</code> to <code>IN_PROGRESS</code> by calling <code>UpdateTopicRuleDestination</code>. Calling <code>UpdateTopicRuleDestination</code> causes a new confirmation challenge to be sent to your confirmation endpoint.</p> </dd> </dl>
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/CreatedAtDate'
-          - description: The date and time when the topic rule destination was created.
-        lastUpdatedAt:
-          allOf:
-          - $ref: '#/components/schemas/LastUpdatedAtDate'
-          - description: The date and time when the topic rule destination was last updated.
-        statusReason:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The reason the topic rule destination is in the current status.
-        httpUrlSummary:
-          allOf:
-          - $ref: '#/components/schemas/HttpUrlDestinationSummary'
-          - description: Information about the HTTP URL.
-        vpcDestinationSummary:
-          allOf:
-          - $ref: '#/components/schemas/VpcDestinationSummary'
-          - description: Information about the virtual private cloud (VPC) connection.
-      description: Information about the topic rule destination.
-    VpcDestinationConfiguration:
-      type: object
-      required:
-      - subnetIds
-      - vpcId
-      - roleArn
-      properties:
-        subnetIds:
-          allOf:
-          - $ref: '#/components/schemas/SubnetIdList'
-          - description: The subnet IDs of the VPC destination.
-        securityGroups:
-          allOf:
-          - $ref: '#/components/schemas/SecurityGroupList'
-          - description: The security groups of the VPC destination.
-        vpcId:
-          allOf:
-          - $ref: '#/components/schemas/VpcId'
-          - description: The ID of the VPC.
-        roleArn:
-          allOf:
-          - $ref: '#/components/schemas/AwsArn'
-          - description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
-      description: The configuration information for a virtual private cloud (VPC) destination.
-    CreatedAtDate:
-      type: string
-      format: date-time
-    NextToken:
-      type: string
-    VpcDestinationProperties:
-      type: object
-      properties:
-        subnetIds:
-          allOf:
-          - $ref: '#/components/schemas/SubnetIdList'
-          - description: The subnet IDs of the VPC destination.
-        securityGroups:
-          allOf:
-          - $ref: '#/components/schemas/SecurityGroupList'
-          - description: The security groups of the VPC destination.
-        vpcId:
-          allOf:
-          - $ref: '#/components/schemas/VpcId'
-          - description: The ID of the VPC.
-        roleArn:
-          allOf:
-          - $ref: '#/components/schemas/AwsArn'
-          - description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
-      description: The properties of a virtual private cloud (VPC) destination.
     VpcDestinationSummary:
       type: object
       properties:
@@ -577,56 +467,6 @@ components:
           - $ref: '#/components/schemas/AwsArn'
           - description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
       description: The summary of a virtual private cloud (VPC) destination.
-    AwsArn:
-      type: string
-    SubnetId:
-      type: string
-    ResourceAlreadyExistsException: {}
-    SubnetIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SubnetId'
-    ServiceUnavailableException: {}
-    LastUpdatedAtDate:
-      type: string
-      format: date-time
-    TopicRuleDestinationStatus:
-      type: string
-      enum:
-      - ENABLED
-      - IN_PROGRESS
-      - DISABLED
-      - ERROR
-      - DELETING
-    ListTopicRuleDestinationsResponse:
-      type: object
-      properties:
-        destinationSummaries:
-          allOf:
-          - $ref: '#/components/schemas/TopicRuleDestinationSummaries'
-          - description: Information about a topic rule destination.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    CreateTopicRuleDestinationResponse:
-      type: object
-      properties:
-        topicRuleDestination:
-          allOf:
-          - $ref: '#/components/schemas/TopicRuleDestination'
-          - description: The topic rule destination.
-    VpcId:
-      type: string
-    HttpUrlDestinationProperties:
-      type: object
-      properties:
-        confirmationUrl:
-          allOf:
-          - $ref: '#/components/schemas/Url'
-          - description: The URL used to confirm the HTTP topic rule destination URL.
-      description: HTTP URL destination properties.
-    InternalException: {}
     TopicRuleDestination:
       type: object
       properties:
@@ -659,12 +499,65 @@ components:
           - $ref: '#/components/schemas/VpcDestinationProperties'
           - description: Properties of the virtual private cloud (VPC) connection.
       description: A topic rule destination.
-    ConflictingResourceUpdateException: {}
-    SecurityGroupList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SecurityGroupId'
+    ResourceAlreadyExistsException: {}
+    GetTopicRuleDestinationResponse:
+      type: object
+      properties:
+        topicRuleDestination:
+          allOf:
+          - $ref: '#/components/schemas/TopicRuleDestination'
+          - description: The topic rule destination.
     UnauthorizedException: {}
+    InternalException: {}
+    ServiceUnavailableException: {}
+    ListTopicRuleDestinationsResponse:
+      type: object
+      properties:
+        destinationSummaries:
+          allOf:
+          - $ref: '#/components/schemas/TopicRuleDestinationSummaries'
+          - description: Information about a topic rule destination.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    InvalidRequestException: {}
+    HttpUrlDestinationProperties:
+      type: object
+      properties:
+        confirmationUrl:
+          allOf:
+          - $ref: '#/components/schemas/Url'
+          - description: The URL used to confirm the HTTP topic rule destination URL.
+      description: HTTP URL destination properties.
+    CreatedAtDate:
+      type: string
+      format: date-time
+    SecurityGroupId:
+      type: string
+    UpdateTopicRuleDestinationResponse:
+      type: object
+      properties: {}
+    AwsArn:
+      type: string
+    TopicRuleDestinationStatus:
+      type: string
+      enum:
+      - ENABLED
+      - IN_PROGRESS
+      - DISABLED
+      - ERROR
+      - DELETING
+    HttpUrlDestinationConfiguration:
+      type: object
+      required:
+      - confirmationUrl
+      properties:
+        confirmationUrl:
+          allOf:
+          - $ref: '#/components/schemas/Url'
+          - description: The URL IoT uses to confirm ownership of or access to the topic rule destination URL.
+      description: HTTP URL destination configuration used by the topic rule's HTTP action.
     HttpUrlDestinationSummary:
       type: object
       properties:
@@ -673,28 +566,117 @@ components:
           - $ref: '#/components/schemas/Url'
           - description: The URL used to confirm ownership of or access to the HTTP topic rule destination URL.
       description: Information about an HTTP URL destination.
-    UpdateTopicRuleDestinationResponse:
+    VpcDestinationProperties:
+      type: object
+      properties:
+        subnetIds:
+          allOf:
+          - $ref: '#/components/schemas/SubnetIdList'
+          - description: The subnet IDs of the VPC destination.
+        securityGroups:
+          allOf:
+          - $ref: '#/components/schemas/SecurityGroupList'
+          - description: The security groups of the VPC destination.
+        vpcId:
+          allOf:
+          - $ref: '#/components/schemas/VpcId'
+          - description: The ID of the VPC.
+        roleArn:
+          allOf:
+          - $ref: '#/components/schemas/AwsArn'
+          - description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+      description: The properties of a virtual private cloud (VPC) destination.
+    TopicRuleDestinationSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/TopicRuleDestinationSummary'
+    VpcId:
+      type: string
+    String:
+      type: string
+    VpcDestinationConfiguration:
+      type: object
+      required:
+      - subnetIds
+      - vpcId
+      - roleArn
+      properties:
+        subnetIds:
+          allOf:
+          - $ref: '#/components/schemas/SubnetIdList'
+          - description: The subnet IDs of the VPC destination.
+        securityGroups:
+          allOf:
+          - $ref: '#/components/schemas/SecurityGroupList'
+          - description: The security groups of the VPC destination.
+        vpcId:
+          allOf:
+          - $ref: '#/components/schemas/VpcId'
+          - description: The ID of the VPC.
+        roleArn:
+          allOf:
+          - $ref: '#/components/schemas/AwsArn'
+          - description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+      description: The configuration information for a virtual private cloud (VPC) destination.
+    SubnetIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SubnetId'
+    SecurityGroupList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SecurityGroupId'
+    TopicRuleDestinationSummary:
+      type: object
+      properties:
+        arn:
+          allOf:
+          - $ref: '#/components/schemas/AwsArn'
+          - description: The topic rule destination ARN.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/TopicRuleDestinationStatus'
+          - description: <p>The status of the topic rule destination. Valid values are:</p> <dl> <dt>IN_PROGRESS</dt> <dd> <p>A topic rule destination was created but has not been confirmed. You can set <code>status</code> to <code>IN_PROGRESS</code> by calling <code>UpdateTopicRuleDestination</code>. Calling <code>UpdateTopicRuleDestination</code> causes a new confirmation challenge to be sent to your confirmation endpoint.</p> </dd> <dt>ENABLED</dt> <dd> <p>Confirmation was completed, and traffic to this destination is allowed. You can set <code>status</code> to <code>DISABLED</code> by calling <code>UpdateTopicRuleDestination</code>.</p> </dd> <dt>DISABLED</dt> <dd> <p>Confirmation was completed, and traffic to this destination is not allowed. You can set <code>status</code> to <code>ENABLED</code> by calling <code>UpdateTopicRuleDestination</code>.</p> </dd> <dt>ERROR</dt> <dd> <p>Confirmation could not be completed, for example if the confirmation timed out. You can call <code>GetTopicRuleDestination</code> for details about the error. You can set <code>status</code> to <code>IN_PROGRESS</code> by calling <code>UpdateTopicRuleDestination</code>. Calling <code>UpdateTopicRuleDestination</code> causes a new confirmation challenge to be sent to your confirmation endpoint.</p> </dd> </dl>
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAtDate'
+          - description: The date and time when the topic rule destination was created.
+        lastUpdatedAt:
+          allOf:
+          - $ref: '#/components/schemas/LastUpdatedAtDate'
+          - description: The date and time when the topic rule destination was last updated.
+        statusReason:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The reason the topic rule destination is in the current status.
+        httpUrlSummary:
+          allOf:
+          - $ref: '#/components/schemas/HttpUrlDestinationSummary'
+          - description: Information about the HTTP URL.
+        vpcDestinationSummary:
+          allOf:
+          - $ref: '#/components/schemas/VpcDestinationSummary'
+          - description: Information about the virtual private cloud (VPC) connection.
+      description: Information about the topic rule destination.
+    SubnetId:
+      type: string
+    DeleteTopicRuleDestinationResponse:
       type: object
       properties: {}
+    ConflictingResourceUpdateException: {}
+    NextToken:
+      type: string
+    LastUpdatedAtDate:
+      type: string
+      format: date-time
+    CreateTopicRuleDestinationResponse:
+      type: object
+      properties:
+        topicRuleDestination:
+          allOf:
+          - $ref: '#/components/schemas/TopicRuleDestination'
+          - description: The topic rule destination.
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -709,6 +691,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

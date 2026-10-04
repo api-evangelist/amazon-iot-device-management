@@ -1026,11 +1026,40 @@ paths:
       - Jobs
 components:
   schemas:
-    JobExecutionSummaryForJobList:
+    ScheduledJobRolloutList:
       type: array
       items:
-        $ref: '#/components/schemas/JobExecutionSummaryForJob'
-    ThrottlingException: {}
+        $ref: '#/components/schemas/ScheduledJobRollout'
+    RolloutRatePerMinute:
+      type: integer
+      minimum: 1
+      maximum: 1000
+    MaxJobExecutionsPerMin:
+      type: integer
+      minimum: 1
+    TimeoutConfig:
+      type: object
+      properties:
+        inProgressTimeoutInMinutes:
+          allOf:
+          - $ref: '#/components/schemas/InProgressTimeoutInMinutes'
+          - description: Specifies the amount of time, in minutes, this device has to finish execution of this job. The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The in progress timer can't be updated and will apply to all job executions for the job. Whenever a job execution remains in the IN_PROGRESS status for longer than this interval, the job execution will fail and switch to the terminal <code>TIMED_OUT</code> status.
+      description: Specifies the amount of time each device has to finish its execution of the job. A timer is started when the job execution status is set to <code>IN_PROGRESS</code>. If the job execution status is not set to another terminal state before the timer expires, it will be automatically set to <code>TIMED_OUT</code>.
+    ResourceAlreadyExistsException: {}
+    JobExecutionsRetryConfig:
+      type: object
+      required:
+      - criteriaList
+      properties:
+        criteriaList:
+          allOf:
+          - $ref: '#/components/schemas/RetryCriteriaList'
+          - description: The list of criteria that determines how many retries are allowed for each failure type for a job.
+      description: The configuration that determines how many retries are allowed for each failure type for a job.
+    ServiceUnavailableException: {}
+    DateType:
+      type: string
+      format: date-time
     ListJobExecutionsForJobResponse:
       type: object
       properties:
@@ -1042,21 +1071,292 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token for the next set of results, or <b>null</b> if there are no additional results.
+    ParameterMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ParameterValue'
+    AbortCriteriaList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AbortCriteria'
+      minItems: 1
+    TargetSelection:
+      type: string
+      enum:
+      - CONTINUOUS
+      - SNAPSHOT
+    JobExecutionFailureType:
+      type: string
+      enum:
+      - FAILED
+      - REJECTED
+      - TIMED_OUT
+      - ALL
+    ExpiresInSec:
+      type: integer
+      minimum: 60
+      maximum: 3600
+    TargetArn:
+      type: string
+      maxLength: 2048
+    QueuedThings:
+      type: integer
+    ThrottlingException: {}
+    CreateJobResponse:
+      type: object
+      properties:
+        jobArn:
+          allOf:
+          - $ref: '#/components/schemas/JobArn'
+          - description: The job ARN.
+        jobId:
+          allOf:
+          - $ref: '#/components/schemas/JobId'
+          - description: The unique identifier you assigned to this job.
+        description:
+          allOf:
+          - $ref: '#/components/schemas/JobDescription'
+          - description: The job description.
+    ProcessingTargetNameList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProcessingTargetName'
+    ThingGroupId:
+      type: string
+      pattern: '[a-zA-Z0-9\-]+'
+      minLength: 1
+      maxLength: 128
+    JobExecutionStatus:
+      type: string
+      enum:
+      - QUEUED
+      - IN_PROGRESS
+      - SUCCEEDED
+      - FAILED
+      - TIMED_OUT
+      - REJECTED
+      - REMOVED
+      - CANCELED
+    RetryCriteriaList:
+      type: array
+      items:
+        $ref: '#/components/schemas/RetryCriteria'
+      minItems: 1
+      maxItems: 2
+    MinimumNumberOfExecutedThings:
+      type: integer
+      minimum: 1
     JobDocumentSource:
       type: string
       minLength: 1
       maxLength: 1350
-    DescribeJobResponse:
+    JobSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/JobSummary'
+    AbortCriteria:
+      type: object
+      required:
+      - failureType
+      - action
+      - thresholdPercentage
+      - minNumberOfExecutedThings
+      properties:
+        failureType:
+          allOf:
+          - $ref: '#/components/schemas/JobExecutionFailureType'
+          - description: The type of job execution failures that can initiate a job abort.
+        action:
+          allOf:
+          - $ref: '#/components/schemas/AbortAction'
+          - description: The type of job action to take to initiate the job abort.
+        thresholdPercentage:
+          allOf:
+          - $ref: '#/components/schemas/AbortThresholdPercentage'
+          - description: <p>The minimum percentage of job execution failures that must occur to initiate the job abort.</p> <p>Amazon Web Services IoT Core supports up to two digits after the decimal (for example, 10.9 and 10.99, but not 10.999).</p>
+        minNumberOfExecutedThings:
+          allOf:
+          - $ref: '#/components/schemas/MinimumNumberOfExecutedThings'
+          - description: The minimum number of things which must receive job execution notifications before the job can be aborted.
+      description: The criteria that determine when and how a job abort takes place.
+    JobStatus:
+      type: string
+      enum:
+      - IN_PROGRESS
+      - CANCELED
+      - COMPLETED
+      - DELETION_IN_PROGRESS
+      - SCHEDULED
+    StringDateTime:
+      type: string
+      minLength: 1
+      maxLength: 64
+    JobDocument:
+      type: string
+      maxLength: 32768
+    NumberOfRetries:
+      type: integer
+      minimum: 0
+      maximum: 10
+    JobExecutionSummary:
       type: object
       properties:
-        documentSource:
+        status:
           allOf:
-          - $ref: '#/components/schemas/JobDocumentSource'
-          - description: An S3 link to the job document.
-        job:
+          - $ref: '#/components/schemas/JobExecutionStatus'
+          - description: The status of the job execution.
+        queuedAt:
           allOf:
-          - $ref: '#/components/schemas/Job'
-          - description: Information about the job.
+          - $ref: '#/components/schemas/DateType'
+          - description: The time, in seconds since the epoch, when the job execution was queued.
+        startedAt:
+          allOf:
+          - $ref: '#/components/schemas/DateType'
+          - description: The time, in seconds since the epoch, when the job execution started.
+        lastUpdatedAt:
+          allOf:
+          - $ref: '#/components/schemas/DateType'
+          - description: The time, in seconds since the epoch, when the job execution was last updated.
+        executionNumber:
+          allOf:
+          - $ref: '#/components/schemas/ExecutionNumber'
+          - description: A string (consisting of the digits "0" through "9") which identifies this particular job execution on this particular device. It can be used later in commands which return or update job execution information.
+        retryAttempt:
+          allOf:
+          - $ref: '#/components/schemas/RetryAttempt'
+          - description: The number that indicates how many retry attempts have been completed for this job on this device.
+      description: The job execution summary.
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    CancelJobResponse:
+      type: object
+      properties:
+        jobArn:
+          allOf:
+          - $ref: '#/components/schemas/JobArn'
+          - description: The job ARN.
+        jobId:
+          allOf:
+          - $ref: '#/components/schemas/JobId'
+          - description: The unique identifier you assigned to this job when it was created.
+        description:
+          allOf:
+          - $ref: '#/components/schemas/JobDescription'
+          - description: A short text description of the job.
+    RetryableFailureType:
+      type: string
+      enum:
+      - FAILED
+      - TIMED_OUT
+      - ALL
+    PresignedUrlConfig:
+      type: object
+      properties:
+        roleArn:
+          allOf:
+          - $ref: '#/components/schemas/RoleArn'
+          - description: <p>The ARN of an IAM role that grants grants permission to download files from the S3 bucket where the job data/updates are stored. The role must also grant permission for IoT to download the files.</p> <important> <p>For information about addressing the confused deputy problem, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/cross-service-confused-deputy-prevention.html">cross-service confused deputy prevention</a> in the <i>Amazon Web Services IoT Core developer guide</i>.</p> </important>
+        expiresInSec:
+          allOf:
+          - $ref: '#/components/schemas/ExpiresInSec'
+          - description: How long (in seconds) pre-signed URLs are valid. Valid values are 60 - 3600, the default value is 3600 seconds. Pre-signed URLs are generated when Jobs receives an MQTT request for the job document.
+      description: Configuration for pre-signed S3 URLs.
+    InvalidRequestException: {}
+    GetJobDocumentResponse:
+      type: object
+      properties:
+        document:
+          allOf:
+          - $ref: '#/components/schemas/JobDocument'
+          - description: The job document content.
+    LimitExceededException: {}
+    ExponentialRolloutRate:
+      type: object
+      required:
+      - baseRatePerMinute
+      - incrementFactor
+      - rateIncreaseCriteria
+      properties:
+        baseRatePerMinute:
+          allOf:
+          - $ref: '#/components/schemas/RolloutRatePerMinute'
+          - description: The minimum number of things that will be notified of a pending job, per minute at the start of job rollout. This parameter allows you to define the initial rate of rollout.
+        incrementFactor:
+          allOf:
+          - $ref: '#/components/schemas/IncrementFactor'
+          - description: <p>The exponential factor to increase the rate of rollout for a job.</p> <p>Amazon Web Services IoT Core supports up to one digit after the decimal (for example, 1.5, but not 1.55).</p>
+        rateIncreaseCriteria:
+          allOf:
+          - $ref: '#/components/schemas/RateIncreaseCriteria'
+          - description: The criteria to initiate the increase in rate of rollout for a job.
+      description: Allows you to create an exponential rate of rollout for a job.
+    ScheduledJobRollout:
+      type: object
+      properties:
+        startTime:
+          allOf:
+          - $ref: '#/components/schemas/StringDateTime'
+          - description: Displays the start times of the next seven maintenance window occurrences.
+      description: Displays the next seven maintenance window occurrences and their start times.
+    SucceededThings:
+      type: integer
+    AbortThresholdPercentage:
+      type: number
+      format: double
+      maximum: 100
+    MaintenanceWindows:
+      type: array
+      items:
+        $ref: '#/components/schemas/MaintenanceWindow'
+    DurationInMinutes:
+      type: integer
+      minimum: 30
+      maximum: 1430
+    ExecutionNumber:
+      type: integer
+    RetryAttempt:
+      type: integer
+    InProgressTimeoutInMinutes:
+      type: integer
+    FailedThings:
+      type: integer
+    RejectedThings:
+      type: integer
+    NextToken:
+      type: string
+    RetryCriteria:
+      type: object
+      required:
+      - failureType
+      - numberOfRetries
+      properties:
+        failureType:
+          allOf:
+          - $ref: '#/components/schemas/RetryableFailureType'
+          - description: The type of job execution failures that can initiate a job retry.
+        numberOfRetries:
+          allOf:
+          - $ref: '#/components/schemas/NumberOfRetries'
+          - description: The number of retries allowed for a failure type for the job.
+      description: The criteria that determines how many retries are allowed for each failure type for a job.
+    ProcessingTargetName:
+      type: string
+    Comment:
+      type: string
+      pattern: '[^\p{C}]+'
+      maxLength: 2028
+    JobDescription:
+      type: string
+      pattern: '[^\p{C}]+'
+      maxLength: 2028
+    JobEndBehavior:
+      type: string
+      enum:
+      - STOP_ROLLOUT
+      - CANCEL
+      - FORCE_CANCEL
     Job:
       type: object
       properties:
@@ -1157,37 +1457,28 @@ components:
           - $ref: '#/components/schemas/ScheduledJobRolloutList'
           - description: Displays the next seven maintenance window occurrences and their start times.
       description: The <code>Job</code> object contains details about a job.
-    RoleArn:
+    JobTemplateArn:
       type: string
-      minLength: 20
-      maxLength: 2048
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      pattern: ^arn:[!-~]+$
       minLength: 1
-      maxLength: 128
-    NamespaceId:
-      type: string
-      pattern: '[a-zA-Z0-9_-]+'
-    JobExecutionFailureType:
-      type: string
-      enum:
-      - FAILED
-      - REJECTED
-      - TIMED_OUT
-      - ALL
-    AbortThresholdPercentage:
-      type: number
-      format: double
-      maximum: 100
-    QueuedThings:
-      type: integer
-    Comment:
+      maxLength: 1600
+    AbortConfig:
+      type: object
+      required:
+      - criteriaList
+      properties:
+        criteriaList:
+          allOf:
+          - $ref: '#/components/schemas/AbortCriteriaList'
+          - description: The list of criteria that determine when and how to abort the job.
+      description: The criteria that determine when and how a job abort takes place.
+    Forced:
+      type: boolean
+    ParameterValue:
       type: string
       pattern: '[^\p{C}]+'
-      maxLength: 2028
-    SucceededThings:
-      type: integer
+      minLength: 1
+      maxLength: 512
     ListJobsResponse:
       type: object
       properties:
@@ -1199,182 +1490,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token for the next set of results, or <b>null</b> if there are no additional results.
-    TimeoutConfig:
-      type: object
-      properties:
-        inProgressTimeoutInMinutes:
-          allOf:
-          - $ref: '#/components/schemas/InProgressTimeoutInMinutes'
-          - description: Specifies the amount of time, in minutes, this device has to finish execution of this job. The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The in progress timer can't be updated and will apply to all job executions for the job. Whenever a job execution remains in the IN_PROGRESS status for longer than this interval, the job execution will fail and switch to the terminal <code>TIMED_OUT</code> status.
-      description: Specifies the amount of time each device has to finish its execution of the job. A timer is started when the job execution status is set to <code>IN_PROGRESS</code>. If the job execution status is not set to another terminal state before the timer expires, it will be automatically set to <code>TIMED_OUT</code>.
-    JobExecutionStatus:
+    TagKey:
       type: string
-      enum:
-      - QUEUED
-      - IN_PROGRESS
-      - SUCCEEDED
-      - FAILED
-      - TIMED_OUT
-      - REJECTED
-      - REMOVED
-      - CANCELED
-    CancelJobResponse:
-      type: object
-      properties:
-        jobArn:
-          allOf:
-          - $ref: '#/components/schemas/JobArn'
-          - description: The job ARN.
-        jobId:
-          allOf:
-          - $ref: '#/components/schemas/JobId'
-          - description: The unique identifier you assigned to this job when it was created.
-        description:
-          allOf:
-          - $ref: '#/components/schemas/JobDescription'
-          - description: A short text description of the job.
-    MaxJobExecutionsPerMin:
-      type: integer
-      minimum: 1
-    FailedThings:
-      type: integer
-    TimedOutThings:
-      type: integer
-    ScheduledJobRollout:
-      type: object
-      properties:
-        startTime:
-          allOf:
-          - $ref: '#/components/schemas/StringDateTime'
-          - description: Displays the start times of the next seven maintenance window occurrences.
-      description: Displays the next seven maintenance window occurrences and their start times.
-    CanceledThings:
-      type: integer
-    CronExpression:
-      type: string
-      minLength: 1
-      maxLength: 256
-    IncrementFactor:
-      type: number
-      format: double
-      minimum: 1.1
-      maximum: 5
-    LimitExceededException: {}
-    ExecutionNumber:
-      type: integer
-    InvalidStateTransitionException: {}
-    TargetArn:
-      type: string
-      maxLength: 2048
-    JobProcessDetails:
-      type: object
-      properties:
-        processingTargets:
-          allOf:
-          - $ref: '#/components/schemas/ProcessingTargetNameList'
-          - description: The target devices to which the job execution is being rolled out. This value will be null after the job execution has finished rolling out to all the target devices.
-        numberOfCanceledThings:
-          allOf:
-          - $ref: '#/components/schemas/CanceledThings'
-          - description: The number of things that cancelled the job.
-        numberOfSucceededThings:
-          allOf:
-          - $ref: '#/components/schemas/SucceededThings'
-          - description: The number of things which successfully completed the job.
-        numberOfFailedThings:
-          allOf:
-          - $ref: '#/components/schemas/FailedThings'
-          - description: The number of things that failed executing the job.
-        numberOfRejectedThings:
-          allOf:
-          - $ref: '#/components/schemas/RejectedThings'
-          - description: The number of things that rejected the job.
-        numberOfQueuedThings:
-          allOf:
-          - $ref: '#/components/schemas/QueuedThings'
-          - description: The number of things that are awaiting execution of the job.
-        numberOfInProgressThings:
-          allOf:
-          - $ref: '#/components/schemas/InProgressThings'
-          - description: The number of things currently executing the job.
-        numberOfRemovedThings:
-          allOf:
-          - $ref: '#/components/schemas/RemovedThings'
-          - description: The number of things that are no longer scheduled to execute the job because they have been deleted or have been removed from the group that was a target of the job.
-        numberOfTimedOutThings:
-          allOf:
-          - $ref: '#/components/schemas/TimedOutThings'
-          - description: The number of things whose job execution status is <code>TIMED_OUT</code>.
-      description: The job process details.
-    NumberOfThings:
-      type: integer
-      minimum: 1
-    GetJobDocumentResponse:
-      type: object
-      properties:
-        document:
-          allOf:
-          - $ref: '#/components/schemas/JobDocument'
-          - description: The job document content.
-    ParameterValue:
-      type: string
-      pattern: '[^\p{C}]+'
-      minLength: 1
-      maxLength: 512
-    NumberOfRetries:
-      type: integer
-      minimum: 0
-      maximum: 10
-    CreateJobResponse:
-      type: object
-      properties:
-        jobArn:
-          allOf:
-          - $ref: '#/components/schemas/JobArn'
-          - description: The job ARN.
-        jobId:
-          allOf:
-          - $ref: '#/components/schemas/JobId'
-          - description: The unique identifier you assigned to this job.
-        description:
-          allOf:
-          - $ref: '#/components/schemas/JobDescription'
-          - description: The job description.
-    AbortCriteria:
-      type: object
-      required:
-      - failureType
-      - action
-      - thresholdPercentage
-      - minNumberOfExecutedThings
-      properties:
-        failureType:
-          allOf:
-          - $ref: '#/components/schemas/JobExecutionFailureType'
-          - description: The type of job execution failures that can initiate a job abort.
-        action:
-          allOf:
-          - $ref: '#/components/schemas/AbortAction'
-          - description: The type of job action to take to initiate the job abort.
-        thresholdPercentage:
-          allOf:
-          - $ref: '#/components/schemas/AbortThresholdPercentage'
-          - description: <p>The minimum percentage of job execution failures that must occur to initiate the job abort.</p> <p>Amazon Web Services IoT Core supports up to two digits after the decimal (for example, 10.9 and 10.99, but not 10.999).</p>
-        minNumberOfExecutedThings:
-          allOf:
-          - $ref: '#/components/schemas/MinimumNumberOfExecutedThings'
-          - description: The minimum number of things which must receive job execution notifications before the job can be aborted.
-      description: The criteria that determine when and how a job abort takes place.
-    ThingGroupId:
-      type: string
-      pattern: '[a-zA-Z0-9\-]+'
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
       minLength: 1
       maxLength: 128
-    JobTemplateArn:
-      type: string
-      pattern: ^arn:[!-~]+$
-      minLength: 1
-      maxLength: 1600
+    BooleanWrapperObject:
+      type: boolean
     AssociateTargetsWithJobResponse:
       type: object
       properties:
@@ -1390,148 +1512,92 @@ components:
           allOf:
           - $ref: '#/components/schemas/JobDescription'
           - description: A short text description of the job.
-    DurationInMinutes:
-      type: integer
-      minimum: 30
-      maximum: 1430
-    DateType:
-      type: string
-      format: date-time
-    InProgressTimeoutInMinutes:
-      type: integer
-    AbortAction:
-      type: string
-      enum:
-      - CANCEL
-    JobExecutionsRetryConfig:
+    JobExecutionsRolloutConfig:
       type: object
-      required:
-      - criteriaList
       properties:
-        criteriaList:
+        maximumPerMinute:
           allOf:
-          - $ref: '#/components/schemas/RetryCriteriaList'
-          - description: The list of criteria that determines how many retries are allowed for each failure type for a job.
-      description: The configuration that determines how many retries are allowed for each failure type for a job.
-    RetryableFailureType:
-      type: string
-      enum:
-      - FAILED
-      - TIMED_OUT
-      - ALL
-    InvalidRequestException: {}
-    RetryAttempt:
-      type: integer
-    ProcessingTargetName:
-      type: string
-    ScheduledJobRolloutList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ScheduledJobRollout'
-    ParameterMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ParameterValue'
-    ProcessingTargetNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProcessingTargetName'
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
+          - $ref: '#/components/schemas/MaxJobExecutionsPerMin'
+          - description: The maximum number of things that will be notified of a pending job, per minute. This parameter allows you to create a staged rollout.
+        exponentialRate:
           allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
-    JobEndBehavior:
+          - $ref: '#/components/schemas/ExponentialRolloutRate'
+          - description: The rate of increase for a job rollout. This parameter allows you to define an exponential rate for a job rollout.
+      description: Allows you to create a staged rollout of a job.
+    IncrementFactor:
+      type: number
+      format: double
+      minimum: 1.1
+      maximum: 5
+    ReasonCode:
       type: string
-      enum:
-      - STOP_ROLLOUT
-      - CANCEL
-      - FORCE_CANCEL
-    StringDateTime:
-      type: string
-      minLength: 1
-      maxLength: 64
-    JobStatus:
-      type: string
-      enum:
-      - IN_PROGRESS
-      - CANCELED
-      - COMPLETED
-      - DELETION_IN_PROGRESS
-      - SCHEDULED
-    JobDescription:
-      type: string
-      pattern: '[^\p{C}]+'
-      maxLength: 2028
-    MinimumNumberOfExecutedThings:
-      type: integer
-      minimum: 1
-    JobId:
+      pattern: '[\p{Upper}\p{Digit}_]+'
+      maxLength: 128
+    NamespaceId:
       type: string
       pattern: '[a-zA-Z0-9_-]+'
-      minLength: 1
-      maxLength: 64
-    RolloutRatePerMinute:
-      type: integer
-      minimum: 1
-      maximum: 1000
-    Forced:
-      type: boolean
-    ServiceUnavailableException: {}
-    PresignedUrlConfig:
+    JobExecutionSummaryForJobList:
+      type: array
+      items:
+        $ref: '#/components/schemas/JobExecutionSummaryForJob'
+    DescribeJobResponse:
       type: object
       properties:
-        roleArn:
+        documentSource:
           allOf:
-          - $ref: '#/components/schemas/RoleArn'
-          - description: <p>The ARN of an IAM role that grants grants permission to download files from the S3 bucket where the job data/updates are stored. The role must also grant permission for IoT to download the files.</p> <important> <p>For information about addressing the confused deputy problem, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/cross-service-confused-deputy-prevention.html">cross-service confused deputy prevention</a> in the <i>Amazon Web Services IoT Core developer guide</i>.</p> </important>
-        expiresInSec:
+          - $ref: '#/components/schemas/JobDocumentSource'
+          - description: An S3 link to the job document.
+        job:
           allOf:
-          - $ref: '#/components/schemas/ExpiresInSec'
-          - description: How long (in seconds) pre-signed URLs are valid. Valid values are 60 - 3600, the default value is 3600 seconds. Pre-signed URLs are generated when Jobs receives an MQTT request for the job document.
-      description: Configuration for pre-signed S3 URLs.
-    TargetSelection:
+          - $ref: '#/components/schemas/Job'
+          - description: Information about the job.
+    MaintenanceWindow:
+      type: object
+      required:
+      - startTime
+      - durationInMinutes
+      properties:
+        startTime:
+          allOf:
+          - $ref: '#/components/schemas/CronExpression'
+          - description: Displays the start time of the next maintenance window.
+        durationInMinutes:
+          allOf:
+          - $ref: '#/components/schemas/DurationInMinutes'
+          - description: Displays the duration of the next maintenance window.
+      description: An optional configuration within the <code>SchedulingConfig</code> to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
+    JobExecutionSummaryForJob:
+      type: object
+      properties:
+        thingArn:
+          allOf:
+          - $ref: '#/components/schemas/ThingArn'
+          - description: The ARN of the thing on which the job execution is running.
+        jobExecutionSummary:
+          allOf:
+          - $ref: '#/components/schemas/JobExecutionSummary'
+          - description: Contains a subset of information about a job execution.
+      description: Contains a summary of information about job executions for a specific job.
+    JobTargets:
+      type: array
+      items:
+        $ref: '#/components/schemas/TargetArn'
+      minItems: 1
+    ResourceNotFoundException: {}
+    JobArn:
       type: string
-      enum:
-      - CONTINUOUS
-      - SNAPSHOT
-    JobExecutionSummary:
+    RateIncreaseCriteria:
       type: object
       properties:
-        status:
+        numberOfNotifiedThings:
           allOf:
-          - $ref: '#/components/schemas/JobExecutionStatus'
-          - description: The status of the job execution.
-        queuedAt:
+          - $ref: '#/components/schemas/NumberOfThings'
+          - description: The threshold for number of notified things that will initiate the increase in rate of rollout.
+        numberOfSucceededThings:
           allOf:
-          - $ref: '#/components/schemas/DateType'
-          - description: The time, in seconds since the epoch, when the job execution was queued.
-        startedAt:
-          allOf:
-          - $ref: '#/components/schemas/DateType'
-          - description: The time, in seconds since the epoch, when the job execution started.
-        lastUpdatedAt:
-          allOf:
-          - $ref: '#/components/schemas/DateType'
-          - description: The time, in seconds since the epoch, when the job execution was last updated.
-        executionNumber:
-          allOf:
-          - $ref: '#/components/schemas/ExecutionNumber'
-          - description: A string (consisting of the digits "0" through "9") which identifies this particular job execution on this particular device. It can be used later in commands which return or update job execution information.
-        retryAttempt:
-          allOf:
-          - $ref: '#/components/schemas/RetryAttempt'
-          - description: The number that indicates how many retry attempts have been completed for this job on this device.
-      description: The job execution summary.
+          - $ref: '#/components/schemas/NumberOfThings'
+          - description: The threshold for number of succeeded things that will initiate the increase in rate of rollout.
+      description: Allows you to define a criteria to initiate the increase in rate of rollout for a job.
     JobSummary:
       type: object
       properties:
@@ -1572,60 +1638,74 @@ components:
           - $ref: '#/components/schemas/BooleanWrapperObject'
           - description: Indicates whether a job is concurrent. Will be true when a job is rolling out new job executions or canceling previously created executions, otherwise false.
       description: The job summary.
-    RemovedThings:
-      type: integer
+    JobId:
+      type: string
+      pattern: '[a-zA-Z0-9_-]+'
+      minLength: 1
+      maxLength: 64
+    InvalidStateTransitionException: {}
     TagValue:
       type: string
       minLength: 0
       maxLength: 256
-    JobDocument:
-      type: string
-      maxLength: 32768
-    ResourceNotFoundException: {}
-    RateIncreaseCriteria:
-      type: object
-      properties:
-        numberOfNotifiedThings:
-          allOf:
-          - $ref: '#/components/schemas/NumberOfThings'
-          - description: The threshold for number of notified things that will initiate the increase in rate of rollout.
-        numberOfSucceededThings:
-          allOf:
-          - $ref: '#/components/schemas/NumberOfThings'
-          - description: The threshold for number of succeeded things that will initiate the increase in rate of rollout.
-      description: Allows you to define a criteria to initiate the increase in rate of rollout for a job.
-    ReasonCode:
-      type: string
-      pattern: '[\p{Upper}\p{Digit}_]+'
-      maxLength: 128
-    ExponentialRolloutRate:
+    TimedOutThings:
+      type: integer
+    Tag:
       type: object
       required:
-      - baseRatePerMinute
-      - incrementFactor
-      - rateIncreaseCriteria
+      - Key
       properties:
-        baseRatePerMinute:
+        Key:
           allOf:
-          - $ref: '#/components/schemas/RolloutRatePerMinute'
-          - description: The minimum number of things that will be notified of a pending job, per minute at the start of job rollout. This parameter allows you to define the initial rate of rollout.
-        incrementFactor:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
           allOf:
-          - $ref: '#/components/schemas/IncrementFactor'
-          - description: <p>The exponential factor to increase the rate of rollout for a job.</p> <p>Amazon Web Services IoT Core supports up to one digit after the decimal (for example, 1.5, but not 1.55).</p>
-        rateIncreaseCriteria:
-          allOf:
-          - $ref: '#/components/schemas/RateIncreaseCriteria'
-          - description: The criteria to initiate the increase in rate of rollout for a job.
-      description: Allows you to create an exponential rate of rollout for a job.
-    JobSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/JobSummary'
-    ExpiresInSec:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    RemovedThings:
       type: integer
-      minimum: 60
-      maximum: 3600
+    JobProcessDetails:
+      type: object
+      properties:
+        processingTargets:
+          allOf:
+          - $ref: '#/components/schemas/ProcessingTargetNameList'
+          - description: The target devices to which the job execution is being rolled out. This value will be null after the job execution has finished rolling out to all the target devices.
+        numberOfCanceledThings:
+          allOf:
+          - $ref: '#/components/schemas/CanceledThings'
+          - description: The number of things that cancelled the job.
+        numberOfSucceededThings:
+          allOf:
+          - $ref: '#/components/schemas/SucceededThings'
+          - description: The number of things which successfully completed the job.
+        numberOfFailedThings:
+          allOf:
+          - $ref: '#/components/schemas/FailedThings'
+          - description: The number of things that failed executing the job.
+        numberOfRejectedThings:
+          allOf:
+          - $ref: '#/components/schemas/RejectedThings'
+          - description: The number of things that rejected the job.
+        numberOfQueuedThings:
+          allOf:
+          - $ref: '#/components/schemas/QueuedThings'
+          - description: The number of things that are awaiting execution of the job.
+        numberOfInProgressThings:
+          allOf:
+          - $ref: '#/components/schemas/InProgressThings'
+          - description: The number of things currently executing the job.
+        numberOfRemovedThings:
+          allOf:
+          - $ref: '#/components/schemas/RemovedThings'
+          - description: The number of things that are no longer scheduled to execute the job because they have been deleted or have been removed from the group that was a target of the job.
+        numberOfTimedOutThings:
+          allOf:
+          - $ref: '#/components/schemas/TimedOutThings'
+          - description: The number of things whose job execution status is <code>TIMED_OUT</code>.
+      description: The job process details.
     SchedulingConfig:
       type: object
       properties:
@@ -1646,106 +1726,26 @@ components:
           - $ref: '#/components/schemas/MaintenanceWindows'
           - description: An optional configuration within the <code>SchedulingConfig</code> to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
       description: Specifies the date and time that a job will begin the rollout of the job document to all devices in the target group. Additionally, you can specify the end behavior for each job execution when it reaches the scheduled end time.
-    JobTargets:
-      type: array
-      items:
-        $ref: '#/components/schemas/TargetArn'
-      minItems: 1
-    InProgressThings:
+    NumberOfThings:
       type: integer
-    NextToken:
-      type: string
-    MaintenanceWindow:
-      type: object
-      required:
-      - startTime
-      - durationInMinutes
-      properties:
-        startTime:
-          allOf:
-          - $ref: '#/components/schemas/CronExpression'
-          - description: Displays the start time of the next maintenance window.
-        durationInMinutes:
-          allOf:
-          - $ref: '#/components/schemas/DurationInMinutes'
-          - description: Displays the duration of the next maintenance window.
-      description: An optional configuration within the <code>SchedulingConfig</code> to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
-    AbortConfig:
-      type: object
-      required:
-      - criteriaList
-      properties:
-        criteriaList:
-          allOf:
-          - $ref: '#/components/schemas/AbortCriteriaList'
-          - description: The list of criteria that determine when and how to abort the job.
-      description: The criteria that determine when and how a job abort takes place.
-    ResourceAlreadyExistsException: {}
-    AbortCriteriaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AbortCriteria'
-      minItems: 1
-    RetryCriteria:
-      type: object
-      required:
-      - failureType
-      - numberOfRetries
-      properties:
-        failureType:
-          allOf:
-          - $ref: '#/components/schemas/RetryableFailureType'
-          - description: The type of job execution failures that can initiate a job retry.
-        numberOfRetries:
-          allOf:
-          - $ref: '#/components/schemas/NumberOfRetries'
-          - description: The number of retries allowed for a failure type for the job.
-      description: The criteria that determines how many retries are allowed for each failure type for a job.
-    RetryCriteriaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/RetryCriteria'
-      minItems: 1
-      maxItems: 2
-    BooleanWrapperObject:
-      type: boolean
-    JobArn:
-      type: string
-    JobExecutionSummaryForJob:
-      type: object
-      properties:
-        thingArn:
-          allOf:
-          - $ref: '#/components/schemas/ThingArn'
-          - description: The ARN of the thing on which the job execution is running.
-        jobExecutionSummary:
-          allOf:
-          - $ref: '#/components/schemas/JobExecutionSummary'
-          - description: Contains a subset of information about a job execution.
-      description: Contains a summary of information about job executions for a specific job.
+      minimum: 1
+    CanceledThings:
+      type: integer
     ThingArn:
       type: string
-    MaintenanceWindows:
-      type: array
-      items:
-        $ref: '#/components/schemas/MaintenanceWindow'
-    JobExecutionsRolloutConfig:
-      type: object
-      properties:
-        maximumPerMinute:
-          allOf:
-          - $ref: '#/components/schemas/MaxJobExecutionsPerMin'
-          - description: The maximum number of things that will be notified of a pending job, per minute. This parameter allows you to create a staged rollout.
-        exponentialRate:
-          allOf:
-          - $ref: '#/components/schemas/ExponentialRolloutRate'
-          - description: The rate of increase for a job rollout. This parameter allows you to define an exponential rate for a job rollout.
-      description: Allows you to create a staged rollout of a job.
-    RejectedThings:
+    CronExpression:
+      type: string
+      minLength: 1
+      maxLength: 256
+    AbortAction:
+      type: string
+      enum:
+      - CANCEL
+    InProgressThings:
       type: integer
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -1756,8 +1756,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -1768,14 +1768,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string

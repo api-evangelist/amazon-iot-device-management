@@ -209,11 +209,57 @@ paths:
       tags:
       - Event Configurations
 components:
+  parameters:
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
+    EventConfigurations:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Configuration'
     UpdateEventConfigurationsResponse:
       type: object
       properties: {}
-    InvalidRequestException: {}
     DescribeEventConfigurationsResponse:
       type: object
       properties:
@@ -229,20 +275,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/LastModifiedDate'
           - description: The date the event configurations were last modified.
-    LastModifiedDate:
-      type: string
-      format: date-time
-    Enabled:
-      type: boolean
-    InternalFailureException: {}
-    CreationDate:
-      type: string
-      format: date-time
     ThrottlingException: {}
-    EventConfigurations:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Configuration'
     Configuration:
       type: object
       properties:
@@ -251,49 +284,16 @@ components:
           - $ref: '#/components/schemas/Enabled'
           - description: True to enable the configuration.
       description: Configuration.
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
+    Enabled:
+      type: boolean
+    CreationDate:
+      type: string
+      format: date-time
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    LastModifiedDate:
+      type: string
+      format: date-time
   securitySchemes:
     hmac:
       type: apiKey

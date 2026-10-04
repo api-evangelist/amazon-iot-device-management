@@ -256,57 +256,21 @@ paths:
       - Managed Job Templates
 components:
   schemas:
-    ResourceNotFoundException: {}
-    InvalidRequestException: {}
+    Regex:
+      type: string
+    ParameterKey:
+      type: string
+      pattern: '[a-zA-Z0-9_-]+'
+      minLength: 1
+      maxLength: 128
+    Environment:
+      type: string
+      pattern: '[^\p{C}]+'
     ManagedJobTemplatesSummaryList:
       type: array
       items:
         $ref: '#/components/schemas/ManagedJobTemplateSummary'
-    ListManagedJobTemplatesResponse:
-      type: object
-      properties:
-        managedJobTemplates:
-          allOf:
-          - $ref: '#/components/schemas/ManagedJobTemplatesSummaryList'
-          - description: A list of managed job templates that are returned.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to retrieve the next set of results.
-    ThrottlingException: {}
     InternalServerException: {}
-    DocumentParameter:
-      type: object
-      properties:
-        key:
-          allOf:
-          - $ref: '#/components/schemas/ParameterKey'
-          - description: Key of the map field containing the patterns that need to be replaced in a managed template job document schema.
-        description:
-          allOf:
-          - $ref: '#/components/schemas/JobDescription'
-          - description: Description of the map field containing the patterns that need to be replaced in a managed template job document schema.
-        regex:
-          allOf:
-          - $ref: '#/components/schemas/Regex'
-          - description: A regular expression of the patterns that need to be replaced in a managed template job document schema.
-        example:
-          allOf:
-          - $ref: '#/components/schemas/Example'
-          - description: An example illustrating a pattern that need to be replaced in a managed template job document schema.
-        optional:
-          allOf:
-          - $ref: '#/components/schemas/Optional'
-          - description: Specifies whether a pattern that needs to be replaced in a managed template job document schema is optional or required.
-      description: <p>A map of key-value pairs containing the patterns that need to be replaced in a managed template job document schema. You can use the description of each key as a guidance to specify the inputs during runtime when creating a job.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>
-    DocumentParameters:
-      type: array
-      items:
-        $ref: '#/components/schemas/DocumentParameter'
-    JobDescription:
-      type: string
-      pattern: '[^\p{C}]+'
-      maxLength: 2028
     DescribeManagedJobTemplateResponse:
       type: object
       properties:
@@ -338,34 +302,73 @@ components:
           allOf:
           - $ref: '#/components/schemas/JobDocument'
           - description: The document schema for a managed job template.
-    Example:
+    JobDescription:
       type: string
       pattern: '[^\p{C}]+'
-    NextToken:
+      maxLength: 2028
+    ResourceNotFoundException: {}
+    JobDocument:
       type: string
-    Optional:
-      type: boolean
+      maxLength: 32768
     JobTemplateArn:
       type: string
       pattern: ^arn:[!-~]+$
       minLength: 1
       maxLength: 1600
-    Environment:
+    DocumentParameter:
+      type: object
+      properties:
+        key:
+          allOf:
+          - $ref: '#/components/schemas/ParameterKey'
+          - description: Key of the map field containing the patterns that need to be replaced in a managed template job document schema.
+        description:
+          allOf:
+          - $ref: '#/components/schemas/JobDescription'
+          - description: Description of the map field containing the patterns that need to be replaced in a managed template job document schema.
+        regex:
+          allOf:
+          - $ref: '#/components/schemas/Regex'
+          - description: A regular expression of the patterns that need to be replaced in a managed template job document schema.
+        example:
+          allOf:
+          - $ref: '#/components/schemas/Example'
+          - description: An example illustrating a pattern that need to be replaced in a managed template job document schema.
+        optional:
+          allOf:
+          - $ref: '#/components/schemas/Optional'
+          - description: Specifies whether a pattern that needs to be replaced in a managed template job document schema is optional or required.
+      description: <p>A map of key-value pairs containing the patterns that need to be replaced in a managed template job document schema. You can use the description of each key as a guidance to specify the inputs during runtime when creating a job.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>
+    InvalidRequestException: {}
+    ListManagedJobTemplatesResponse:
+      type: object
+      properties:
+        managedJobTemplates:
+          allOf:
+          - $ref: '#/components/schemas/ManagedJobTemplatesSummaryList'
+          - description: A list of managed job templates that are returned.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to retrieve the next set of results.
+    ThrottlingException: {}
+    Optional:
+      type: boolean
+    ManagedJobTemplateName:
       type: string
-      pattern: '[^\p{C}]+'
-    Environments:
-      type: array
-      items:
-        $ref: '#/components/schemas/Environment'
+      minLength: 1
+      maxLength: 64
     ManagedTemplateVersion:
       type: string
       pattern: ^[1-9]+.[0-9]+
-    ParameterKey:
+    DocumentParameters:
+      type: array
+      items:
+        $ref: '#/components/schemas/DocumentParameter'
+    Example:
       type: string
-      pattern: '[a-zA-Z0-9_-]+'
-      minLength: 1
-      maxLength: 128
-    Regex:
+      pattern: '[^\p{C}]+'
+    NextToken:
       type: string
     ManagedJobTemplateSummary:
       type: object
@@ -391,32 +394,11 @@ components:
           - $ref: '#/components/schemas/ManagedTemplateVersion'
           - description: The version for a managed template.
       description: An object that contains information about the managed template.
-    ManagedJobTemplateName:
-      type: string
-      minLength: 1
-      maxLength: 64
-    JobDocument:
-      type: string
-      maxLength: 32768
+    Environments:
+      type: array
+      items:
+        $ref: '#/components/schemas/Environment'
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -431,6 +413,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

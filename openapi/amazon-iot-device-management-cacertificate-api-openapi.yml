@@ -519,9 +519,81 @@ paths:
 components:
   schemas:
     RegistrationCodeValidationException: {}
-    InvalidRequestException: {}
+    DescribeCACertificateResponse:
+      type: object
+      properties:
+        certificateDescription:
+          allOf:
+          - $ref: '#/components/schemas/CACertificateDescription'
+          - description: The CA certificate description.
+        registrationConfig:
+          allOf:
+          - $ref: '#/components/schemas/RegistrationConfig'
+          - description: Information about the registration configuration.
+      description: The output from the DescribeCACertificate operation.
+    CertificateId:
+      type: string
+      pattern: (0x)?[a-fA-F0-9]+
+      minLength: 64
+      maxLength: 64
     ResourceNotFoundException: {}
+    CertificateMode:
+      type: string
+      enum:
+      - DEFAULT
+      - SNI_ONLY
+    ResourceAlreadyExistsException: {}
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    RegisterCACertificateResponse:
+      type: object
+      properties:
+        certificateArn:
+          allOf:
+          - $ref: '#/components/schemas/CertificateArn'
+          - description: The CA certificate ARN.
+        certificateId:
+          allOf:
+          - $ref: '#/components/schemas/CertificateId'
+          - description: The CA certificate identifier.
+      description: The output from the RegisterCACertificateResponse operation.
+    UnauthorizedException: {}
+    AutoRegistrationStatus:
+      type: string
+      enum:
+      - ENABLE
+      - DISABLE
+    ServiceUnavailableException: {}
+    DateType:
+      type: string
+      format: date-time
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    CertificateArn:
+      type: string
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
     LimitExceededException: {}
+    RegistrationConfig:
+      type: object
+      properties:
+        templateBody:
+          allOf:
+          - $ref: '#/components/schemas/TemplateBody'
+          - description: The template body.
+        roleArn:
+          allOf:
+          - $ref: '#/components/schemas/RoleArn'
+          - description: The ARN of the role.
+        templateName:
+          allOf:
+          - $ref: '#/components/schemas/TemplateName'
+          - description: The name of the provisioning template.
+      description: The registration configuration.
     Tag:
       type: object
       required:
@@ -536,15 +608,40 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    InternalFailureException: {}
+    TemplateName:
+      type: string
+      pattern: ^[0-9A-Za-z_-]+$
+      minLength: 1
+      maxLength: 36
+    CustomerVersion:
+      type: integer
+      minimum: 1
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    CertificateValidationException: {}
+    GenerationId:
+      type: string
     ThrottlingException: {}
-    TemplateBody:
+    CertificateStateException: {}
+    AwsAccountId:
+      type: string
+      pattern: '[0-9]+'
+      minLength: 12
+      maxLength: 12
+    CACertificateStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+    CertificatePem:
       type: string
       pattern: '[\s\S]*'
-      minLength: 0
-      maxLength: 10240
-    CertificateArn:
-      type: string
+      description: The PEM of a certificate.
+      minLength: 1
+      maxLength: 65536
     CACertificateDescription:
       type: object
       properties:
@@ -597,99 +694,10 @@ components:
           - $ref: '#/components/schemas/CertificateMode'
           - description: <p>The mode of the CA. </p> <p>All the device certificates that are registered using this CA will be registered in the same mode as the CA. For more information about certificate mode for device certificates, see <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html#iot-Type-CertificateDescription-certificateMode">certificate mode</a>.</p>
       description: Describes a CA certificate.
-    RegisterCACertificateResponse:
-      type: object
-      properties:
-        certificateArn:
-          allOf:
-          - $ref: '#/components/schemas/CertificateArn'
-          - description: The CA certificate ARN.
-        certificateId:
-          allOf:
-          - $ref: '#/components/schemas/CertificateId'
-          - description: The CA certificate identifier.
-      description: The output from the RegisterCACertificateResponse operation.
-    CertificateId:
-      type: string
-      pattern: (0x)?[a-fA-F0-9]+
-      minLength: 64
-      maxLength: 64
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    DescribeCACertificateResponse:
-      type: object
-      properties:
-        certificateDescription:
-          allOf:
-          - $ref: '#/components/schemas/CACertificateDescription'
-          - description: The CA certificate description.
-        registrationConfig:
-          allOf:
-          - $ref: '#/components/schemas/RegistrationConfig'
-          - description: Information about the registration configuration.
-      description: The output from the DescribeCACertificate operation.
-    AwsAccountId:
-      type: string
-      pattern: '[0-9]+'
-      minLength: 12
-      maxLength: 12
-    TemplateName:
-      type: string
-      pattern: ^[0-9A-Za-z_-]+$
-      minLength: 1
-      maxLength: 36
-    RegistrationConfig:
-      type: object
-      properties:
-        templateBody:
-          allOf:
-          - $ref: '#/components/schemas/TemplateBody'
-          - description: The template body.
-        roleArn:
-          allOf:
-          - $ref: '#/components/schemas/RoleArn'
-          - description: The ARN of the role.
-        templateName:
-          allOf:
-          - $ref: '#/components/schemas/TemplateName'
-          - description: The name of the provisioning template.
-      description: The registration configuration.
-    CertificatePem:
-      type: string
-      pattern: '[\s\S]*'
-      description: The PEM of a certificate.
-      minLength: 1
-      maxLength: 65536
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    AutoRegistrationStatus:
-      type: string
-      enum:
-      - ENABLE
-      - DISABLE
-    GenerationId:
-      type: string
-    ResourceAlreadyExistsException: {}
-    CertificateValidationException: {}
-    ServiceUnavailableException: {}
-    CertificateStateException: {}
     DeleteCACertificateResponse:
       type: object
       properties: {}
       description: The output for the DeleteCACertificate operation.
-    CertificateMode:
-      type: string
-      enum:
-      - DEFAULT
-      - SNI_ONLY
-    CustomerVersion:
-      type: integer
-      minimum: 1
     CertificateValidity:
       type: object
       properties:
@@ -702,38 +710,12 @@ components:
           - $ref: '#/components/schemas/DateType'
           - description: The certificate is not valid after this date.
       description: When the certificate is valid.
-    DateType:
+    TemplateBody:
       type: string
-      format: date-time
-    CACertificateStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-    UnauthorizedException: {}
-    TagValue:
-      type: string
+      pattern: '[\s\S]*'
       minLength: 0
-      maxLength: 256
+      maxLength: 10240
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -748,6 +730,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

@@ -212,20 +212,24 @@ paths:
       - Cacertificates
 components:
   schemas:
-    InvalidRequestException: {}
-    InternalFailureException: {}
-    CACertificates:
-      type: array
-      items:
-        $ref: '#/components/schemas/CACertificate'
-    ThrottlingException: {}
-    CertificateArn:
-      type: string
     CertificateId:
       type: string
       pattern: (0x)?[a-fA-F0-9]+
       minLength: 64
       maxLength: 64
+    UnauthorizedException: {}
+    ListCACertificatesResponse:
+      type: object
+      properties:
+        certificates:
+          allOf:
+          - $ref: '#/components/schemas/CACertificates'
+          - description: The CA certificates registered in your Amazon Web Services account.
+        nextMarker:
+          allOf:
+          - $ref: '#/components/schemas/Marker'
+          - description: The current position within the list of CA certificates.
+      description: The output from the ListCACertificates operation.
     ServiceUnavailableException: {}
     CACertificate:
       type: object
@@ -250,47 +254,25 @@ components:
     DateType:
       type: string
       format: date-time
+    InternalFailureException: {}
+    CertificateArn:
+      type: string
+    InvalidRequestException: {}
+    Marker:
+      type: string
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
+    ThrottlingException: {}
+    CACertificates:
+      type: array
+      items:
+        $ref: '#/components/schemas/CACertificate'
     CACertificateStatus:
       type: string
       enum:
       - ACTIVE
       - INACTIVE
-    UnauthorizedException: {}
-    Marker:
-      type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
-    ListCACertificatesResponse:
-      type: object
-      properties:
-        certificates:
-          allOf:
-          - $ref: '#/components/schemas/CACertificates'
-          - description: The CA certificates registered in your Amazon Web Services account.
-        nextMarker:
-          allOf:
-          - $ref: '#/components/schemas/Marker'
-          - description: The current position within the list of CA certificates.
-      description: The output from the ListCACertificates operation.
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -305,6 +287,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

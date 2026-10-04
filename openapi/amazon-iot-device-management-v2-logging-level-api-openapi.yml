@@ -336,23 +336,14 @@ paths:
       - V2 Logging Level
 components:
   schemas:
-    InvalidRequestException: {}
-    LimitExceededException: {}
-    LogTargetConfigurations:
-      type: array
-      items:
-        $ref: '#/components/schemas/LogTargetConfiguration'
-    ListV2LoggingLevelsResponse:
-      type: object
-      properties:
-        logTargetConfigurations:
-          allOf:
-          - $ref: '#/components/schemas/LogTargetConfigurations'
-          - description: The logging configuration for a target.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    LogLevel:
+      type: string
+      enum:
+      - DEBUG
+      - INFO
+      - ERROR
+      - WARN
+      - DISABLED
     LogTarget:
       type: object
       required:
@@ -367,6 +358,27 @@ components:
           - $ref: '#/components/schemas/LogTargetName'
           - description: The target name.
       description: A log target.
+    ListV2LoggingLevelsResponse:
+      type: object
+      properties:
+        logTargetConfigurations:
+          allOf:
+          - $ref: '#/components/schemas/LogTargetConfigurations'
+          - description: The logging configuration for a target.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
+    LogTargetName:
+      type: string
+    LogTargetConfigurations:
+      type: array
+      items:
+        $ref: '#/components/schemas/LogTargetConfiguration'
+    InternalException: {}
+    ServiceUnavailableException: {}
+    InvalidRequestException: {}
+    LimitExceededException: {}
     LogTargetConfiguration:
       type: object
       properties:
@@ -390,37 +402,7 @@ components:
     NextToken:
       type: string
     NotConfiguredException: {}
-    LogLevel:
-      type: string
-      enum:
-      - DEBUG
-      - INFO
-      - ERROR
-      - WARN
-      - DISABLED
-    ServiceUnavailableException: {}
-    InternalException: {}
-    LogTargetName:
-      type: string
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -435,6 +417,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

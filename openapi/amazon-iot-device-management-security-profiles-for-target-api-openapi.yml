@@ -198,23 +198,14 @@ paths:
       - Security Profiles For Target
 components:
   schemas:
-    ResourceNotFoundException: {}
-    InvalidRequestException: {}
-    InternalFailureException: {}
-    ListSecurityProfilesForTargetResponse:
-      type: object
-      properties:
-        securityProfileTargetMappings:
-          allOf:
-          - $ref: '#/components/schemas/SecurityProfileTargetMappings'
-          - description: A list of security profiles and their associated targets.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
-    ThrottlingException: {}
-    SecurityProfileArn:
+    SecurityProfileTargetArn:
       type: string
+    SecurityProfileName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    ResourceNotFoundException: {}
     SecurityProfileIdentifier:
       type: object
       required:
@@ -230,10 +221,17 @@ components:
           - $ref: '#/components/schemas/SecurityProfileArn'
           - description: The ARN of the security profile.
       description: Identifying information for a Device Defender security profile.
-    NextToken:
-      type: string
-    SecurityProfileTargetArn:
-      type: string
+    ListSecurityProfilesForTargetResponse:
+      type: object
+      properties:
+        securityProfileTargetMappings:
+          allOf:
+          - $ref: '#/components/schemas/SecurityProfileTargetMappings'
+          - description: A list of security profiles and their associated targets.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.
     SecurityProfileTarget:
       type: object
       required:
@@ -248,11 +246,11 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SecurityProfileTargetMapping'
-    SecurityProfileName:
+    InternalFailureException: {}
+    InvalidRequestException: {}
+    ThrottlingException: {}
+    SecurityProfileArn:
       type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
     SecurityProfileTargetMapping:
       type: object
       properties:
@@ -265,25 +263,9 @@ components:
           - $ref: '#/components/schemas/SecurityProfileTarget'
           - description: Information about the target (thing group) associated with the security profile.
       description: Information about a security profile and the target associated with it.
+    NextToken:
+      type: string
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
@@ -298,6 +280,24 @@ components:
       required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
