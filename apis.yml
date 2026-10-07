@@ -1430,6 +1430,8 @@ apis:
   - type: GraphQL
     url: graphql/amazon-iot-device-management-graphql.md
 common:
+- type: Pricing
+  url: https://aws.amazon.com/iot-device-management/pricing/
 - type: Plans
   url: plans/amazon-iot-device-management-plans-pricing.yml
 - type: CapabilityMap
