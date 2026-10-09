@@ -94,3 +94,109 @@ rate_limit_statements:
 - '** Maximum tunnel duration: 12 hours'
 - '** Maximum tunnel throughput: 100 KBps (800kbps)'
 - Messages exchanged are metered in 5KB increments with a maximum of 128KB in size.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - object
+  - request
+  plans:
+  - name: Bulk Registration
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Fleet Indexing - Index Updates
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Fleet Indexing - Search Queries
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Device Jobs - First 250,000 Remote Actions
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Device Jobs - Over 250,000 Remote Actions
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Device Jobs - 12 million+ Remote Actions / Year
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Secure Tunneling
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Managed integrations - direct-connected device subscription
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Managed integrations - hub-connected devices
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Managed integrations - cloud-to-cloud connected devices
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Managed integrations - hubs
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Managed integrations messaging tiers
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
