@@ -489,31 +489,15 @@ paths:
       - Thing Registration Tasks
 components:
   schemas:
-    StartThingRegistrationTaskResponse:
-      type: object
-      properties:
-        taskId:
-          allOf:
-          - $ref: '#/components/schemas/TaskId'
-          - description: The bulk thing provisioning task ID.
-    Percentage:
-      type: integer
-      minimum: 0
-      maximum: 100
-    ResourceNotFoundException: {}
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    UnauthorizedException: {}
-    CreationDate:
-      type: string
-      format: date-time
-    InternalFailureException: {}
+    ThrottlingException: {}
     InvalidRequestException: {}
-    LastModifiedDate:
+    RegistryS3BucketName:
       type: string
-      format: date-time
+      pattern: '[a-zA-Z0-9._-]+'
+      minLength: 3
+      maxLength: 256
+    Count:
+      type: integer
     ListThingRegistrationTasksResponse:
       type: object
       properties:
@@ -525,39 +509,43 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    Count:
-      type: integer
+    NextToken:
+      type: string
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    S3FileUrl:
+      type: string
+      maxLength: 65535
+    Status:
+      type: string
+      enum:
+      - InProgress
+      - Completed
+      - Failed
+      - Cancelled
+      - Cancelling
+    TaskId:
+      type: string
+      maxLength: 40
+    ResourceNotFoundException: {}
+    CreationDate:
+      type: string
+      format: date-time
+    UnauthorizedException: {}
+    StartThingRegistrationTaskResponse:
+      type: object
+      properties:
+        taskId:
+          allOf:
+          - $ref: '#/components/schemas/TaskId'
+          - description: The bulk thing provisioning task ID.
     RegistryS3KeyName:
       type: string
       pattern: '[a-zA-Z0-9!_.*''()-\/]+'
       minLength: 1
       maxLength: 1024
-    StopThingRegistrationTaskResponse:
-      type: object
-      properties: {}
-    TemplateBody:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 0
-      maxLength: 10240
-    ReportType:
-      type: string
-      enum:
-      - ERRORS
-      - RESULTS
-    ThrottlingException: {}
-    TaskId:
-      type: string
-      maxLength: 40
-    ErrorMessage:
-      type: string
-      maxLength: 2048
-    S3FileUrlList:
-      type: array
-      items:
-        $ref: '#/components/schemas/S3FileUrl'
-    NextToken:
-      type: string
     DescribeThingRegistrationTaskResponse:
       type: object
       properties:
@@ -609,10 +597,18 @@ components:
           allOf:
           - $ref: '#/components/schemas/Percentage'
           - description: The progress of the bulk provisioning task expressed as a percentage.
-    TaskIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TaskId'
+    StopThingRegistrationTaskResponse:
+      type: object
+      properties: {}
+    TemplateBody:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 0
+      maxLength: 10240
+    Percentage:
+      type: integer
+      minimum: 0
+      maximum: 100
     ListThingRegistrationTaskReportsResponse:
       type: object
       properties:
@@ -628,31 +624,29 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token to use to get the next set of results, or <b>null</b> if there are no additional results.
-    S3FileUrl:
+    LastModifiedDate:
       type: string
-      maxLength: 65535
-    Status:
+      format: date-time
+    S3FileUrlList:
+      type: array
+      items:
+        $ref: '#/components/schemas/S3FileUrl'
+    TaskIdList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TaskId'
+    ReportType:
       type: string
       enum:
-      - InProgress
-      - Completed
-      - Failed
-      - Cancelled
-      - Cancelling
-    RegistryS3BucketName:
+      - ERRORS
+      - RESULTS
+    InternalFailureException: {}
+    ErrorMessage:
       type: string
-      pattern: '[a-zA-Z0-9._-]+'
-      minLength: 3
-      maxLength: 256
+      maxLength: 2048
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -663,14 +657,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -681,8 +669,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

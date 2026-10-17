@@ -518,66 +518,34 @@ paths:
       - Cacertificate
 components:
   schemas:
-    RegistrationCodeValidationException: {}
-    DescribeCACertificateResponse:
-      type: object
-      properties:
-        certificateDescription:
-          allOf:
-          - $ref: '#/components/schemas/CACertificateDescription'
-          - description: The CA certificate description.
-        registrationConfig:
-          allOf:
-          - $ref: '#/components/schemas/RegistrationConfig'
-          - description: Information about the registration configuration.
-      description: The output from the DescribeCACertificate operation.
-    CertificateId:
-      type: string
-      pattern: (0x)?[a-fA-F0-9]+
-      minLength: 64
-      maxLength: 64
-    ResourceNotFoundException: {}
-    CertificateMode:
-      type: string
-      enum:
-      - DEFAULT
-      - SNI_ONLY
-    ResourceAlreadyExistsException: {}
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    RegisterCACertificateResponse:
-      type: object
-      properties:
-        certificateArn:
-          allOf:
-          - $ref: '#/components/schemas/CertificateArn'
-          - description: The CA certificate ARN.
-        certificateId:
-          allOf:
-          - $ref: '#/components/schemas/CertificateId'
-          - description: The CA certificate identifier.
-      description: The output from the RegisterCACertificateResponse operation.
-    UnauthorizedException: {}
     AutoRegistrationStatus:
       type: string
       enum:
       - ENABLE
       - DISABLE
-    ServiceUnavailableException: {}
-    DateType:
-      type: string
-      format: date-time
-    InternalFailureException: {}
+    ThrottlingException: {}
     InvalidRequestException: {}
-    CertificateArn:
+    ResourceAlreadyExistsException: {}
+    RegistrationCodeValidationException: {}
+    GenerationId:
       type: string
-    TagValue:
+    AwsAccountId:
       type: string
-      minLength: 0
-      maxLength: 256
-    LimitExceededException: {}
+      pattern: '[0-9]+'
+      minLength: 12
+      maxLength: 12
+    CertificateValidity:
+      type: object
+      properties:
+        notBefore:
+          allOf:
+          - $ref: '#/components/schemas/DateType'
+          - description: The certificate is not valid before this date.
+        notAfter:
+          allOf:
+          - $ref: '#/components/schemas/DateType'
+          - description: The certificate is not valid after this date.
+      description: When the certificate is valid.
     RegistrationConfig:
       type: object
       properties:
@@ -594,6 +562,52 @@ components:
           - $ref: '#/components/schemas/TemplateName'
           - description: The name of the provisioning template.
       description: The registration configuration.
+    CertificateArn:
+      type: string
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    CACertificateStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+    CustomerVersion:
+      type: integer
+      minimum: 1
+    RegisterCACertificateResponse:
+      type: object
+      properties:
+        certificateArn:
+          allOf:
+          - $ref: '#/components/schemas/CertificateArn'
+          - description: The CA certificate ARN.
+        certificateId:
+          allOf:
+          - $ref: '#/components/schemas/CertificateId'
+          - description: The CA certificate identifier.
+      description: The output from the RegisterCACertificateResponse operation.
+    ServiceUnavailableException: {}
+    ResourceNotFoundException: {}
+    CertificateId:
+      type: string
+      pattern: (0x)?[a-fA-F0-9]+
+      minLength: 64
+      maxLength: 64
+    UnauthorizedException: {}
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    CertificateValidationException: {}
+    InternalFailureException: {}
+    TemplateBody:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 0
+      maxLength: 10240
     Tag:
       type: object
       required:
@@ -608,40 +622,21 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The tag's value.
       description: A set of key/value pairs that are used to manage the resource.
-    TemplateName:
-      type: string
-      pattern: ^[0-9A-Za-z_-]+$
-      minLength: 1
-      maxLength: 36
-    CustomerVersion:
-      type: integer
-      minimum: 1
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    CertificateValidationException: {}
-    GenerationId:
-      type: string
-    ThrottlingException: {}
-    CertificateStateException: {}
-    AwsAccountId:
-      type: string
-      pattern: '[0-9]+'
-      minLength: 12
-      maxLength: 12
-    CACertificateStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
     CertificatePem:
       type: string
       pattern: '[\s\S]*'
       description: The PEM of a certificate.
       minLength: 1
       maxLength: 65536
+    CertificateMode:
+      type: string
+      enum:
+      - DEFAULT
+      - SNI_ONLY
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
     CACertificateDescription:
       type: object
       properties:
@@ -694,36 +689,35 @@ components:
           - $ref: '#/components/schemas/CertificateMode'
           - description: <p>The mode of the CA. </p> <p>All the device certificates that are registered using this CA will be registered in the same mode as the CA. For more information about certificate mode for device certificates, see <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html#iot-Type-CertificateDescription-certificateMode">certificate mode</a>.</p>
       description: Describes a CA certificate.
+    DescribeCACertificateResponse:
+      type: object
+      properties:
+        certificateDescription:
+          allOf:
+          - $ref: '#/components/schemas/CACertificateDescription'
+          - description: The CA certificate description.
+        registrationConfig:
+          allOf:
+          - $ref: '#/components/schemas/RegistrationConfig'
+          - description: Information about the registration configuration.
+      description: The output from the DescribeCACertificate operation.
+    TemplateName:
+      type: string
+      pattern: ^[0-9A-Za-z_-]+$
+      minLength: 1
+      maxLength: 36
+    LimitExceededException: {}
+    DateType:
+      type: string
+      format: date-time
     DeleteCACertificateResponse:
       type: object
       properties: {}
       description: The output for the DeleteCACertificate operation.
-    CertificateValidity:
-      type: object
-      properties:
-        notBefore:
-          allOf:
-          - $ref: '#/components/schemas/DateType'
-          - description: The certificate is not valid before this date.
-        notAfter:
-          allOf:
-          - $ref: '#/components/schemas/DateType'
-          - description: The certificate is not valid after this date.
-      description: When the certificate is valid.
-    TemplateBody:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 0
-      maxLength: 10240
+    CertificateStateException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -734,14 +728,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -752,8 +740,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

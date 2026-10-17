@@ -498,18 +498,23 @@ paths:
       - Mitigationactions
 components:
   schemas:
-    PolicyTemplateName:
+    SnsTopicArn:
       type: string
-      enum:
-      - BLANK_POLICY
-    LogLevel:
-      type: string
-      enum:
-      - DEBUG
-      - INFO
-      - ERROR
-      - WARN
-      - DISABLED
+      maxLength: 350
+    ThrottlingException: {}
+    InvalidRequestException: {}
+    ResourceAlreadyExistsException: {}
+    ListMitigationActionsResponse:
+      type: object
+      properties:
+        actionIdentifiers:
+          allOf:
+          - $ref: '#/components/schemas/MitigationActionIdentifierList'
+          - description: A set of actions that matched the specified filter criteria.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token for the next set of results.
     MitigationActionIdentifier:
       type: object
       properties:
@@ -526,30 +531,46 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: The date when this mitigation action was created.
       description: Information that identifies a mitigation action. This information is returned by ListMitigationActions.
-    EnableIoTLoggingParams:
+    DeviceCertificateUpdateAction:
+      type: string
+      enum:
+      - DEACTIVATE
+    UpdateMitigationActionResponse:
       type: object
-      required:
-      - roleArnForLogging
-      - logLevel
       properties:
-        roleArnForLogging:
+        actionArn:
           allOf:
-          - $ref: '#/components/schemas/RoleArn'
-          - description: The Amazon Resource Name (ARN) of the IAM role used for logging.
-        logLevel:
+          - $ref: '#/components/schemas/MitigationActionArn'
+          - description: The ARN for the new mitigation action.
+        actionId:
           allOf:
-          - $ref: '#/components/schemas/LogLevel'
-          - description: Specifies the type of information to be logged.
-      description: Parameters used when defining a mitigation action that enable Amazon Web Services IoT Core logging.
+          - $ref: '#/components/schemas/MitigationActionId'
+          - description: A unique identifier for the mitigation action.
+    DeleteMitigationActionResponse:
+      type: object
+      properties: {}
+    MitigationActionArn:
+      type: string
+    MitigationActionName:
+      type: string
+      pattern: '[a-zA-Z0-9_-]+'
+      maxLength: 128
     ThingGroupNames:
       type: array
       items:
         $ref: '#/components/schemas/ThingGroupName'
       minItems: 1
       maxItems: 10
-    DeleteMitigationActionResponse:
-      type: object
-      properties: {}
+    NextToken:
+      type: string
+    CACertificateUpdateAction:
+      type: string
+      enum:
+      - DEACTIVATE
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
     DescribeMitigationActionResponse:
       type: object
       properties:
@@ -585,68 +606,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/Timestamp'
           - description: The date and time when the mitigation action was last changed.
-    ResourceNotFoundException: {}
-    ListMitigationActionsResponse:
-      type: object
-      properties:
-        actionIdentifiers:
-          allOf:
-          - $ref: '#/components/schemas/MitigationActionIdentifierList'
-          - description: A set of actions that matched the specified filter criteria.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token for the next set of results.
-    ResourceAlreadyExistsException: {}
-    CACertificateUpdateAction:
-      type: string
-      enum:
-      - DEACTIVATE
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    MitigationActionName:
-      type: string
-      pattern: '[a-zA-Z0-9_-]+'
-      maxLength: 128
-    InternalFailureException: {}
-    InvalidRequestException: {}
-    MitigationActionType:
-      type: string
-      enum:
-      - UPDATE_DEVICE_CERTIFICATE
-      - UPDATE_CA_CERTIFICATE
-      - ADD_THINGS_TO_THING_GROUP
-      - REPLACE_DEFAULT_POLICY_VERSION
-      - ENABLE_IOT_LOGGING
-      - PUBLISH_FINDING_TO_SNS
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    LimitExceededException: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
     NullableBoolean:
       type: boolean
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
     CreateMitigationActionResponse:
       type: object
       properties:
@@ -662,6 +623,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/MitigationActionIdentifier'
+    Timestamp:
+      type: string
+      format: date-time
+    ResourceNotFoundException: {}
     MitigationActionParams:
       type: object
       properties:
@@ -690,49 +655,6 @@ components:
           - $ref: '#/components/schemas/PublishFindingToSnsParams'
           - description: Parameters to define a mitigation action that publishes findings to Amazon Simple Notification Service (Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
       description: The set of parameters for this mitigation action. You can specify only one type of parameter (in other words, you can apply only one action for each defined mitigation action).
-    ThrottlingException: {}
-    MitigationActionId:
-      type: string
-    Timestamp:
-      type: string
-      format: date-time
-    SnsTopicArn:
-      type: string
-      maxLength: 350
-    NextToken:
-      type: string
-    ThingGroupName:
-      type: string
-      pattern: '[a-zA-Z0-9:_-]+'
-      minLength: 1
-      maxLength: 128
-    UpdateMitigationActionResponse:
-      type: object
-      properties:
-        actionArn:
-          allOf:
-          - $ref: '#/components/schemas/MitigationActionArn'
-          - description: The ARN for the new mitigation action.
-        actionId:
-          allOf:
-          - $ref: '#/components/schemas/MitigationActionId'
-          - description: A unique identifier for the mitigation action.
-    DeviceCertificateUpdateAction:
-      type: string
-      enum:
-      - DEACTIVATE
-    PublishFindingToSnsParams:
-      type: object
-      required:
-      - topicArn
-      properties:
-        topicArn:
-          allOf:
-          - $ref: '#/components/schemas/SnsTopicArn'
-          - description: The ARN of the topic to which you want to publish the findings.
-      description: Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
-    MitigationActionArn:
-      type: string
     UpdateDeviceCertificateParams:
       type: object
       required:
@@ -743,16 +665,49 @@ components:
           - $ref: '#/components/schemas/DeviceCertificateUpdateAction'
           - description: The action that you want to apply to the device certificate. The only supported value is <code>DEACTIVATE</code>.
       description: Parameters to define a mitigation action that changes the state of the device certificate to inactive.
-    UpdateCACertificateParams:
+    PolicyTemplateName:
+      type: string
+      enum:
+      - BLANK_POLICY
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    ReplaceDefaultPolicyVersionParams:
       type: object
       required:
-      - action
+      - templateName
       properties:
-        action:
+        templateName:
           allOf:
-          - $ref: '#/components/schemas/CACertificateUpdateAction'
-          - description: The action that you want to apply to the CA certificate. The only supported value is <code>DEACTIVATE</code>.
-      description: Parameters to define a mitigation action that changes the state of the CA certificate to inactive.
+          - $ref: '#/components/schemas/PolicyTemplateName'
+          - description: The name of the template to be applied. The only supported value is <code>BLANK_POLICY</code>.
+      description: Parameters to define a mitigation action that adds a blank policy to restrict permissions.
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    LogLevel:
+      type: string
+      enum:
+      - DEBUG
+      - INFO
+      - ERROR
+      - WARN
+      - DISABLED
+    MitigationActionId:
+      type: string
     AddThingsToThingGroupParams:
       type: object
       required:
@@ -767,25 +722,64 @@ components:
           - $ref: '#/components/schemas/NullableBoolean'
           - description: Specifies if this mitigation action can move the things that triggered the mitigation action even if they are part of one or more dynamic thing groups.
       description: Parameters used when defining a mitigation action that move a set of things to a thing group.
-    ReplaceDefaultPolicyVersionParams:
+    UpdateCACertificateParams:
       type: object
       required:
-      - templateName
+      - action
       properties:
-        templateName:
+        action:
           allOf:
-          - $ref: '#/components/schemas/PolicyTemplateName'
-          - description: The name of the template to be applied. The only supported value is <code>BLANK_POLICY</code>.
-      description: Parameters to define a mitigation action that adds a blank policy to restrict permissions.
+          - $ref: '#/components/schemas/CACertificateUpdateAction'
+          - description: The action that you want to apply to the CA certificate. The only supported value is <code>DEACTIVATE</code>.
+      description: Parameters to define a mitigation action that changes the state of the CA certificate to inactive.
+    EnableIoTLoggingParams:
+      type: object
+      required:
+      - roleArnForLogging
+      - logLevel
+      properties:
+        roleArnForLogging:
+          allOf:
+          - $ref: '#/components/schemas/RoleArn'
+          - description: The Amazon Resource Name (ARN) of the IAM role used for logging.
+        logLevel:
+          allOf:
+          - $ref: '#/components/schemas/LogLevel'
+          - description: Specifies the type of information to be logged.
+      description: Parameters used when defining a mitigation action that enable Amazon Web Services IoT Core logging.
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    MitigationActionType:
+      type: string
+      enum:
+      - UPDATE_DEVICE_CERTIFICATE
+      - UPDATE_CA_CERTIFICATE
+      - ADD_THINGS_TO_THING_GROUP
+      - REPLACE_DEFAULT_POLICY_VERSION
+      - ENABLE_IOT_LOGGING
+      - PUBLISH_FINDING_TO_SNS
+    InternalFailureException: {}
+    LimitExceededException: {}
+    ThingGroupName:
+      type: string
+      pattern: '[a-zA-Z0-9:_-]+'
+      minLength: 1
+      maxLength: 128
+    PublishFindingToSnsParams:
+      type: object
+      required:
+      - topicArn
+      properties:
+        topicArn:
+          allOf:
+          - $ref: '#/components/schemas/SnsTopicArn'
+          - description: The ARN of the topic to which you want to publish the findings.
+      description: Parameters to define a mitigation action that publishes findings to Amazon SNS. You can implement your own custom actions in response to the Amazon SNS messages.
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -796,14 +790,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -814,8 +802,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

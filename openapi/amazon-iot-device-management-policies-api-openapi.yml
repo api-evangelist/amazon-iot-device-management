@@ -845,30 +845,41 @@ paths:
       - Policies
 components:
   schemas:
-    IsDefaultVersion:
-      type: boolean
-    MalformedPolicyException: {}
-    DeleteConflictException: {}
-    Policy:
+    ThrottlingException: {}
+    InvalidRequestException: {}
+    PolicyArn:
+      type: string
+    VersionsLimitExceededException: {}
+    PolicyVersion:
+      type: object
+      properties:
+        versionId:
+          allOf:
+          - $ref: '#/components/schemas/PolicyVersionId'
+          - description: The policy version ID.
+        isDefaultVersion:
+          allOf:
+          - $ref: '#/components/schemas/IsDefaultVersion'
+          - description: Specifies whether the policy version is the default.
+        createDate:
+          allOf:
+          - $ref: '#/components/schemas/DateType'
+          - description: The date and time the policy was created.
+      description: Describes a policy version.
+    PolicyDocument:
+      type: string
+      pattern: '[\s\S]*'
+      minLength: 0
+      maxLength: 404600
+    GenerationId:
+      type: string
+    CreatePolicyResponse:
       type: object
       properties:
         policyName:
           allOf:
           - $ref: '#/components/schemas/PolicyName'
           - description: The policy name.
-        policyArn:
-          allOf:
-          - $ref: '#/components/schemas/PolicyArn'
-          - description: The policy ARN.
-      description: Describes an IoT policy.
-    PolicyDocument:
-      type: string
-      pattern: '[\s\S]*'
-      minLength: 0
-      maxLength: 404600
-    CreatePolicyVersionResponse:
-      type: object
-      properties:
         policyArn:
           allOf:
           - $ref: '#/components/schemas/PolicyArn'
@@ -881,48 +892,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/PolicyVersionId'
           - description: The policy version ID.
-        isDefaultVersion:
-          allOf:
-          - $ref: '#/components/schemas/IsDefaultVersion'
-          - description: Specifies whether the policy version is the default.
-      description: The output of the CreatePolicyVersion operation.
-    PolicyVersionId:
-      type: string
-      pattern: '[0-9]+'
-    ResourceNotFoundException: {}
-    ResourceAlreadyExistsException: {}
-    PolicyArn:
-      type: string
-    UnauthorizedException: {}
-    PolicyVersions:
-      type: array
-      items:
-        $ref: '#/components/schemas/PolicyVersion'
-    ServiceUnavailableException: {}
-    DateType:
-      type: string
-      format: date-time
-    InternalFailureException: {}
-    InvalidRequestException: {}
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    VersionsLimitExceededException: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
+      description: The output from the CreatePolicy operation.
+    IsDefaultVersion:
+      type: boolean
     ListPoliciesResponse:
       type: object
       properties:
@@ -935,13 +907,6 @@ components:
           - $ref: '#/components/schemas/Marker'
           - description: The marker for the next set of results, or null if there are no additional results.
       description: The output from the ListPolicies operation.
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    GenerationId:
-      type: string
     GetPolicyResponse:
       type: object
       properties:
@@ -974,15 +939,32 @@ components:
           - $ref: '#/components/schemas/GenerationId'
           - description: The generation ID of the policy.
       description: The output from the GetPolicy operation.
-    Marker:
+    PolicyName:
       type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
-    ThrottlingException: {}
-    PolicyVersion:
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
+    ServiceUnavailableException: {}
+    ResourceNotFoundException: {}
+    UnauthorizedException: {}
+    MalformedPolicyException: {}
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    CreatePolicyVersionResponse:
       type: object
       properties:
-        versionId:
+        policyArn:
+          allOf:
+          - $ref: '#/components/schemas/PolicyArn'
+          - description: The policy ARN.
+        policyDocument:
+          allOf:
+          - $ref: '#/components/schemas/PolicyDocument'
+          - description: The JSON document that describes the policy.
+        policyVersionId:
           allOf:
           - $ref: '#/components/schemas/PolicyVersionId'
           - description: The policy version ID.
@@ -990,11 +972,26 @@ components:
           allOf:
           - $ref: '#/components/schemas/IsDefaultVersion'
           - description: Specifies whether the policy version is the default.
-        createDate:
+      description: The output of the CreatePolicyVersion operation.
+    Policies:
+      type: array
+      items:
+        $ref: '#/components/schemas/Policy'
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
           allOf:
-          - $ref: '#/components/schemas/DateType'
-          - description: The date and time the policy was created.
-      description: Describes a policy version.
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    DeleteConflictException: {}
     ListPolicyVersionsResponse:
       type: object
       properties:
@@ -1003,15 +1000,10 @@ components:
           - $ref: '#/components/schemas/PolicyVersions'
           - description: The policy versions.
       description: The output from the ListPolicyVersions operation.
-    Policies:
-      type: array
-      items:
-        $ref: '#/components/schemas/Policy'
-    PolicyName:
+    Marker:
       type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
     GetPolicyVersionResponse:
       type: object
       properties:
@@ -1048,7 +1040,11 @@ components:
           - $ref: '#/components/schemas/GenerationId'
           - description: The generation ID of the policy version.
       description: The output from the GetPolicyVersion operation.
-    CreatePolicyResponse:
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    Policy:
       type: object
       properties:
         policyName:
@@ -1059,24 +1055,22 @@ components:
           allOf:
           - $ref: '#/components/schemas/PolicyArn'
           - description: The policy ARN.
-        policyDocument:
-          allOf:
-          - $ref: '#/components/schemas/PolicyDocument'
-          - description: The JSON document that describes the policy.
-        policyVersionId:
-          allOf:
-          - $ref: '#/components/schemas/PolicyVersionId'
-          - description: The policy version ID.
-      description: The output from the CreatePolicy operation.
+      description: Describes an IoT policy.
+    InternalFailureException: {}
+    DateType:
+      type: string
+      format: date-time
+    PolicyVersionId:
+      type: string
+      pattern: '[0-9]+'
+    PolicyVersions:
+      type: array
+      items:
+        $ref: '#/components/schemas/PolicyVersion'
+    ResourceAlreadyExistsException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -1087,14 +1081,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -1105,8 +1093,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

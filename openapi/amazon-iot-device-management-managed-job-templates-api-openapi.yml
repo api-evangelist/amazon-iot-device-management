@@ -256,21 +256,59 @@ paths:
       - Managed Job Templates
 components:
   schemas:
-    Regex:
-      type: string
+    ThrottlingException: {}
+    InvalidRequestException: {}
     ParameterKey:
       type: string
       pattern: '[a-zA-Z0-9_-]+'
       minLength: 1
       maxLength: 128
-    Environment:
-      type: string
-      pattern: '[^\p{C}]+'
     ManagedJobTemplatesSummaryList:
       type: array
       items:
         $ref: '#/components/schemas/ManagedJobTemplateSummary'
+    NextToken:
+      type: string
+    Regex:
+      type: string
+    Optional:
+      type: boolean
+    ManagedJobTemplateName:
+      type: string
+      minLength: 1
+      maxLength: 64
+    ResourceNotFoundException: {}
+    ManagedTemplateVersion:
+      type: string
+      pattern: ^[1-9]+.[0-9]+
+    JobDocument:
+      type: string
+      maxLength: 32768
     InternalServerException: {}
+    ManagedJobTemplateSummary:
+      type: object
+      properties:
+        templateArn:
+          allOf:
+          - $ref: '#/components/schemas/JobTemplateArn'
+          - description: The Amazon Resource Name (ARN) for a managed template.
+        templateName:
+          allOf:
+          - $ref: '#/components/schemas/ManagedJobTemplateName'
+          - description: The unique Name for a managed template.
+        description:
+          allOf:
+          - $ref: '#/components/schemas/JobDescription'
+          - description: The description for a managed template.
+        environments:
+          allOf:
+          - $ref: '#/components/schemas/Environments'
+          - description: A list of environments that are supported with the managed job template.
+        templateVersion:
+          allOf:
+          - $ref: '#/components/schemas/ManagedTemplateVersion'
+          - description: The version for a managed template.
+      description: An object that contains information about the managed template.
     DescribeManagedJobTemplateResponse:
       type: object
       properties:
@@ -302,14 +340,32 @@ components:
           allOf:
           - $ref: '#/components/schemas/JobDocument'
           - description: The document schema for a managed job template.
+    DocumentParameters:
+      type: array
+      items:
+        $ref: '#/components/schemas/DocumentParameter'
+    Example:
+      type: string
+      pattern: '[^\p{C}]+'
+    Environments:
+      type: array
+      items:
+        $ref: '#/components/schemas/Environment'
+    ListManagedJobTemplatesResponse:
+      type: object
+      properties:
+        managedJobTemplates:
+          allOf:
+          - $ref: '#/components/schemas/ManagedJobTemplatesSummaryList'
+          - description: A list of managed job templates that are returned.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token to retrieve the next set of results.
     JobDescription:
       type: string
       pattern: '[^\p{C}]+'
       maxLength: 2028
-    ResourceNotFoundException: {}
-    JobDocument:
-      type: string
-      maxLength: 32768
     JobTemplateArn:
       type: string
       pattern: ^arn:[!-~]+$
@@ -339,74 +395,12 @@ components:
           - $ref: '#/components/schemas/Optional'
           - description: Specifies whether a pattern that needs to be replaced in a managed template job document schema is optional or required.
       description: <p>A map of key-value pairs containing the patterns that need to be replaced in a managed template job document schema. You can use the description of each key as a guidance to specify the inputs during runtime when creating a job.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>
-    InvalidRequestException: {}
-    ListManagedJobTemplatesResponse:
-      type: object
-      properties:
-        managedJobTemplates:
-          allOf:
-          - $ref: '#/components/schemas/ManagedJobTemplatesSummaryList'
-          - description: A list of managed job templates that are returned.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token to retrieve the next set of results.
-    ThrottlingException: {}
-    Optional:
-      type: boolean
-    ManagedJobTemplateName:
-      type: string
-      minLength: 1
-      maxLength: 64
-    ManagedTemplateVersion:
-      type: string
-      pattern: ^[1-9]+.[0-9]+
-    DocumentParameters:
-      type: array
-      items:
-        $ref: '#/components/schemas/DocumentParameter'
-    Example:
+    Environment:
       type: string
       pattern: '[^\p{C}]+'
-    NextToken:
-      type: string
-    ManagedJobTemplateSummary:
-      type: object
-      properties:
-        templateArn:
-          allOf:
-          - $ref: '#/components/schemas/JobTemplateArn'
-          - description: The Amazon Resource Name (ARN) for a managed template.
-        templateName:
-          allOf:
-          - $ref: '#/components/schemas/ManagedJobTemplateName'
-          - description: The unique Name for a managed template.
-        description:
-          allOf:
-          - $ref: '#/components/schemas/JobDescription'
-          - description: The description for a managed template.
-        environments:
-          allOf:
-          - $ref: '#/components/schemas/Environments'
-          - description: A list of environments that are supported with the managed job template.
-        templateVersion:
-          allOf:
-          - $ref: '#/components/schemas/ManagedTemplateVersion'
-          - description: The version for a managed template.
-      description: An object that contains information about the managed template.
-    Environments:
-      type: array
-      items:
-        $ref: '#/components/schemas/Environment'
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -417,14 +411,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -435,8 +423,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

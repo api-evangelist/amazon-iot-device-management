@@ -338,13 +338,8 @@ paths:
       - Certificate
 components:
   schemas:
-    CertificateId:
-      type: string
-      pattern: (0x)?[a-fA-F0-9]+
-      minLength: 64
-      maxLength: 64
-    ResourceAlreadyExistsException: {}
-    UnauthorizedException: {}
+    ThrottlingException: {}
+    InvalidRequestException: {}
     RegisterCertificateWithoutCAResponse:
       type: object
       properties:
@@ -356,9 +351,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/CertificateId'
           - description: The ID of the registered certificate. (The last part of the certificate ARN contains the certificate ID.
-    ServiceUnavailableException: {}
-    InternalFailureException: {}
-    InvalidRequestException: {}
     CertificateArn:
       type: string
     RegisterCertificateResponse:
@@ -373,19 +365,21 @@ components:
           - $ref: '#/components/schemas/CertificateId'
           - description: The certificate identifier.
       description: The output from the RegisterCertificate operation.
+    ServiceUnavailableException: {}
+    CertificateId:
+      type: string
+      pattern: (0x)?[a-fA-F0-9]+
+      minLength: 64
+      maxLength: 64
+    UnauthorizedException: {}
     CertificateValidationException: {}
-    ThrottlingException: {}
     CertificateConflictException: {}
+    InternalFailureException: {}
+    ResourceAlreadyExistsException: {}
     CertificateStateException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -396,14 +390,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -414,8 +402,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

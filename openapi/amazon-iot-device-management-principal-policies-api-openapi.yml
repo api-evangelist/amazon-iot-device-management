@@ -373,26 +373,15 @@ paths:
       - Principal Policies
 components:
   schemas:
-    Policy:
-      type: object
-      properties:
-        policyName:
-          allOf:
-          - $ref: '#/components/schemas/PolicyName'
-          - description: The policy name.
-        policyArn:
-          allOf:
-          - $ref: '#/components/schemas/PolicyArn'
-          - description: The policy ARN.
-      description: Describes an IoT policy.
-    ResourceNotFoundException: {}
+    ThrottlingException: {}
+    InvalidRequestException: {}
     PolicyArn:
       type: string
-    UnauthorizedException: {}
-    ServiceUnavailableException: {}
-    InternalFailureException: {}
-    InvalidRequestException: {}
-    LimitExceededException: {}
+    PolicyName:
+      type: string
+      pattern: '[\w+=,.@-]+'
+      minLength: 1
+      maxLength: 128
     ListPrincipalPoliciesResponse:
       type: object
       properties:
@@ -405,29 +394,34 @@ components:
           - $ref: '#/components/schemas/Marker'
           - description: The marker for the next set of results, or null if there are no additional results.
       description: The output from the ListPrincipalPolicies operation.
-    Marker:
-      type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
-    ThrottlingException: {}
+    ResourceNotFoundException: {}
+    ServiceUnavailableException: {}
+    UnauthorizedException: {}
     Policies:
       type: array
       items:
         $ref: '#/components/schemas/Policy'
-    PolicyName:
+    Marker:
       type: string
-      pattern: '[\w+=,.@-]+'
-      minLength: 1
-      maxLength: 128
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
+    Policy:
+      type: object
+      properties:
+        policyName:
+          allOf:
+          - $ref: '#/components/schemas/PolicyName'
+          - description: The policy name.
+        policyArn:
+          allOf:
+          - $ref: '#/components/schemas/PolicyArn'
+          - description: The policy ARN.
+      description: Describes an IoT policy.
+    InternalFailureException: {}
+    LimitExceededException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -438,14 +432,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -456,8 +444,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

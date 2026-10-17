@@ -522,114 +522,12 @@ paths:
       - Role Aliases
 components:
   schemas:
-    RoleAliasArn:
-      type: string
-      minLength: 1
-      maxLength: 2048
-    CreateRoleAliasResponse:
-      type: object
-      properties:
-        roleAlias:
-          allOf:
-          - $ref: '#/components/schemas/RoleAlias'
-          - description: The role alias.
-        roleAliasArn:
-          allOf:
-          - $ref: '#/components/schemas/RoleAliasArn'
-          - description: The role alias ARN.
-    DeleteConflictException: {}
-    RoleAliases:
-      type: array
-      items:
-        $ref: '#/components/schemas/RoleAlias'
+    ThrottlingException: {}
     CredentialDurationSeconds:
       type: integer
       minimum: 900
       maximum: 43200
-    ResourceNotFoundException: {}
-    ListRoleAliasesResponse:
-      type: object
-      properties:
-        roleAliases:
-          allOf:
-          - $ref: '#/components/schemas/RoleAliases'
-          - description: The role aliases.
-        nextMarker:
-          allOf:
-          - $ref: '#/components/schemas/Marker'
-          - description: A marker used to get the next set of results.
-    ResourceAlreadyExistsException: {}
-    RoleArn:
-      type: string
-      minLength: 20
-      maxLength: 2048
-    UnauthorizedException: {}
-    RoleAlias:
-      type: string
-      pattern: '[\w=,@-]+'
-      minLength: 1
-      maxLength: 128
-    ServiceUnavailableException: {}
-    DateType:
-      type: string
-      format: date-time
-    InternalFailureException: {}
     InvalidRequestException: {}
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
-    LimitExceededException: {}
-    Tag:
-      type: object
-      required:
-      - Key
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The tag's key.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The tag's value.
-      description: A set of key/value pairs that are used to manage the resource.
-    TagKey:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-      minLength: 1
-      maxLength: 128
-    UpdateRoleAliasResponse:
-      type: object
-      properties:
-        roleAlias:
-          allOf:
-          - $ref: '#/components/schemas/RoleAlias'
-          - description: The role alias.
-        roleAliasArn:
-          allOf:
-          - $ref: '#/components/schemas/RoleAliasArn'
-          - description: The role alias ARN.
-    DescribeRoleAliasResponse:
-      type: object
-      properties:
-        roleAliasDescription:
-          allOf:
-          - $ref: '#/components/schemas/RoleAliasDescription'
-          - description: The role alias description.
-    Marker:
-      type: string
-      pattern: '[A-Za-z0-9+/]+={0,2}'
-      maxLength: 1024
-    ThrottlingException: {}
-    DeleteRoleAliasResponse:
-      type: object
-      properties: {}
-    AwsAccountId:
-      type: string
-      pattern: '[0-9]+'
-      minLength: 12
-      maxLength: 12
     RoleAliasDescription:
       type: object
       properties:
@@ -662,15 +560,111 @@ components:
           - $ref: '#/components/schemas/DateType'
           - description: The UNIX timestamp of when the role alias was last modified.
       description: Role alias description.
+    AwsAccountId:
+      type: string
+      pattern: '[0-9]+'
+      minLength: 12
+      maxLength: 12
+    RoleAlias:
+      type: string
+      pattern: '[\w=,@-]+'
+      minLength: 1
+      maxLength: 128
+    RoleAliasArn:
+      type: string
+      minLength: 1
+      maxLength: 2048
+    RoleArn:
+      type: string
+      minLength: 20
+      maxLength: 2048
+    ListRoleAliasesResponse:
+      type: object
+      properties:
+        roleAliases:
+          allOf:
+          - $ref: '#/components/schemas/RoleAliases'
+          - description: The role aliases.
+        nextMarker:
+          allOf:
+          - $ref: '#/components/schemas/Marker'
+          - description: A marker used to get the next set of results.
+    RoleAliases:
+      type: array
+      items:
+        $ref: '#/components/schemas/RoleAlias'
+    ResourceNotFoundException: {}
+    ServiceUnavailableException: {}
+    UnauthorizedException: {}
+    DescribeRoleAliasResponse:
+      type: object
+      properties:
+        roleAliasDescription:
+          allOf:
+          - $ref: '#/components/schemas/RoleAliasDescription'
+          - description: The role alias description.
+    TagKey:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
+      minLength: 1
+      maxLength: 128
+    Tag:
+      type: object
+      required:
+      - Key
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The tag's key.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The tag's value.
+      description: A set of key/value pairs that are used to manage the resource.
+    DeleteConflictException: {}
+    Marker:
+      type: string
+      pattern: '[A-Za-z0-9+/]+={0,2}'
+      maxLength: 1024
+    UpdateRoleAliasResponse:
+      type: object
+      properties:
+        roleAlias:
+          allOf:
+          - $ref: '#/components/schemas/RoleAlias'
+          - description: The role alias.
+        roleAliasArn:
+          allOf:
+          - $ref: '#/components/schemas/RoleAliasArn'
+          - description: The role alias ARN.
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    DeleteRoleAliasResponse:
+      type: object
+      properties: {}
+    CreateRoleAliasResponse:
+      type: object
+      properties:
+        roleAlias:
+          allOf:
+          - $ref: '#/components/schemas/RoleAlias'
+          - description: The role alias.
+        roleAliasArn:
+          allOf:
+          - $ref: '#/components/schemas/RoleAliasArn'
+          - description: The role alias ARN.
+    InternalFailureException: {}
+    LimitExceededException: {}
+    DateType:
+      type: string
+      format: date-time
+    ResourceAlreadyExistsException: {}
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -681,14 +675,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -699,8 +687,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

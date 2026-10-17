@@ -179,33 +179,24 @@ paths:
       tags:
       - Endpoint
 components:
+  schemas:
+    ThrottlingException: {}
+    InvalidRequestException: {}
+    DescribeEndpointResponse:
+      type: object
+      properties:
+        endpointAddress:
+          allOf:
+          - $ref: '#/components/schemas/EndpointAddress'
+          - description: 'The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.'
+      description: The output from the DescribeEndpoint operation.
+    UnauthorizedException: {}
+    EndpointAddress:
+      type: string
+    InternalFailureException: {}
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -216,27 +207,36 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Credential:
       name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-  schemas:
-    EndpointAddress:
-      type: string
-    DescribeEndpointResponse:
-      type: object
-      properties:
-        endpointAddress:
-          allOf:
-          - $ref: '#/components/schemas/EndpointAddress'
-          - description: 'The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.'
-      description: The output from the DescribeEndpoint operation.
-    UnauthorizedException: {}
-    ThrottlingException: {}
-    InternalFailureException: {}
-    InvalidRequestException: {}
   securitySchemes:
     hmac:
       type: apiKey
