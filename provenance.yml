@@ -229,11 +229,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-managed-job-templates-api
   collections/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-mitigationactions-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-mitigationactions-api
@@ -253,11 +253,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-policies-api
   collections/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-policy-targets-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-policy-targets-api
@@ -271,11 +271,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-principal-policies-api
   collections/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-principals-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-principals-api
@@ -325,11 +325,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-security-profiles-api
   collections/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-streams-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-streams-api
@@ -343,11 +343,11 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-tags-api
   collections/amazon-iot-device-management-tags-resourcearn-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-tags-resourcearn-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-tags-resourcearn-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-tags-resourcearn-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-target-policies-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-target-policies-api
@@ -403,11 +403,11 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   collections/amazon-iot-device-management-v2logginglevel-targettype-targetname-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-v2logginglevel-targettype-targetname-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-v2logginglevel-targettype-targetname-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-v2logginglevel-targettype-targetname-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-v2loggingoptions-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -415,11 +415,11 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   collections/amazon-iot-device-management-violation-events-starttime-endtime-api.opencollection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-violation-events-starttime-endtime-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-violation-events-starttime-endtime-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-violation-events-starttime-endtime-api
+    method: unknown
+    evidence: no authorship recorded
   collections/amazon-iot-device-management-violations-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-violations-api
@@ -2241,127 +2241,7 @@ artifacts:
   json-structure/iot-device-management-vpc-destination-configuration-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -2443,6 +2323,21 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   openapi/_original/amazon-iot-device-management-openapi-original.yml:
@@ -2557,7 +2452,7 @@ artifacts:
   openapi/amazon-iot-device-management-managed-job-templates-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api-openapi.yml:
+  openapi/amazon-iot-device-management-metric-values-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-mitigationactions-api-openapi.yml:
@@ -2569,16 +2464,13 @@ artifacts:
   openapi/amazon-iot-device-management-policies-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api-openapi.yml:
+  openapi/amazon-iot-device-management-policy-principals-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-policy-targets-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-principal-policies-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-principals-api-openapi.yml:
@@ -2605,16 +2497,13 @@ artifacts:
   openapi/amazon-iot-device-management-security-profiles-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api-openapi.yml:
+  openapi/amazon-iot-device-management-security-profiles-for-target-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-streams-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-tags-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-tags-resourcearn-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-target-policies-api-openapi.yml:
@@ -2647,10 +2536,7 @@ artifacts:
   openapi/amazon-iot-device-management-v2-logging-options-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-v2logginglevel-targettype-targetname-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/amazon-iot-device-management-violation-events-starttime-endtime-api-openapi.yml:
+  openapi/amazon-iot-device-management-violation-events-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/amazon-iot-device-management-violations-api-openapi.yml:
@@ -2771,8 +2657,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-managed-job-templates-api
   postman/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-metric-values-thingname-metricname-starttime-endtime-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-mitigationactions-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-mitigationactions-api
@@ -2783,8 +2669,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-policies-api
   postman/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-policy-principals-x-amzn-iot-policy-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-policy-targets-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-policy-targets-api
@@ -2792,8 +2678,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-principal-policies-api
   postman/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-principal-policies-x-amzn-iot-principal-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-principals-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-principals-api
@@ -2819,8 +2705,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-security-profiles-api
   postman/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-security-profiles-for-target-securityprofiletargetarn-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-streams-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-streams-api
@@ -2828,8 +2714,8 @@ artifacts:
     method: derived
     evidence: openapi/amazon-iot-device-management-tags-api
   postman/amazon-iot-device-management-tags-resourcearn-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-tags-resourcearn-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-target-policies-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-target-policies-api
@@ -2858,14 +2744,14 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   postman/amazon-iot-device-management-v2logginglevel-targettype-targetname-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-v2logginglevel-targettype-targetname-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-v2loggingoptions-api.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
   postman/amazon-iot-device-management-violation-events-starttime-endtime-api.postman_collection.json:
-    method: derived
-    evidence: openapi/amazon-iot-device-management-violation-events-starttime-endtime-api
+    method: unknown
+    evidence: no authorship recorded
   postman/amazon-iot-device-management-violations-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-iot-device-management-violations-api
