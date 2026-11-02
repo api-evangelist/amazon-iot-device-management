@@ -1,0 +1,202 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://aws.amazon.com/iot-device-management/pricing/
+sources:
+- https://aws.amazon.com/iot-device-management/pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+published: true
+note: 'Main pricing tables are unrendered template placeholders; the numeric rates captured here come
+  from the page''s worked pricing examples. Free tier: 50 remote actions/month and up to $200 in AWS Free
+  Tier credits for new customers.'
+plan_count: 12
+currency: USD
+plans:
+- name: Bulk Registration
+  price_text: $0.10/1,000 things registered
+  price: 0.1
+  currency: USD
+  period: per-use
+  unit: 1,000 things registered
+- name: Fleet Indexing - Index Updates
+  price_text: $2.25 / 1,000,000 index updates
+  price: 2.25
+  currency: USD
+  period: per-use
+  unit: 1,000,000 index updates
+- name: Fleet Indexing - Search Queries
+  price_text: $0.05 / 10,000 queries
+  price: 0.05
+  currency: USD
+  period: per-use
+  unit: 10,000 queries
+- name: Device Jobs - First 250,000 Remote Actions
+  price_text: $0.003 per remote action
+  price: 0.003
+  currency: USD
+  period: per-use
+  unit: remote action
+  included_quota: free tier includes 50 remote actions per month
+- name: Device Jobs - Over 250,000 Remote Actions
+  price_text: $0.0015 per remote action
+  price: 0.0015
+  currency: USD
+  period: per-use
+  unit: remote action
+- name: Device Jobs - 12 million+ Remote Actions / Year
+  price_text: Contact Us
+  period: none
+- name: Secure Tunneling
+  price_text: $1.00 per tunnel created
+  price: 1.0
+  currency: USD
+  period: per-use
+  unit: tunnel
+- name: Managed integrations - direct-connected device subscription
+  price_text: $0.01
+  price: 0.01
+  currency: USD
+  period: month
+  unit: device
+  included_quota: First 500 messages Included with subscription
+- name: Managed integrations - hub-connected devices
+  price_text: 1000 * $0.01 = $10
+  currency: USD
+  period: month
+  unit: device
+- name: Managed integrations - cloud-to-cloud connected devices
+  price_text: 100 * $0.02 = $2
+  currency: USD
+  period: month
+  unit: device
+- name: Managed integrations - hubs
+  price_text: 200 * $0.15 = $30
+  currency: USD
+  period: month
+  unit: hub
+- name: Managed integrations messaging tiers
+  price_text: $0.05 base fee + $0.12 incremental Tier 2 fee + $0.33 incremental Tier 3 fee
+  currency: USD
+  period: month
+  unit: device
+  included_quota: First 500 messages
+  overage: $25 per million messages beyond 30,000
+rate_limit_statements:
+- '** Maximum tunnel duration: 12 hours'
+- '** Maximum tunnel throughput: 100 KBps (800kbps)'
+- Messages exchanged are metered in 5KB increments with a maximum of 128KB in size.
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - object
+  - request
+  plans:
+  - name: Bulk Registration
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Fleet Indexing - Index Updates
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Fleet Indexing - Search Queries
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Device Jobs - First 250,000 Remote Actions
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Device Jobs - Over 250,000 Remote Actions
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Device Jobs - 12 million+ Remote Actions / Year
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Secure Tunneling
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Managed integrations - direct-connected device subscription
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Managed integrations - hub-connected devices
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Managed integrations - cloud-to-cloud connected devices
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Managed integrations - hubs
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Managed integrations messaging tiers
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
